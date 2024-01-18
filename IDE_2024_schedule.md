@@ -1,7 +1,7 @@
 ---
 layout: tutorial_page
 permalink: /IDE_2024_schedule
-title: Infectious Disease Genomic Epidemiology
+title: Infectious Disease Genomic Epidemiology 2024 Schedule
 header1: Workshop Pages for Students
 header2: Infectious Disease Genomic Epidemiology 2024 Schedule
 image: /site_images/CBW_epidemiology_icon.png
