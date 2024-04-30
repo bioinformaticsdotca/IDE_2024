@@ -1,11 +1,11 @@
-name: signalcovtools 
+name: signalcovtools-jts
 channels:
   - conda-forge
   - bioconda
   - defaults
 dependencies:
   - augur
-  - bcftools
+  - bcftools=1.10
   - bedtools
   - bioconductor-ggtree
   - biopython
@@ -13,11 +13,11 @@ dependencies:
   - breseq
   - bwa
   - fastqc
-  - freebayes
+  - freebayes=1.3.2
   - gofasta
   - icu
   - iqtree<2
-  - ivar
+  - ivar=1.3
   - kraken2
   - mafft
   - matplotlib
@@ -28,7 +28,7 @@ dependencies:
   - numpy
   - pandas
   - parasail-python
-  - pip
+  - pip=22.3.1
   - poppler
   - pysam
   - python
@@ -37,7 +37,7 @@ dependencies:
   - r-base
   - r-ggforce
   - r-patchwork
-  - samtools
+  - samtools=1.10
   - pyvcf3
   - setuptools<66.0.0
   - snakemake
