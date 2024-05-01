@@ -1,12 +1,12 @@
 ---
 layout: tutorial_page
-permalink: /IDE_2024_Module6_lab
+permalink: /IDE_2024_Module7_lab
 title: CBW Infectious Disease Epidemiology 2024
 header1: Workshop Pages for Students
-header2: CBW Infectious Disease Epidemiology 2024 Module 6 Lab
+header2: CBW Infectious Disease Epidemiology 2024 Module 7 Lab
 image: /site_images/CBW_epidemiology_icon.png
 home: https://bioinformaticsdotca.github.io/
-description: CBW IDE 2024 Module 6 - Antimicrobial Resistant Gene (AMR) Analysis
+description: CBW IDE 2024 Module 7 - Antimicrobial Resistant Gene (AMR) Analysis
 author: Andrew McArthur, Madeline McCarthy, and Karyn Mukiri
 modified: May 1, 2024
 ---
