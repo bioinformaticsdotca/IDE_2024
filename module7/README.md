@@ -106,7 +106,7 @@ The first two examples list the predicted resistome of the analyzed genome and p
 <a name="rgicommand"></a>
 ## RGI at the Command Line
 
-RGI is a command line tool as well, so we’ll do an analysis of the 39 *E. coli* genome assemblies included in the Integrated Assignment. We’ll additionally try RGI’s heat map tool to compare genomes.
+RGI is a command line tool as well, so we’ll do an analysis of 39 *E. coli* genome assemblies from infections in the Hamilton, Ontario region. We’ll additionally try RGI’s heat map tool to compare genomes.
 
 Login into your course account’s working directory and make a module7 directory:
 
@@ -198,7 +198,7 @@ The last analysis is the most informative, showing that many of these isolates s
 <a name="microreact"></a>
 ## Microreact Files
 
-In the course Integrated Assignment you can use the following annotation file to visualize all of the RGI results in the context of [Microreact](https://microreact.org) visualizations: [RGI microreact results plus earlier derived whole genome SNP tree](https://github.com/agmcarthur/vtec2023-amr/tree/main/for_microreact).
+You can use the following annotation file to visualize all of the RGI results in the context of [Microreact](https://microreact.org) visualizations: [RGI microreact results plus earlier derived whole genome SNP tree](https://github.com/agmcarthur/vtec2023-amr/tree/main/for_microreact).
 
 Notes on the metadata:
 * We include RGI Perfect and Strict annotations, but ignore Loose annotations
