@@ -17,9 +17,7 @@ modified: May 1, 2024
 2. [CARD Website and Antibiotic Resistance Ontology](#cardweb)
 3. [RGI for Genome Analysis](#rgigenome)
 4. [RGI at the Command Line](#rgicommand)
-5. [RGI for Merged Metagenomics Reads](#rgimerged)
-6. [Metagenomic Sequencing Reads and the KMA Algorithm](#bwt)
-7. [Pathogen of Origin Prediction](#pathogen)
+5. [Microreact Files](#microreact)
 
 <a name="download"></a>
 ## Download Files
