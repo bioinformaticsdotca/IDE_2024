@@ -106,7 +106,7 @@ The first two examples list the predicted resistome of the analyzed genome and p
 <a name="rgicommand"></a>
 ## RGI at the Command Line
 
-RGI is a command line tool as well, so we’ll do an analysis of 39 *E. coli* genome assemblies from an italian study. We’ll additionally try RGI’s heat map tool to compare genomes.
+RGI is a command line tool as well, so we’ll do an analysis of 39 *E. coli* genome assemblies from [Whole-Genome Characterization and Strain Comparison of VT2f-Producing Escherichia coli Causing Hemolytic Uremic Syndrome](https://wwwnc.cdc.gov/eid/article/22/12/16-0017-f2). We’ll additionally try RGI’s heat map tool to compare genomes.
 
 Login into your course account’s working directory and make a module7 directory:
 
