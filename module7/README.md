@@ -119,7 +119,7 @@ cd module7
 Take a peak at the list of *E. coli* samples:
 
 ```bash
-ls /home/ubuntu/CourseData/module7/ecoli
+ls /home/ubuntu/CourseData/IDE_data/module7/ecoli
 ```
 
 RGI has already been installed using Conda, list all the available software in Conda, activate RGI, and then review the RGI help screen:
@@ -145,7 +145,7 @@ We don’t have time to analyze all 39 samples, so let’s analyze 1 as an examp
 
 ```bash
 rgi main -h
-rgi main -i /home/ubuntu/workspace/CourseData/module7/ecoli/ED010.fasta -o ED010 -t contig -a DIAMOND -n 4 --local --clean
+rgi main -i /home/ubuntu/workspace/CourseData/IDE_data/module7/ecoli/ED010.fasta -o ED010 -t contig -a DIAMOND -n 4 --local --clean
 ls
 less ED010.json
 less ED010.txt
@@ -163,7 +163,7 @@ What if these results did not explain our observed phenotype? We might want to e
 
 ```bash
 rgi main -h
-rgi main -i /home/ubuntu/workspace/CourseData/module7/ecoli/ED010.fasta -o ED010_IncludeLoose -t contig -a DIAMOND -n 4 --local --clean --include_nudge --include_loose
+rgi main -i /home/ubuntu/workspace/CourseData/IDE_data/module7/ecoli/ED010.fasta -o ED010_IncludeLoose -t contig -a DIAMOND -n 4 --local --clean --include_nudge --include_loose
 ls
 column -t -s $'\t' ED010_IncludeLoose.txt  | less -S
 ```
@@ -178,11 +178,11 @@ An additional 11 nudged Strict annotations (possible partial genes for *Escheric
 We have pre-compiled results for all 39 samples under “**Perfect and Strict hits only**"", "**Exclude nudge**", and "**High quality/coverage**", so let’s try RGI’s heat map tool ([pre-compiled images](https://github.com/agmcarthur/vtec2023-amr/tree/main/rgi_main_results) can be downloaded or viewed from the course GitHub repo):
 
 ```bash
-ls /home/ubuntu/workspace/CourseData/module7/ecoli_json
+ls /home/ubuntu/workspace/CourseData/IDE_data/module7/ecoli_json
 rgi heatmap -h
-rgi heatmap -i /home/ubuntu/workspace/CourseData/module7/ecoli_json -o heatmap
-rgi heatmap -i /home/ubuntu/workspace/CourseData/module7/ecoli_json -o cluster_both --cluster both
-rgi heatmap -i /home/ubuntu/workspace/CourseData/module7/ecoli_json -o cluster_both_frequency --frequency --cluster both
+rgi heatmap -i /home/ubuntu/workspace/CourseData/IDE_data/module7/ecoli_json -o heatmap
+rgi heatmap -i /home/ubuntu/workspace/CourseData/IDE_data/module7/ecoli_json -o cluster_both --cluster both
+rgi heatmap -i /home/ubuntu/workspace/CourseData/IDE_data/module7/ecoli_json -o cluster_both_frequency --frequency --cluster both
 ls
 ```
 
