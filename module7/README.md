@@ -90,13 +90,13 @@ In this part of the tutorial, your instructor will walk you through the followin
 <a name="#rgigenome"></a>
 ## RGI for Genome Analysis
 
-As illustrated by the exercise above, the diversity of antimicrobial resistance mechanisms requires a diversity of detection algorithms and a diversity of detection limits. CARD’s Resistance Gene Identifier (RGI) currently integrates four CARD detection models: [Protein Homolog Model, Protein Variant Model, rRNA Variant Model, and Protein Overexpression Model](https://github.com/arpcard/rgi#analyzing-genomes-genome-assemblies-metagenomic-contigs-or-proteomes-a-k-a-rgi-main). Unlike naïve analyses, CARD detection models use curated cut-offs, currently based on BLAST/DIAMOND bitscore cut-offs. Many other available tools are based on BLASTN or BLASTP without defined cut-offs and avoid resistance by mutation entirely. 
+As illustrated by the exercise above, the diversity of antimicrobial resistance mechanisms requires a diversity of detection algorithms and a diversity of detection limits. CARD’s Resistance Gene Identifier (RGI) currently integrates four CARD detection models: [Protein Homolog Model, Protein Variant Model, rRNA Variant Model, and Protein Overexpression Model](https://github.com/arpcard/rgi/blob/master/docs/rgi_main.rst). Unlike naïve analyses, CARD detection models use curated cut-offs, currently based on BLAST/DIAMOND bitscore cut-offs. Many other available tools are based on BLASTN or BLASTP without defined cut-offs and avoid resistance by mutation entirely. 
 
 In this part of the tutorial, your instructor will walk you through the following use of CARD’s [Resistome Gene Identifier](https://card.mcmaster.ca/analyze/rgi) with default settings “Perfect and Strict hits only”, "Exclude nudge", and "High quality/coverage":
 
 * Resistome prediction for the multidrug resistant *Acinetobacter baumannii* MDR-TJ, complete genome (NC_017847).
 * Resistome prediction for the plasmid isolated from *Escherichia coli* strain MRSN388634 plasmid (KX276657).
-* Explain the difference in fluoroquinolone resistance MIC between two clinical strains of *Pseudomonas aeruginosa* that appear clonal based on identical MLST ([`Pseudomonas1.fasta`, `Pseudomonas2.fasta`](https://github.com/bioinformaticsdotca/IDE_2024/tree/main/module6/sequences_for_web_demo) - these files can be found in this GitHub repo). Hint, look at SNPs.
+* Explain the difference in fluoroquinolone resistance MIC between two clinical strains of *Pseudomonas aeruginosa* that appear clonal based on identical MLST ([`Pseudomonas1.fasta`, `Pseudomonas2.fasta`](https://github.com/bioinformaticsdotca/IDE_2024/tree/main/module7/sequences_for_web_demo) - these files can be found in this GitHub repo). Hint, look at SNPs.
 
 <details>
   <summary>Answers:</summary>
