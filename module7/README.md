@@ -141,7 +141,7 @@ rgi load --card_json ./card.json --local
 ls
 ```
 
-We don’t have time to analyze all 39 samples, so let’s analyze 1 as an example (the course GitHub repo contains an EXCEL version of the resulting [ED010.txt](https://github.com/agmcarthur/vtec2023-amr/tree/main/rgi_main_results/ED010.xlsx) file). When analyzing FASTA files we use the **main** sub-command, here with default settings “**Perfect and Strict hits only**”, "**Exclude nudge**", and "**High quality/coverage**":
+We don’t have time to analyze all 39 samples, so let’s analyze 1 as an example (the course GitHub repo contains an EXCEL version of the resulting [ED010.txt](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module7/rgi_main_results/ED010.xlsx) file). When analyzing FASTA files we use the **main** sub-command, here with default settings “**Perfect and Strict hits only**”, "**Exclude nudge**", and "**High quality/coverage**":
 
 ```bash
 rgi main -h
@@ -159,7 +159,7 @@ Default RGI **main** analysis of ED010 lists 12 Perfect annotations and 39 Stric
                 
 </details>
 
-What if these results did not explain our observed phenotype? We might want to explore the RGI Loose hits (the course GitHub repo contains an EXCEL version of the resulting [ED010_IncludeLoose.txt](https://github.com/agmcarthur/vtec2023-amr/tree/main/rgi_main_results/ED010_IncludeLoose.xlsx) file), shown here with settings “**Perfect, Strict, and Loose hits**”, "**Include nudge**", and "**High quality/coverage**":
+What if these results did not explain our observed phenotype? We might want to explore the RGI Loose hits (the course GitHub repo contains an EXCEL version of the resulting [ED010_IncludeLoose.txt](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module7/rgi_main_results/ED010_IncludeLoose.xlsx) file), shown here with settings “**Perfect, Strict, and Loose hits**”, "**Include nudge**", and "**High quality/coverage**":
 
 ```bash
 rgi main -h
@@ -175,7 +175,7 @@ An additional 11 nudged Strict annotations (possible partial genes for *Escheric
                 
 </details>
 
-We have pre-compiled results for all 39 samples under “**Perfect and Strict hits only**"", "**Exclude nudge**", and "**High quality/coverage**", so let’s try RGI’s heat map tool ([pre-compiled images](https://github.com/agmcarthur/vtec2023-amr/tree/main/rgi_main_results) can be downloaded or viewed from the course GitHub repo):
+We have pre-compiled results for all 39 samples under “**Perfect and Strict hits only**"", "**Exclude nudge**", and "**High quality/coverage**", so let’s try RGI’s heat map tool ([pre-compiled images](https://github.com/bioinformaticsdotca/IDE_2024/tree/main/module7/rgi_main_results) can be downloaded or viewed from the course GitHub repo):
 
 ```bash
 ls /home/ubuntu/CourseData/IDE_data/module7/ecoli_json
@@ -198,7 +198,7 @@ The last analysis is the most informative, showing that many of these isolates s
 <a name="microreact"></a>
 ## Microreact Files
 
-You can use the following annotation file to visualize all of the RGI results in the context of [Microreact](https://microreact.org) visualizations: [RGI microreact results plus earlier derived whole genome SNP tree](https://github.com/agmcarthur/vtec2023-amr/tree/main/for_microreact).
+You can use the following annotation file to visualize all of the RGI results in the context of [Microreact](https://microreact.org) visualizations: [RGI microreact results plus earlier derived whole genome SNP tree](https://github.com/bioinformaticsdotca/IDE_2024/tree/main/module7/for_microreact).
 
 Notes on the metadata:
 * We include RGI Perfect and Strict annotations, but ignore Loose annotations
