@@ -1,14 +1,14 @@
 ---
 layout: tutorial_page
-permalink: /IDE_2023_Module6_lab
-title: CBW Infectious Disease Epidemiology 2023
+permalink: /IDE_2024_Module6_lab
+title: CBW Infectious Disease Epidemiology 2024
 header1: Workshop Pages for Students
-header2: CBW Infectious Disease Epidemiology 2023 Module 6 Lab
+header2: CBW Infectious Disease Epidemiology 2024 Module 6 Lab
 image: /site_images/CBW_epidemiology_icon.png
 home: https://bioinformaticsdotca.github.io/
-description: CBW IDE 2023 Module 6 - Antimicrobial Resistant Gene (AMR) Analysis
-author: Andrew McArthur and Karyn Mukiri
-modified: March 21, 2023
+description: CBW IDE 2024 Module 6 - Antimicrobial Resistant Gene (AMR) Analysis
+author: Andrew McArthur, Madeline McCarthy, and Karyn Mukiri
+modified: May 1, 2024
 ---
 
 ## Table of contents
@@ -24,7 +24,7 @@ modified: March 21, 2023
 <a name="download"></a>
 ## Download Files
 
-If you are doing this demo live, you can download all the files we will be viewing here: https://github.com/bioinformaticsdotca/IDE_2023/tree/main/module6/downloads_for_demo
+If you are doing this demo live, you can download all the files we will be viewing here: https://github.com/bioinformaticsdotca/IDE_2024/tree/main/module6/downloads_for_demo
 
 <a name="intro"></a>
 ## Introduction
@@ -95,7 +95,7 @@ In this part of the tutorial, your instructor will walk you through the followin
 
 * Resistome prediction for the multidrug resistant *Acinetobacter baumannii* MDR-TJ, complete genome (NC_017847).
 * Resistome prediction for the plasmid isolated from *Escherichia coli* strain MRSN388634 plasmid (KX276657).
-* Explain the difference in fluoroquinolone resistance MIC between two clinical strains of *Pseudomonas aeruginosa* that appear clonal based on identical MLST ([`Pseudomonas1.fasta`, `Pseudomonas2.fasta`](https://github.com/bioinformaticsdotca/IDE_2023/tree/main/module6/sequences_for_web_demo) - these files can be found in this GitHub repo). Hint, look at SNPs.
+* Explain the difference in fluoroquinolone resistance MIC between two clinical strains of *Pseudomonas aeruginosa* that appear clonal based on identical MLST ([`Pseudomonas1.fasta`, `Pseudomonas2.fasta`](https://github.com/bioinformaticsdotca/IDE_2024/tree/main/module6/sequences_for_web_demo) - these files can be found in this GitHub repo). Hint, look at SNPs.
 
 <details>
   <summary>Answers:</summary>
@@ -142,7 +142,7 @@ rgi load --card_json ./card.json --local
 ls
 ```
 
-We don’t have time to analyze all 112 samples, so let’s analyze 1 as an example (the course GitHub repo contains an EXCEL version of the resulting [`C0001.txt`](https://github.com/bioinformaticsdotca/IDE_2023/blob/main/module6/rgi_main_results/C0001.xlsx) file). When analyzing FASTA files we use the **main** sub-command, here with default settings “Perfect and Strict hits only”, "Exclude nudge", and "High quality/coverage":
+We don’t have time to analyze all 112 samples, so let’s analyze 1 as an example (the course GitHub repo contains an EXCEL version of the resulting [`C0001.txt`](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module6/rgi_main_results/C0001.xlsx) file). When analyzing FASTA files we use the **main** sub-command, here with default settings “Perfect and Strict hits only”, "Exclude nudge", and "High quality/coverage":
 
 ```bash
 rgi main -h
@@ -160,7 +160,7 @@ Default RGI **main** analysis of C0001 lists 17 Perfect annotations and 52 Stric
                 
 </details>
 
-What if these results did not explain our observed phenotype? We might want to explore the RGI Loose hits (the course GitHub repo contains an EXCEL version of the resulting [C0001_IncludeLoose.txt](https://github.com/bioinformaticsdotca/IDE_2023/blob/main/module6/rgi_main_results/C0001_IncludeLoose.xlsx) file), shown here with settings “Perfect, Strict, and Loose hits”, "Include nudge", and "High quality/coverage":
+What if these results did not explain our observed phenotype? We might want to explore the RGI Loose hits (the course GitHub repo contains an EXCEL version of the resulting [C0001_IncludeLoose.txt](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module6/rgi_main_results/C0001_IncludeLoose.xlsx) file), shown here with settings “Perfect, Strict, and Loose hits”, "Include nudge", and "High quality/coverage":
 
 ```bash
 rgi main -h
@@ -176,7 +176,7 @@ An additional 3 nudged Strict annotations (*Escherichia coli* PtsI with mutation
                 
 </details>
 
-We have pre-compiled results for all 112 samples under “Perfect and Strict hits only”, "Exclude nudge", and "High quality/coverage", so let’s try RGI’s heat map tool ([pre-compiled images](https://github.com/bioinformaticsdotca/IDE_2023/tree/main/module6/rgi_main_results) can be downloaded from the course GitHub repo) (please ignore the FutureWarning):
+We have pre-compiled results for all 112 samples under “Perfect and Strict hits only”, "Exclude nudge", and "High quality/coverage", so let’s try RGI’s heat map tool ([pre-compiled images](https://github.com/bioinformaticsdotca/IDE_2024/tree/main/module6/rgi_main_results) can be downloaded from the course GitHub repo) (please ignore the FutureWarning):
 
 ```bash
 ls /home/ubuntu/CourseData/IDE_data/module6/ecoli_json
@@ -200,7 +200,7 @@ The last analysis is the most informative, showing that many of these isolates s
 
 The standard RGI tool can be used to analyze metagenomics read data, but only for assembled or merged reads with Prodigal calling of partial open reading frames (ORFs). Here we will demonstrate analysis of merged reads. This is a computationally expensive approach, since each merged read set may contain a partial ORF, requiring RGI to perform massive amounts of BLAST/DIAMOND analyses. While computationally intensive (and thus generally not recommended), this does allow analysis of metagenomic sequences in protein space, including key substitutions, overcoming issues of high-stringency read mapping relative to nucleotide reference databases.
 
-Lanza et al. ([Microbiome 2018, 15:11](https://www.ncbi.nlm.nih.gov/pubmed/29335005)) used AMR gene bait capture to sample human gut microbiomes for AMR genes. Using the [online RGI](https://card.mcmaster.ca/analyze/rgi) under “Perfect, Strict and Loose hits”, "Include nudge", and "Low quality/coverage" settings, analyze the first 500 merged metagenomic reads from their analysis (file [`ResCap_first_500.fasta`](https://github.com/bioinformaticsdotca/IDE_2023/blob/main/module6/sequences_for_web_demo/ResCap_first_500.fasta)). Take a close look at the predicted “sul2” and “sul4” hits in the results table. How good is the evidence for these AMR genes in this enriched metagenomics sample?
+Lanza et al. ([Microbiome 2018, 15:11](https://www.ncbi.nlm.nih.gov/pubmed/29335005)) used AMR gene bait capture to sample human gut microbiomes for AMR genes. Using the [online RGI](https://card.mcmaster.ca/analyze/rgi) under “Perfect, Strict and Loose hits”, "Include nudge", and "Low quality/coverage" settings, analyze the first 500 merged metagenomic reads from their analysis (file [`ResCap_first_500.fasta`](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module6/sequences_for_web_demo/ResCap_first_500.fasta)). Take a close look at the predicted “sul2” and “sul4” hits in the results table. How good is the evidence for these AMR genes in this enriched metagenomics sample?
 
 <details>
   <summary>Discussion Points:</summary>
@@ -245,7 +245,7 @@ cat gut_sample.kma.overall_mapping_stats.txt
 ls
 ```
 
-However, the file we are most interested in for now is [`gut_sample.kma.gene_mapping_data.txt`](https://github.com/bioinformaticsdotca/IDE_2023/blob/main/module6/rgi_bwt_results/gut_sample.kma.gene_mapping_data.xlsx) and the course GitHub repo contains an EXCEL version for easy viewing, but let's look at it on the command line:
+However, the file we are most interested in for now is [`gut_sample.kma.gene_mapping_data.txt`](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module6/rgi_bwt_results/gut_sample.kma.gene_mapping_data.xlsx) and the course GitHub repo contains an EXCEL version for easy viewing, but let's look at it on the command line:
 
 ```bash
 column -t -s $'\t' gut_sample.kma.gene_mapping_data.txt  | less -S
@@ -307,7 +307,7 @@ rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R1.fastq -2 /
 ls
 ```
 
-The pre-compiled results can be viewed in the EXCEL version of [`gut_sample_wildcard.kma.gene_mapping_data.txt`](https://github.com/bioinformaticsdotca/IDE_2023/blob/main/module6/rgi_bwt_results/gut_sample_wildcard.kma.gene_mapping_data.xlsx) in the GitLab repo, but let's first compare statistics, where you'll see we aligned some additional reads:
+The pre-compiled results can be viewed in the EXCEL version of [`gut_sample_wildcard.kma.gene_mapping_data.txt`](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module6/rgi_bwt_results/gut_sample_wildcard.kma.gene_mapping_data.xlsx) in the GitLab repo, but let's first compare statistics, where you'll see we aligned some additional reads:
 
 > YOU CAN EXECUTE THESE COMMANDS AS WE HAVE PROVIDED PRE-COMPUTED RESULTS.
 
@@ -377,7 +377,7 @@ Now we can predict pathogen-of-origin for our metagenomics analysis that include
 rgi kmer_query --bwt --kmer_size 61 --threads 4 --minimum 10 --input ./gut_sample_wildcard.kma.sorted.length_100.bam --output gut_sample_wildcard.pathogen --local
 ```
 
-The pre-compiled results can be viewed in the EXCEL version of [`gut_sample_wildcard.pathogen_61mer_analysis.gene.txt`](https://github.com/bioinformaticsdotca/IDE_2023/blob/main/module6/rgi_bwt_results/gut_sample_wildcard.pathogen_61mer_analysis.gene.xlsx) in the GitLab repo, but let's look at some extracted results for the genes outlined above:
+The pre-compiled results can be viewed in the EXCEL version of [`gut_sample_wildcard.pathogen_61mer_analysis.gene.txt`](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module6/rgi_bwt_results/gut_sample_wildcard.pathogen_61mer_analysis.gene.xlsx) in the GitLab repo, but let's look at some extracted results for the genes outlined above:
 
 | ARO term | Mapped reads with kmer DB hits | CARD*kmer Prediction |
 |-----|-----|-----|
