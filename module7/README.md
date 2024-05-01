@@ -24,7 +24,7 @@ modified: May 1, 2024
 <a name="download"></a>
 ## Download Files
 
-If you are doing this demo live, you can download all the files we will be viewing here: https://github.com/bioinformaticsdotca/IDE_2024/tree/main/module6/downloads_for_demo
+If you are doing this demo live, you can download all the files we will be viewing here: https://github.com/bioinformaticsdotca/IDE_2024/tree/main/module7/downloads_for_demo
 
 <a name="intro"></a>
 ## Introduction
@@ -39,11 +39,11 @@ The "Big 3" databases that are comprehensive (involving many organisms, genes, a
 
 1. Comprehensive Antibiotic Resistance Database ([CARD](https://card.mcmaster.ca)) with the Resistance Gene Identifier ([RGI](https://github.com/arpcard/rgi)).
 2. National Center for Biotechnology Information's National Database of Antibiotic Resistant Organisms ([NDARO](https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/)) with [AMRFinderPlus](https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/AMRFinder/).
-3. [ResFinder](https://cge.cbs.dtu.dk/services/ResFinder/) database with its associated [ResFinder](https://bitbucket.org/genomicepidemiology/resfinder/src/master/) tool.
+3. [ResFinder](http://genepi.food.dtu.dk/resfinder) database with its associated [ResFinder](https://bitbucket.org/genomicepidemiology/resfinder/src/master/) tool.
 
 In this practical we are going to focus on CARD and the associated RGI tool because:
 * The [Antibiotic Resistance Ontology](https://card.mcmaster.ca/ontology/36006) it is built upon is a great way to organize information about AMR.
-* CARD is the most heavily used database internationally, with over 5000 citations.
+* CARD is the most heavily used database internationally, with over 6000 citations.
 * We are biased. CARD is Canadian and pretty much all the CBW faculty collaborate or are part of the group that develops CARD! See [Alcock *et al.* 2023. CARD 2023: expanded curation, support for machine learning, and resistome prediction at the Comprehensive Antibiotic Resistance Database. *Nucleic Acids Research*, 51, D690-D699](https://pubmed.ncbi.nlm.nih.gov/36263822/).
 
 <a name="cardweb"></a>
@@ -78,8 +78,9 @@ In this part of the tutorial, your instructor will walk you through the followin
 	+ reduced permeability to antibiotic
 	+ resistance by absence
 	+ modification to cell morphology
-	+ resistance by host-dependent nutrient acquisition   
-2. NDM-1: antibiotic inactivation; beta-lactams (penam, cephamycin, carbapenem, cephalosporin); over 40 pathogens (lots of ESKAPE pathogens) - note strong association with plasmids; protein homolog model
+	+ resistance by host-dependent nutrient acquisition
+	+ antibiotic target overexpression   
+2. NDM-1: antibiotic inactivation; beta-lactams (penam, cephamycin, carbapenem, cephalosporin); over 50 pathogens (lots of ESKAPE pathogens) - note strong association with plasmids; protein homolog model
 3. AAC(6')-Iaa: antibiotic inactivation; aminogylcosides; _Salmonella enterica_; protein homolog model
 4. gyrB: antibiotic target alteration; fluoroquinolones; _Mycobacterium_; protein variant model
 5. MexAB-OprM with MexR mutations: antibiotic efflux; broad range of drug classes; looking at MexA sub-unit: _Pseudomonas_; efflux meta-model
