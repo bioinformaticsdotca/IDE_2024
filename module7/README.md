@@ -276,11 +276,11 @@ ls
   <summary>Answers:</summary>
 
 Top 5 (non-efflux) for number of mapped reads:
-* tet(Q) with 40345 reads
-* tet(X) with 7205 reads
+* tet(Q) with 40339 reads
+* tet(X) with 7171 reads
 * ErmF with 6510 reads
 * CblA-1 with 4160 reads
-* tet(O) with 1608 reads
+* tet(O) with 1601 reads
 
 Top 5 (non-efflux) for % length coverage (all had 100%):
 * tet(Q)
@@ -289,7 +289,7 @@ Top 5 (non-efflux) for % length coverage (all had 100%):
 * CblA-1
 * tet(O)
 
-90 AMR genes had sequencing reads mapped.
+85 AMR genes had sequencing reads mapped.
 
 Read-based analyses advantages and disadvantages:
 * Higher sensitivity (we find as many AMR genes as possible)
@@ -308,8 +308,8 @@ wget -O wildcard_data.tar.bz2 https://card.mcmaster.ca/latest/variants
 mkdir -p wildcard
 tar -xjf wildcard_data.tar.bz2 -C wildcard
 gunzip wildcard/*.gz
-rgi wildcard_annotation -i wildcard --card_json ./card.json -v 4.0.0 > wildcard_annotation.log 2>&1
-rgi load --card_json ./card.json --wildcard_annotation wildcard_database_v4.0.0.fasta --wildcard_index ./wildcard/index-for-model-sequences.txt --card_annotation card_database_v3.2.9.fasta --local
+rgi wildcard_annotation -i wildcard --card_json ./card.json -v 4.0.2 > wildcard_annotation.log 2>&1
+rgi load --card_json ./card.json --wildcard_annotation wildcard_database_v4.0.2.fasta --wildcard_index ./wildcard/index-for-model-sequences.txt --card_annotation card_database_v3.2.9.fasta --local
 ```
 
 Map reads to canonical CARD (reference sequences from the literature) **plus** predicted AMR resistance alleles and sequence variants from bulk resistome analyses, i.e. [CARD Resistomes & Variants data set](https://card.mcmaster.ca/resistomes):
