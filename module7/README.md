@@ -17,7 +17,8 @@ modified: May 1, 2024
 2. [CARD Website and Antibiotic Resistance Ontology](#cardweb)
 3. [RGI for Genome Analysis](#rgigenome)
 4. [RGI at the Command Line](#rgicommand)
-5. [Microreact Files](#microreact)
+5. [RGI for Merged Metagenomic Reads](#rgimerged)
+6. [Metagenomic Sequencing Reads and the KMA Algorithm](#bwt)
 
 <a name="download"></a>
 ## Download Files
@@ -358,49 +359,3 @@ Top 5 (plasmid associated) for number of mapped reads:
 * aad(6) with 99 reads
 
 </details>
-
-<a name="pathogen"></a>
-## Pathogen of Origin Prediction
-
-If there is time in the tutorial, we will demonstrate how to predict pathogen-of-origin for the AMR gene reads in the gut metagenomics data using k-mers. Please note this algorithm is not yet published and is currently undergoing validation. It is also slow and has a high memory burden as algorithm optimization has yet to be performed.
-
-First, the reference data needs to be formatted for k-mer analysis (see the details at the [RGI GitHub repo](https://github.com/arpcard/rgi#using-rgi-kmer-query-k-mer-taxonomic-classification)):
-
-> DO NOT ATTEMPT THESE COMMANDS ON THE CLASS SERVERS, THEY REQUIRE MORE MEMORY
-
-```bash
-rgi clean --local		
-wget https://card.mcmaster.ca/latest/data
-tar -xvf data ./card.json
-rgi load --card_json ./card.json --local
-rgi card_annotation -i ./card.json > card_annotation.log 2>&1		
-rgi load -i ./card.json --card_annotation card_database_v3.2.6.fasta --local
-wget -O wildcard_data.tar.bz2 https://card.mcmaster.ca/latest/variants
-mkdir -p wildcard
-tar -xjf wildcard_data.tar.bz2 -C wildcard
-gunzip wildcard/*.gz
-rgi load --card_json ./card.json --kmer_database ./wildcard/61_kmer_db.json --amr_kmers ./wildcard/all_amr_61mers.txt --kmer_size 61 --local --debug > kmer_load.61.log 2>&1
-```
-
-Now we can predict pathogen-of-origin for our metagenomics analysis that included canonical CARD (reference sequences from the literature) **plus** predicted AMR resistance alleles and sequence variants from bulk resistome analyses, i.e. [CARD Resistomes & Variants data set](https://card.mcmaster.ca/resistomes):
-
-> DO NOT ATTEMPT THESE COMMANDS ON THE CLASS SERVERS, THEY REQUIRE MORE MEMORY
-
-```bash
-rgi kmer_query --bwt --kmer_size 61 --threads 4 --minimum 10 --input ./gut_sample_wildcard.kma.sorted.length_100.bam --output gut_sample_wildcard.pathogen --local
-```
-
-The pre-compiled results can be viewed in the EXCEL version of [`gut_sample_wildcard.pathogen_61mer_analysis.gene.txt`](https://github.com/bioinformaticsdotca/IDE_2023/blob/main/module6/rgi_bwt_results/gut_sample_wildcard.pathogen_61mer_analysis.gene.xlsx) in the GitLab repo, but let's look at some extracted results for the genes outlined above:
-
-| ARO term | Mapped reads with kmer DB hits | CARD*kmer Prediction |
-|-----|-----|-----|
-| tet(X) | 6951 | Escherichia coli (chromosome or plasmid): 1; Elizabethkingia anophelis (chromosome or plasmid): 1;  |
-| acrD | 1860 | Escherichia coli (chromosome): 102; Escherichia coli (chromosome or plasmid): 664;  |
-| APH(6)-Id | 1388 | Escherichia coli (chromosome or plasmid): 12; Salmonella enterica (chromosome or plasmid): 2; Vibrio parahaemolyticus (chromosome or plasmid): 1; Enterobacter hormaechei (chromosome or plasmid): 1; Acinetobacter baumannii (chromosome or plasmid): 1; Escherichia coli (plasmid): 3;  |
-| sul2 | 898 | Escherichia coli (chromosome or plasmid): 3; Bacillus anthracis (chromosome or plasmid): 2; Klebsiella pneumoniae (chromosome or plasmid): 1; Pseudomonas aeruginosa (chromosome or plasmid): 1; Salmonella enterica (chromosome or plasmid): 1;  |
-| EC-8 | 517 | Escherichia coli (chromosome): 127; Shigella boydii (chromosome): 1; Escherichia coli (chromosome or plasmid): 26;  |
-| APH(3'')-Ib | 387 | Escherichia coli (chromosome or plasmid): 3; Enterobacter hormaechei (chromosome or plasmid): 1;  |
-| aad(6) | 97 | none |
-| CblA-1 | 0 | none |
-
-Note that those AMR genes associated with plasmids according to the [CARD Resistomes & Variants data set](https://card.mcmaster.ca/resistomes) cannot easily be assigned to a specific pathogen, while those like acrD and EC-8 that are predominantly known from chromosomes have a reliable pathogen-of-origin prediction.
