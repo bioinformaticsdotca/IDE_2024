@@ -146,7 +146,7 @@ We don’t have time to analyze all 39 samples, so let’s analyze 1 as an examp
 
 ```bash
 rgi main -h
-rgi main -i /home/ubuntu/CourseData/IDE_data/module7/ecoli/ED010.fasta -o ED010 -t contig -a DIAMOND -n 4 --local --clean
+rgi main -i /home/ubuntu/CourseData/IDE_data/module7/ecoli/ED010.fasta -o ED010 -t contig -a DIAMOND -n 3 --local --clean
 ls
 less ED010.json
 less ED010.txt
@@ -164,7 +164,7 @@ What if these results did not explain our observed phenotype? We might want to e
 
 ```bash
 rgi main -h
-rgi main -i /home/ubuntu/CourseData/IDE_data/module7/ecoli/ED010.fasta -o ED010_IncludeLoose -t contig -a DIAMOND -n 4 --local --clean --include_nudge --include_loose
+rgi main -i /home/ubuntu/CourseData/IDE_data/module7/ecoli/ED010.fasta -o ED010_IncludeLoose -t contig -a DIAMOND -n 3 --local --clean --include_nudge --include_loose
 ls
 column -t -s $'\t' ED010_IncludeLoose.txt  | less -S
 ```
@@ -248,7 +248,7 @@ less /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R1.fastq
 We can now map the metagenomic reads to the sequences in CARD's protein homolog models using the KMA algorithm:
 
 ```bash
-rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R1.fastq -2 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R2.fastq -a kma -n 4 -o gut_sample.kma --local
+rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R1.fastq -2 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R2.fastq -a kma -n 3 -o gut_sample.kma --local
 ls
 ```
 
@@ -317,7 +317,7 @@ Map reads to canonical CARD (reference sequences from the literature) **plus** p
 > THE FOLLOWING STEPS TAKE TOO LONG, DO NOT PERFORM DURING DEMO SESSION, INSTEAD PLEASE VIEW PRE-COMPILED RESULTS. FEEL FREE TO TRY THESE STEPS OUTSIDE OF CLASS.
 
 ```bash
-rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R1.fastq -2 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R2.fastq -a kma -n 4 -o gut_sample_wildcard.kma --local --include_wildcard
+rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R1.fastq -2 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R2.fastq -a kma -n 3 -o gut_sample_wildcard.kma --local --include_wildcard
 ls
 ```
 
