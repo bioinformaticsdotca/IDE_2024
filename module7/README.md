@@ -234,7 +234,7 @@ First we need to acquire the additional AMR reference data from the previous CAR
 
 ```bash
 rgi card_annotation -i ./card.json > card_annotation.log 2>&1
-rgi load --card_json ./card.json --card_annotation card_database_v3.2.6.fasta --local
+rgi load --card_json ./card.json --card_annotation card_database_v3.2.9.fasta --local
 ls
 ```
 
@@ -309,7 +309,7 @@ mkdir -p wildcard
 tar -xjf wildcard_data.tar.bz2 -C wildcard
 gunzip wildcard/*.gz
 rgi wildcard_annotation -i wildcard --card_json ./card.json -v 4.0.0 > wildcard_annotation.log 2>&1
-rgi load --card_json ./card.json --wildcard_annotation wildcard_database_v4.0.0.fasta --wildcard_index ./wildcard/index-for-model-sequences.txt --card_annotation card_database_v3.2.6.fasta --local
+rgi load --card_json ./card.json --wildcard_annotation wildcard_database_v4.0.0.fasta --wildcard_index ./wildcard/index-for-model-sequences.txt --card_annotation card_database_v3.2.9.fasta --local
 ```
 
 Map reads to canonical CARD (reference sequences from the literature) **plus** predicted AMR resistance alleles and sequence variants from bulk resistome analyses, i.e. [CARD Resistomes & Variants data set](https://card.mcmaster.ca/resistomes):
