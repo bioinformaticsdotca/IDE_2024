@@ -8,7 +8,7 @@ image: /site_images/CBW_epidemiology_icon.png
 home: https://bioinformaticsdotca.github.io/
 description: CBW IDE 2024 Module 7 - Antimicrobial Resistant Gene (AMR) Analysis
 author: Andrew McArthur, Madeline McCarthy, and Karyn Mukiri
-modified: May 1, 2024
+modified: May 6, 2024
 ---
 
 ## Table of contents
@@ -146,7 +146,7 @@ We don’t have time to analyze all 39 samples, so let’s analyze 1 as an examp
 
 ```bash
 rgi main -h
-rgi main -i /home/ubuntu/CourseData/IDE_data/module7/ecoli/ED010.fasta -o ED010 -t contig -a DIAMOND -n 3 --local --clean
+rgi main -i /home/ubuntu/CourseData/IDE_data/module7/ecoli/ED010.fasta -o ED010 -t contig -a DIAMOND -n 4 --local --clean
 ls
 less ED010.json
 less ED010.txt
@@ -164,7 +164,7 @@ What if these results did not explain our observed phenotype? We might want to e
 
 ```bash
 rgi main -h
-rgi main -i /home/ubuntu/CourseData/IDE_data/module7/ecoli/ED010.fasta -o ED010_IncludeLoose -t contig -a DIAMOND -n 3 --local --clean --include_nudge --include_loose
+rgi main -i /home/ubuntu/CourseData/IDE_data/module7/ecoli/ED010.fasta -o ED010_IncludeLoose -t contig -a DIAMOND -n 4 --local --clean --include_nudge --include_loose
 ls
 column -t -s $'\t' ED010_IncludeLoose.txt  | less -S
 ```
@@ -219,14 +219,14 @@ Lanza et al. ([Microbiome 2018, 15:11](https://www.ncbi.nlm.nih.gov/pubmed/29335
 <details>
   <summary>Discussion Points:</summary>
 
-There is no evidence of a sul1 gene, there are three merged reads with 100% identity to ~25% of the sul2 gene each. In constrast, there are three merged reads with low identity to sul3, suggesting spurious annotations, with very similar results for sul4 (9 merged reads with less than 50% identity to the reference sul4 protein).
+There is no evidence of a sul1 gene, but there are three merged reads with 100% identity to ~25% of the sul2 gene each. In constrast, there are three merged reads with low identity to sul3, suggesting spurious annotations, with very similar results for sul4 (9 merged reads with less than 50% identity to the reference sul4 protein).
                 
 </details>
 
 <a name="bwt"></a>
 ## Metagenomic Sequencing Reads and the KMA Algorithm
 
-The most common tools for metagenomic data annotation are based on high-stringency read mapping, such as the [KMA read aligner](https://bitbucket.org/genomicepidemiology/kma/src/master) due to its [documented better performance for redundant databases such as CARD](https://github.com/arpcard/rgi#analyzing-metagenomic-reads-a-k-a-rgi-bwt). Available methods almost exclusively focus on acquired resistance genes (e.g., sequences referenced in CARD's protein homolog models), not those involving resistance via mutation. However, CARD and other AMR reference databases utilize reference sequences from the published literature with clear experimental evidence of elevated minimum inhibitory concentration (MIC). This has implications for molecular surveillance as sequences in agricultural or environmental samples may differ in sequence from characterized & curated reference sequences, which are predominantly from clinical isolates, creating false negative results for metagenomic reads for these environments. As such, CARD's tools for read mapping can use either canonical CARD (reference sequences from the literature) or predicted AMR resistance alleles and sequence variants from bulk resistome analyses, i.e. [CARD Resistomes & Variants data set](https://card.mcmaster.ca/resistomes).
+The most common tools for metagenomic data annotation are based on high-stringency read mapping, such as the [KMA read aligner](https://bitbucket.org/genomicepidemiology/kma/src/master) due to its [documented better performance for redundant databases such as CARD](https://github.com/arpcard/rgi/blob/master/docs/rgi_bwt.rst). Available methods almost exclusively focus on acquired resistance genes (e.g., sequences referenced in CARD's protein homolog models), not those involving resistance via mutation. However, CARD and other AMR reference databases utilize reference sequences from the published literature with clear experimental evidence of elevated minimum inhibitory concentration (MIC). This has implications for molecular surveillance as sequences in agricultural or environmental samples may differ in sequence from characterized & curated reference sequences, which are predominantly from clinical isolates, creating false negative results for metagenomic reads for these environments. As such, CARD's tools for read mapping can use either canonical CARD (reference sequences from the literature) or predicted AMR resistance alleles and sequence variants from bulk resistome analyses, i.e. [CARD Resistomes & Variants data set](https://card.mcmaster.ca/resistomes).
 
 To demonstrate read mapping using RGI **bwt**, we will analyze a ~160k paired read subset of the raw sequencing reads from Lanza et al.'s ([Microbiome 2018, 15:11](https://www.ncbi.nlm.nih.gov/pubmed/29335005)) use of AMR gene bait capture to sample human gut microbiomes.
 
@@ -248,11 +248,11 @@ less /home/ubuntu/CourseData/IDE_data/module7/gut_sample/gut_R1.fastq
 We can now map the metagenomic reads to the sequences in CARD's protein homolog models using the KMA algorithm:
 
 ```bash
-rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module7/gut_sample/gut_R1.fastq -2 /home/ubuntu/CourseData/IDE_data/module7/gut_sample/gut_R2.fastq -a kma -n 3 -o gut_sample.kma --local
+rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module7/gut_sample/gut_R1.fastq -2 /home/ubuntu/CourseData/IDE_data/module7/gut_sample/gut_R2.fastq -a kma -n 4 -o gut_sample.kma --local
 ls
 ```
 
-RGI **bwt** produces a LOT of output files, see the details at the [RGI GitHub repo](https://github.com/arpcard/rgi#rgi-bwt-tab-delimited-output-details). First, let's look at the summary statistics:
+RGI **bwt** produces a LOT of output files, see the details at the [RGI GitHub repo](https://github.com/arpcard/rgi/blob/master/docs/rgi_bwt.rst). First, let's look at the summary statistics:
 
 ```bash
 cat gut_sample.kma.overall_mapping_stats.txt
@@ -317,7 +317,7 @@ Map reads to canonical CARD (reference sequences from the literature) **plus** p
 > THE FOLLOWING STEPS TAKE TOO LONG, DO NOT PERFORM DURING DEMO SESSION, INSTEAD PLEASE VIEW PRE-COMPILED RESULTS. FEEL FREE TO TRY THESE STEPS OUTSIDE OF CLASS.
 
 ```bash
-rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module7/gut_sample/gut_R1.fastq -2 /home/ubuntu/CourseData/IDE_data/module7/gut_sample/gut_R2.fastq -a kma -n 3 -o gut_sample_wildcard.kma --local --include_wildcard
+rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module7/gut_sample/gut_R1.fastq -2 /home/ubuntu/CourseData/IDE_data/module7/gut_sample/gut_R2.fastq -a kma -n 4 -o gut_sample_wildcard.kma --local --include_wildcard
 ls
 ```
 
