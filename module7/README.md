@@ -343,20 +343,20 @@ Looking at the pre-compiled EXCEL spreadsheet, note that we have more informatio
   <summary>Answers:</summary>
 
 Top 5 (non-efflux) for number of mapped reads gives the same list but with more data:
-* tet(Q) with 42684 mapped reads (up from 40339 reads)
-* tet(X) with 7393 mapped reads (up from 7171 reads)
-* ErmF with 6987 mapped reads (up from 6510 reads)
-* CblA-1 with 4160 mapped reads (no change)
-* tet(O) with 1870 mapped reads (up from 1601 reads)
+* tet(Q) with 41863 mapped reads (up from 40339 reads)
+* tet(X) with 7383 mapped reads (up from 7171 reads)
+* ErmF with 6994 mapped reads (up from 6510 reads)
+* CblA-1 with 4150 mapped reads (down from 4160 reads)
+* tet(O) with 1842 mapped reads (up from 1601 reads)
 
-114 AMR genes had sequencing reads mapped (up from 85).
+108 AMR genes had sequencing reads mapped (up from 85).
 
 Top 5 (plasmid associated) for number of mapped reads:
-* tet(X) with 7393 reads
-* acrD with 1881 Reads
-* APH(6)-Id with 1418 reads
-* sul2 with 961 reads
-* aad(6) with 99 reads
+* tet(X) with 7383 reads
+* APH(6)-Id with 1541 reads
+* sul2 with 961 848
+* APH(3'')-Ib with 312 reads
+* evgA with 303 reads
 
 </details>
 
