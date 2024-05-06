@@ -196,7 +196,7 @@ The last analysis is the most informative, showing that many of these isolates s
 </details>
 
 <a name="microreact"></a>
-## Microreact Files
+### Integration with Microreact
 
 You can use the following annotation file to visualize all of the RGI results in the context of [Microreact](https://microreact.org) visualizations: [RGI microreact results plus earlier derived whole genome SNP tree](https://github.com/bioinformaticsdotca/IDE_2024/tree/main/module7/for_microreact).
 
@@ -207,3 +207,200 @@ Notes on the metadata:
 * We did not run RGI on the reference genome
 
 **Do you think there is evidence of lateral gene transfer?**
+
+<a name="rgimerged"></a>
+## RGI for Merged Metagenomic Reads
+
+The standard RGI tool can be used to analyze metagenomics read data, but only for assembled or merged reads with Prodigal calling of partial open reading frames (ORFs). Here we will demonstrate analysis of merged reads. This is a computationally expensive approach, since each merged read set may contain a partial ORF, requiring RGI to perform massive amounts of BLAST/DIAMOND analyses. While computationally intensive (and thus generally not recommended), this does allow analysis of metagenomic sequences in protein space, including key substitutions, overcoming issues of high-stringency read mapping relative to nucleotide reference databases.
+
+Lanza et al. ([Microbiome 2018, 15:11](https://www.ncbi.nlm.nih.gov/pubmed/29335005)) used AMR gene bait capture to sample human gut microbiomes for AMR genes. Using the [online RGI](https://card.mcmaster.ca/analyze/rgi) under “Perfect, Strict and Loose hits”, "Include nudge", and "Low quality/coverage" settings, analyze the first 500 merged metagenomic reads from their analysis (file [`ResCap_first_500.fasta`](https://github.com/bioinformaticsdotca/IDE_2023/blob/main/module6/sequences_for_web_demo/ResCap_first_500.fasta)). Take a close look at the predicted “sul2” and “sul4” hits in the results table. How good is the evidence for these AMR genes in this enriched metagenomics sample?
+
+<details>
+  <summary>Discussion Points:</summary>
+
+There are three merged reads with 100% identity to ~25% of the sul2 gene each, while the 9 merged reads annotated as the sul4 gene encode less than 50% identity to the reference sul2 protein, suggesting they are spurious annotations.
+                
+</details>
+
+<a name="bwt"></a>
+## Metagenomic Sequencing Reads and the KMA Algorithm
+
+The most common tools for metagenomic data annotation are based on high-stringency read mapping, such as the [KMA read aligner](https://bitbucket.org/genomicepidemiology/kma/src/master) due to its [documented better performance for redundant databases such as CARD](https://github.com/arpcard/rgi#analyzing-metagenomic-reads-a-k-a-rgi-bwt). Available methods almost exclusively focus on acquired resistance genes (e.g., sequences referenced in CARD's protein homolog models), not those involving resistance via mutation. However, CARD and other AMR reference databases utilize reference sequences from the published literature with clear experimental evidence of elevated minimum inhibitory concentration (MIC). This has implications for molecular surveillance as sequences in agricultural or environmental samples may differ in sequence from characterized & curated reference sequences, which are predominantly from clinical isolates, creating false negative results for metagenomic reads for these environments. As such, CARD's tools for read mapping can use either canonical CARD (reference sequences from the literature) or predicted AMR resistance alleles and sequence variants from bulk resistome analyses, i.e. [CARD Resistomes & Variants data set](https://card.mcmaster.ca/resistomes).
+
+To demonstrate read mapping using RGI **bwt**, we will analyze a ~160k paired read subset of the raw sequencing reads from Lanza et al.'s ([Microbiome 2018, 15:11](https://www.ncbi.nlm.nih.gov/pubmed/29335005)) use of AMR gene bait capture to sample human gut microbiomes.
+
+First we need to acquire the additional AMR reference data from the previous CARD website download:
+
+```bash
+rgi card_annotation -i ./card.json > card_annotation.log 2>&1
+rgi load --card_json ./card.json --card_annotation card_database_v3.2.6.fasta --local
+ls
+```
+
+Let's take a look at the raw gut metagenomics data to remind ourselves of the FASTQ format:
+
+```bash
+ls /home/ubuntu/CourseData/IDE_data/module6/gut_sample
+less /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R1.fastq
+```
+
+We can now map the metagenomic reads to the sequences in CARD's protein homolog models using the KMA algorithm:
+
+```bash
+rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R1.fastq -2 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R2.fastq -a kma -n 4 -o gut_sample.kma --local
+ls
+```
+
+RGI **bwt** produces a LOT of output files, see the details at the [RGI GitHub repo](https://github.com/arpcard/rgi#rgi-bwt-tab-delimited-output-details). First, let's look at the summary statistics:
+
+```bash
+cat gut_sample.kma.overall_mapping_stats.txt
+ls
+```
+
+However, the file we are most interested in for now is [`gut_sample.kma.gene_mapping_data.txt`](https://github.com/bioinformaticsdotca/IDE_2023/blob/main/module6/rgi_bwt_results/gut_sample.kma.gene_mapping_data.xlsx) and the course GitHub repo contains an EXCEL version for easy viewing, but let's look at it on the command line:
+
+```bash
+column -t -s $'\t' gut_sample.kma.gene_mapping_data.txt  | less -S
+cut -f 1 gut_sample.kma.gene_mapping_data.txt | sort -u | wc -l
+ls
+```
+
+* Ignoring efflux, which AMR gene had the most mapped reads?
+* Ignoring efflux, which AMR gene had the highest % coverage?
+* How many AMR genes were found in total?
+* From these results and what you know about assembly, what do you think are the advantages/disadvantages of read-based methods?
+
+<details>
+  <summary>Answers:</summary>
+
+Top 5 (non-efflux) for number of mapped reads:
+* tet(Q) with 40345 reads
+* tet(X) with 7205 reads
+* ErmF with 6510 reads
+* CblA-1 with 4160 reads
+* tet(O) with 1608 reads
+
+Top 5 (non-efflux) for % length coverage (all had 100%):
+* tet(Q)
+* tet(X)
+* ErmF
+* CblA-1
+* tet(O)
+
+90 AMR genes had sequencing reads mapped.
+
+Read-based analyses advantages and disadvantages:
+* Higher sensitivity (we find as many AMR genes as possible)
+* Lower specificity (we are more likely to make mistakes when identifying AMR genes)
+* Incomplete data (we are likely to find fragments of genes instead of whole genes, this can lead to confusion between similar genes)
+* No genomic context (we don't know where a gene we detect comes from in the genome, is it associated with a plasmid?)
+
+</details>
+
+We can repeat the read mapping analysis, but include more sequence variants in the reference set by including the [CARD Resistomes & Variants data set](https://card.mcmaster.ca/resistomes). First we need to acquire the Resistomes & Variant data from the CARD website:
+
+> THE FOLLOWING STEPS TAKE TOO LONG, DO NOT PERFORM DURING DEMO SESSION, INSTEAD PLEASE VIEW PRE-COMPILED RESULTS. FEEL FREE TO TRY THESE STEPS OUTSIDE OF CLASS.
+
+```bash
+wget -O wildcard_data.tar.bz2 https://card.mcmaster.ca/latest/variants
+mkdir -p wildcard
+tar -xjf wildcard_data.tar.bz2 -C wildcard
+gunzip wildcard/*.gz
+rgi wildcard_annotation -i wildcard --card_json ./card.json -v 4.0.0 > wildcard_annotation.log 2>&1
+rgi load --card_json ./card.json --wildcard_annotation wildcard_database_v4.0.0.fasta --wildcard_index ./wildcard/index-for-model-sequences.txt --card_annotation card_database_v3.2.6.fasta --local
+```
+
+Map reads to canonical CARD (reference sequences from the literature) **plus** predicted AMR resistance alleles and sequence variants from bulk resistome analyses, i.e. [CARD Resistomes & Variants data set](https://card.mcmaster.ca/resistomes):
+
+> THE FOLLOWING STEPS TAKE TOO LONG, DO NOT PERFORM DURING DEMO SESSION, INSTEAD PLEASE VIEW PRE-COMPILED RESULTS. FEEL FREE TO TRY THESE STEPS OUTSIDE OF CLASS.
+
+```bash
+rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R1.fastq -2 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R2.fastq -a kma -n 4 -o gut_sample_wildcard.kma --local --include_wildcard
+ls
+```
+
+The pre-compiled results can be viewed in the EXCEL version of [`gut_sample_wildcard.kma.gene_mapping_data.txt`](https://github.com/bioinformaticsdotca/IDE_2023/blob/main/module6/rgi_bwt_results/gut_sample_wildcard.kma.gene_mapping_data.xlsx) in the GitLab repo, but let's first compare statistics, where you'll see we aligned some additional reads:
+
+> YOU CAN EXECUTE THESE COMMANDS AS WE HAVE PROVIDED PRE-COMPUTED RESULTS.
+
+```bash
+clear
+cat /home/ubuntu/CourseData/IDE_data/module6/kmaresults/gut_sample.kma.overall_mapping_stats.txt
+cat /home/ubuntu/CourseData/IDE_data/module6/kmaresults/gut_sample_wildcard.kma.overall_mapping_stats.txt
+cut -f 1 /home/ubuntu/CourseData/IDE_data/module6/kmaresults/gut_sample_wildcard.kma.gene_mapping_data.txt | sort -u | wc -l
+ls
+```
+
+Looking at the pre-compiled EXCEL spreadsheet, note that we have more information based on [CARD Resistomes & Variants data set](https://card.mcmaster.ca/resistomes), such as mappings to multiple alleles, flags for association with plasmids, and taxonomic distribution of the mapped alleles.
+
+* Ignoring efflux, which AMR gene had the most mapped reads?
+* How many AMR genes were found in total?
+* Which genes associated with plasmids have the most mapped reads?
+
+<details>
+  <summary>Answers:</summary>
+
+Top 5 (non-efflux) for number of mapped reads gives the same list but with more data:
+* tet(Q) with 42684 mapped reads (up from 40345 reads)
+* tet(X) with 7393 mapped reads (up from 7205 reads)
+* ErmF with 6987 mapped reads (up from 6510 reads)
+* CblA-1 with 4160 mapped reads (no change)
+* tet(O) with 1870 mapped reads (up from 1608 reads)
+
+114 AMR genes had sequencing reads mapped (up from 90).
+
+Top 5 (plasmid associated) for number of mapped reads:
+* tet(X) with 7393 reads
+* acrD with 1881 Reads
+* APH(6)-Id with 1418 reads
+* sul2 with 961 reads
+* aad(6) with 99 reads
+
+</details>
+
+<a name="pathogen"></a>
+## Pathogen of Origin Prediction
+
+If there is time in the tutorial, we will demonstrate how to predict pathogen-of-origin for the AMR gene reads in the gut metagenomics data using k-mers. Please note this algorithm is not yet published and is currently undergoing validation. It is also slow and has a high memory burden as algorithm optimization has yet to be performed.
+
+First, the reference data needs to be formatted for k-mer analysis (see the details at the [RGI GitHub repo](https://github.com/arpcard/rgi#using-rgi-kmer-query-k-mer-taxonomic-classification)):
+
+> DO NOT ATTEMPT THESE COMMANDS ON THE CLASS SERVERS, THEY REQUIRE MORE MEMORY
+
+```bash
+rgi clean --local		
+wget https://card.mcmaster.ca/latest/data
+tar -xvf data ./card.json
+rgi load --card_json ./card.json --local
+rgi card_annotation -i ./card.json > card_annotation.log 2>&1		
+rgi load -i ./card.json --card_annotation card_database_v3.2.6.fasta --local
+wget -O wildcard_data.tar.bz2 https://card.mcmaster.ca/latest/variants
+mkdir -p wildcard
+tar -xjf wildcard_data.tar.bz2 -C wildcard
+gunzip wildcard/*.gz
+rgi load --card_json ./card.json --kmer_database ./wildcard/61_kmer_db.json --amr_kmers ./wildcard/all_amr_61mers.txt --kmer_size 61 --local --debug > kmer_load.61.log 2>&1
+```
+
+Now we can predict pathogen-of-origin for our metagenomics analysis that included canonical CARD (reference sequences from the literature) **plus** predicted AMR resistance alleles and sequence variants from bulk resistome analyses, i.e. [CARD Resistomes & Variants data set](https://card.mcmaster.ca/resistomes):
+
+> DO NOT ATTEMPT THESE COMMANDS ON THE CLASS SERVERS, THEY REQUIRE MORE MEMORY
+
+```bash
+rgi kmer_query --bwt --kmer_size 61 --threads 4 --minimum 10 --input ./gut_sample_wildcard.kma.sorted.length_100.bam --output gut_sample_wildcard.pathogen --local
+```
+
+The pre-compiled results can be viewed in the EXCEL version of [`gut_sample_wildcard.pathogen_61mer_analysis.gene.txt`](https://github.com/bioinformaticsdotca/IDE_2023/blob/main/module6/rgi_bwt_results/gut_sample_wildcard.pathogen_61mer_analysis.gene.xlsx) in the GitLab repo, but let's look at some extracted results for the genes outlined above:
+
+| ARO term | Mapped reads with kmer DB hits | CARD*kmer Prediction |
+|-----|-----|-----|
+| tet(X) | 6951 | Escherichia coli (chromosome or plasmid): 1; Elizabethkingia anophelis (chromosome or plasmid): 1;  |
+| acrD | 1860 | Escherichia coli (chromosome): 102; Escherichia coli (chromosome or plasmid): 664;  |
+| APH(6)-Id | 1388 | Escherichia coli (chromosome or plasmid): 12; Salmonella enterica (chromosome or plasmid): 2; Vibrio parahaemolyticus (chromosome or plasmid): 1; Enterobacter hormaechei (chromosome or plasmid): 1; Acinetobacter baumannii (chromosome or plasmid): 1; Escherichia coli (plasmid): 3;  |
+| sul2 | 898 | Escherichia coli (chromosome or plasmid): 3; Bacillus anthracis (chromosome or plasmid): 2; Klebsiella pneumoniae (chromosome or plasmid): 1; Pseudomonas aeruginosa (chromosome or plasmid): 1; Salmonella enterica (chromosome or plasmid): 1;  |
+| EC-8 | 517 | Escherichia coli (chromosome): 127; Shigella boydii (chromosome): 1; Escherichia coli (chromosome or plasmid): 26;  |
+| APH(3'')-Ib | 387 | Escherichia coli (chromosome or plasmid): 3; Enterobacter hormaechei (chromosome or plasmid): 1;  |
+| aad(6) | 97 | none |
+| CblA-1 | 0 | none |
+
+Note that those AMR genes associated with plasmids according to the [CARD Resistomes & Variants data set](https://card.mcmaster.ca/resistomes) cannot easily be assigned to a specific pathogen, while those like acrD and EC-8 that are predominantly known from chromosomes have a reliable pathogen-of-origin prediction.
