@@ -214,7 +214,7 @@ Notes on the metadata:
 
 The standard RGI tool can be used to analyze metagenomics read data, but only for assembled or merged reads with Prodigal calling of partial open reading frames (ORFs). Here we will demonstrate analysis of merged reads. This is a computationally expensive approach, since each merged read set may contain a partial ORF, requiring RGI to perform massive amounts of BLAST/DIAMOND analyses. While computationally intensive (and thus generally not recommended), this does allow analysis of metagenomic sequences in protein space, including key substitutions, overcoming issues of high-stringency read mapping relative to nucleotide reference databases.
 
-Lanza et al. ([Microbiome 2018, 15:11](https://www.ncbi.nlm.nih.gov/pubmed/29335005)) used AMR gene bait capture to sample human gut microbiomes for AMR genes. Using the [online RGI](https://card.mcmaster.ca/analyze/rgi) under “Perfect, Strict and Loose hits”, "Include nudge", and "Low quality/coverage" settings, analyze the first 500 merged metagenomic reads from their analysis (file [`ResCap_first_500.fasta`](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module6/sequences_for_web_demo/ResCap_first_500.fasta)). Take a close look at the predicted “sul2” and “sul4” hits in the results table. How good is the evidence for these AMR genes in this enriched metagenomics sample?
+Lanza et al. ([Microbiome 2018, 15:11](https://www.ncbi.nlm.nih.gov/pubmed/29335005)) used AMR gene bait capture to sample human gut microbiomes for AMR genes. Using the [online RGI](https://card.mcmaster.ca/analyze/rgi) under “Perfect, Strict and Loose hits”, "Include nudge", and "Low quality/coverage" settings, analyze the first 500 merged metagenomic reads from their analysis (file [`ResCap_first_500.fasta`](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module7/sequences_for_web_demo/ResCap_first_500.fasta)). Take a close look at the predicted “sul2” and “sul4” hits in the results table. How good is the evidence for these AMR genes in this enriched metagenomics sample?
 
 <details>
   <summary>Discussion Points:</summary>
@@ -241,14 +241,14 @@ ls
 Let's take a look at the raw gut metagenomics data to remind ourselves of the FASTQ format:
 
 ```bash
-ls /home/ubuntu/CourseData/IDE_data/module6/gut_sample
-less /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R1.fastq
+ls /home/ubuntu/CourseData/IDE_data/module7/gut_sample
+less /home/ubuntu/CourseData/IDE_data/module7/gut_sample/gut_R1.fastq
 ```
 
 We can now map the metagenomic reads to the sequences in CARD's protein homolog models using the KMA algorithm:
 
 ```bash
-rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R1.fastq -2 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R2.fastq -a kma -n 3 -o gut_sample.kma --local
+rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module7/gut_sample/gut_R1.fastq -2 /home/ubuntu/CourseData/IDE_data/module7/gut_sample/gut_R2.fastq -a kma -n 3 -o gut_sample.kma --local
 ls
 ```
 
@@ -259,7 +259,7 @@ cat gut_sample.kma.overall_mapping_stats.txt
 ls
 ```
 
-However, the file we are most interested in for now is [`gut_sample.kma.gene_mapping_data.txt`](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module6/rgi_bwt_results/gut_sample.kma.gene_mapping_data.xlsx) and the course GitHub repo contains an EXCEL version for easy viewing, but let's look at it on the command line:
+However, the file we are most interested in for now is [`gut_sample.kma.gene_mapping_data.txt`](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module7/rgi_bwt_results/gut_sample.kma.gene_mapping_data.xlsx) and the course GitHub repo contains an EXCEL version for easy viewing, but let's look at it on the command line:
 
 ```bash
 column -t -s $'\t' gut_sample.kma.gene_mapping_data.txt  | less -S
@@ -317,19 +317,19 @@ Map reads to canonical CARD (reference sequences from the literature) **plus** p
 > THE FOLLOWING STEPS TAKE TOO LONG, DO NOT PERFORM DURING DEMO SESSION, INSTEAD PLEASE VIEW PRE-COMPILED RESULTS. FEEL FREE TO TRY THESE STEPS OUTSIDE OF CLASS.
 
 ```bash
-rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R1.fastq -2 /home/ubuntu/CourseData/IDE_data/module6/gut_sample/gut_R2.fastq -a kma -n 3 -o gut_sample_wildcard.kma --local --include_wildcard
+rgi bwt -1 /home/ubuntu/CourseData/IDE_data/module7/gut_sample/gut_R1.fastq -2 /home/ubuntu/CourseData/IDE_data/module7/gut_sample/gut_R2.fastq -a kma -n 3 -o gut_sample_wildcard.kma --local --include_wildcard
 ls
 ```
 
-The pre-compiled results can be viewed in the EXCEL version of [`gut_sample_wildcard.kma.gene_mapping_data.txt`](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module6/rgi_bwt_results/gut_sample_wildcard.kma.gene_mapping_data.xlsx) in the GitLab repo, but let's first compare statistics, where you'll see we aligned some additional reads:
+The pre-compiled results can be viewed in the EXCEL version of [`gut_sample_wildcard.kma.gene_mapping_data.txt`](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module7/rgi_bwt_results/gut_sample_wildcard.kma.gene_mapping_data.xlsx) in the GitLab repo, but let's first compare statistics, where you'll see we aligned some additional reads:
 
 > YOU CAN EXECUTE THESE COMMANDS AS WE HAVE PROVIDED PRE-COMPUTED RESULTS.
 
 ```bash
 clear
-cat /home/ubuntu/CourseData/IDE_data/module6/kmaresults/gut_sample.kma.overall_mapping_stats.txt
-cat /home/ubuntu/CourseData/IDE_data/module6/kmaresults/gut_sample_wildcard.kma.overall_mapping_stats.txt
-cut -f 1 /home/ubuntu/CourseData/IDE_data/module6/kmaresults/gut_sample_wildcard.kma.gene_mapping_data.txt | sort -u | wc -l
+cat /home/ubuntu/CourseData/IDE_data/module7/kmaresults/gut_sample.kma.overall_mapping_stats.txt
+cat /home/ubuntu/CourseData/IDE_data/module7/kmaresults/gut_sample_wildcard.kma.overall_mapping_stats.txt
+cut -f 1 /home/ubuntu/CourseData/IDE_data/module7/kmaresults/gut_sample_wildcard.kma.gene_mapping_data.txt | sort -u | wc -l
 ls
 ```
 
