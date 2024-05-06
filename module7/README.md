@@ -214,12 +214,12 @@ Notes on the metadata:
 
 The standard RGI tool can be used to analyze metagenomics read data, but only for assembled or merged reads with Prodigal calling of partial open reading frames (ORFs). Here we will demonstrate analysis of merged reads. This is a computationally expensive approach, since each merged read set may contain a partial ORF, requiring RGI to perform massive amounts of BLAST/DIAMOND analyses. While computationally intensive (and thus generally not recommended), this does allow analysis of metagenomic sequences in protein space, including key substitutions, overcoming issues of high-stringency read mapping relative to nucleotide reference databases.
 
-Lanza et al. ([Microbiome 2018, 15:11](https://www.ncbi.nlm.nih.gov/pubmed/29335005)) used AMR gene bait capture to sample human gut microbiomes for AMR genes. Using the [online RGI](https://card.mcmaster.ca/analyze/rgi) under “**Perfect, Strict and Loose hits**”, "**Include nudge**", and "**Low quality/coverage**" settings, analyze the first 500 merged metagenomic reads from their analysis (file [`ResCap_first_500.fasta`](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module7/sequences_for_web_demo/ResCap_first_500.fasta)). Take a close look at the predicted “sul2” and “sul4” hits in the results table. How good is the evidence for these AMR genes in this enriched metagenomics sample?
+Lanza et al. ([Microbiome 2018, 15:11](https://www.ncbi.nlm.nih.gov/pubmed/29335005)) used AMR gene bait capture to sample human gut microbiomes for AMR genes. Using the [online RGI](https://card.mcmaster.ca/analyze/rgi) under “**Perfect, Strict and Loose hits**”, "**Include nudge**", and "**Low quality/coverage**" settings, analyze the first 500 merged metagenomic reads from their analysis (file [`ResCap_first_500.fasta`](https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module7/sequences_for_web_demo/ResCap_first_500.fasta)). Take a close look at the predicted “sul” genes in the results table. How good is the evidence for these AMR genes in this enriched metagenomics sample?
 
 <details>
   <summary>Discussion Points:</summary>
 
-There are three merged reads with 100% identity to ~25% of the sul2 gene each, while the 9 merged reads annotated as the sul4 gene encode less than 50% identity to the reference sul2 protein, suggesting they are spurious annotations.
+There is no evidence of a sul1 gene, there are three merged reads with 100% identity to ~25% of the sul2 gene each. In constrast, there are three merged reads with low identity to sul3, suggesting spurious annotations, with very similar results for sul4 (9 merged reads with less than 50% identity to the reference sul4 protein).
                 
 </details>
 
