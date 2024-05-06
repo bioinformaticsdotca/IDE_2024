@@ -156,7 +156,7 @@ column -t -s $'\t' ED010.txt  | less -S
 <details>
   <summary>Discussion Points:</summary>
 
-Default RGI **main** analysis of ED010 lists 12 Perfect annotations and 39 Strict annotations. Yet, 43 annotations are efflux components common in *E. coli* that may or may not lead to clinical levels of AMR. Nonetheless, outside of efflux there are some antibiotic inactivation and target alteration genes, but only EC beta-lactamase is notable. This isolate is primarily resistant to fluoroquinolone, aminocoumarin, macrolide, and tetracycline antibiotics, although the acrD gene can also contribute resistance to aminoglycosides.
+Default RGI **main** analysis of ED010 lists 12 Perfect annotations and 39 Strict annotations. Yet, 42 annotations are efflux components common in *E. coli* that may or may not lead to clinical levels of AMR. Nonetheless, outside of efflux there are some antibiotic inactivation and target alteration genes, but only EC beta-lactamase is notable. This isolate is primarily resistant to fluoroquinolone, aminocoumarin, macrolide, and tetracycline antibiotics, although the acrD gene can also contribute resistance to aminoglycosides.
                 
 </details>
 
@@ -172,7 +172,7 @@ column -t -s $'\t' ED010_IncludeLoose.txt  | less -S
 <details>
   <summary>Discussion Points:</summary>
 
-An additional 11 nudged Strict annotations (possible partial genes for *Escherichia coli* emrE, EF-Tu mutants conferring resistance to Pulvomycin, and AcrF) and 394 Loose annotations have been added to investigate for leads that could explain the observed phenotype. Note this scenario is unlikely for clinical isolates given CARD's reference data, but is possible for environmental isolates. The multiple putative gene fragments found via the Nudge may suggest genome assembly problems.
+An additional 10 nudged Strict annotations (possible partial genes for *Escherichia coli* emrE, EF-Tu mutants conferring resistance to Pulvomycin, and AcrF) and 395 Loose annotations have been added to investigate for leads that could explain the observed phenotype. Note this scenario is unlikely for clinical isolates given CARD's reference data, but is possible for environmental isolates. The multiple putative gene fragments found via the Nudge may suggest genome assembly problems.
                 
 </details>
 
@@ -199,7 +199,7 @@ The last analysis is the most informative, showing that many of these isolates s
 <a name="microreact"></a>
 ### Integration with Microreact
 
-You can use the following annotation file to visualize all of the RGI results in the context of [Microreact](https://microreact.org) visualizations: [RGI microreact results plus earlier derived whole genome SNP tree](https://github.com/bioinformaticsdotca/IDE_2024/tree/main/module7/for_microreact).
+You can use the following annotation file to visualize all of the RGI results in the context of [Microreact](https://microreact.org) visualizations of a phylogenetic tree of these isolates: [RGI microreact results plus earlier derived whole genome SNP tree](https://github.com/bioinformaticsdotca/IDE_2024/tree/main/module7/for_microreact).
 
 Notes on the metadata:
 * We include RGI Perfect and Strict annotations, but ignore Loose annotations
