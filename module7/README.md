@@ -362,4 +362,4 @@ Top 5 (plasmid associated) for number of mapped reads:
 
 ### New web-based AMR metagenomics analysis!
 
-Chan Zuckerberg ID (CZ ID) has implemented a web-based platform for RGI analysis of metagenomic sequencing reads: CZ ID AMR Pipeline Workflow: https://chanzuckerberg.zendesk.com/hc/en-us/articles/15091031482644-AMR-Pipeline-Workflow
+Chan Zuckerberg ID (CZ ID) has implemented a web-based platform for RGI analysis of metagenomic sequencing reads: CZ ID AMR Pipeline Workflow: https://chanzuckerberg.zendesk.com/hc/en-us/articles/15091031482644-AMR-Pipeline-Workflow. See the [pre-print](https://www.biorxiv.org/content/10.1101/2024.04.12.589250v2).
