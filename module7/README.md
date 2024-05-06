@@ -343,13 +343,13 @@ Looking at the pre-compiled EXCEL spreadsheet, note that we have more informatio
   <summary>Answers:</summary>
 
 Top 5 (non-efflux) for number of mapped reads gives the same list but with more data:
-* tet(Q) with 42684 mapped reads (up from 40345 reads)
-* tet(X) with 7393 mapped reads (up from 7205 reads)
+* tet(Q) with 42684 mapped reads (up from 40339 reads)
+* tet(X) with 7393 mapped reads (up from 7171 reads)
 * ErmF with 6987 mapped reads (up from 6510 reads)
 * CblA-1 with 4160 mapped reads (no change)
-* tet(O) with 1870 mapped reads (up from 1608 reads)
+* tet(O) with 1870 mapped reads (up from 1601 reads)
 
-114 AMR genes had sequencing reads mapped (up from 90).
+114 AMR genes had sequencing reads mapped (up from 85).
 
 Top 5 (plasmid associated) for number of mapped reads:
 * tet(X) with 7393 reads
@@ -359,3 +359,7 @@ Top 5 (plasmid associated) for number of mapped reads:
 * aad(6) with 99 reads
 
 </details>
+
+### New web-based AMR metagenomics analysis!
+
+Chan Zuckerberg ID (CZ ID) has implemented a web-based platform for RGI analysis of metagenomic sequencing reads: CZ ID AMR Pipeline Workflow: https://chanzuckerberg.zendesk.com/hc/en-us/articles/15091031482644-AMR-Pipeline-Workflow
