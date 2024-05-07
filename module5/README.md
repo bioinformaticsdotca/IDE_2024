@@ -1,14 +1,14 @@
 ---
 layout: tutorial_page
-permalink: /IDE_2023_Module4_lab
-title: CBW Infectious Disease Epidemiology 2023
+permalink: /IDE_2024_Module4_lab
+title: CBW Infectious Disease Epidemiology 2024
 header1: Workshop Pages for Students
-header2: CBW Infectious Disease Epidemiology 2023 Module 4 Lab
+header2: CBW Infectious Disease Epidemiology 2024 Module 5 Lab
 image: /site_images/CBW_epidemiology_icon.png
 home: https://bioinformaticsdotca.github.io/
-description: CBW IDE 2023 Module 4 - Virus Sequencing
+description: CBW IDE 2024 Module 5 - Virus Sequencing
 author: Jared Simpson and Jalees Nasir
-modified: March 21, 2023
+modified: May 7, 2024
 ---
 
 # Virus Short-Read Genome Assembly and Variant Analysis
