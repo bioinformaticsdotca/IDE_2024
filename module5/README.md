@@ -48,8 +48,6 @@ cd workspace/module5
 From within your `module5` directory, you can create a symlink which is a shortcut to where the raw sequencing data is stored:
 
 ```
-### Current working directory: ~/workspace/module5
-
 ln -s ~/CourseData/IDE_data/module5/cbw_demo_run/
 ```
 
@@ -89,9 +87,6 @@ Finally, we need to activate the conda environment containing the software SIGNA
 ```
 conda activate signalcovtools
 ln -s ~/CourseData/IDE_data/module5/data/
-
-### Current working directory: ~/workspace/module5/covid-19-signal
-
 python signalexe.py -h
 ```
 
@@ -100,8 +95,6 @@ The `data` directory you have linked should be found within `~/workspace/module5
 In order to run SIGNAL, we first need to prepare two files: a configuration file, where all of our assembly parameters will be assigned, and a sample table, which will list the indivdual samples and the location of corresponding R1 and R2 FASTQs. Remember that our sequencing data is located one directory level up (i.e., `../cbw_demo_run/`). Generating the required files can all be done using the following command:
 
 ```
-### Current working directory: ~/workspace/module5/covid-19-signal
-
 python signalexe.py --directory ../cbw_demo_run --config-only
 ```
 The output should be as follows
@@ -147,10 +140,6 @@ Explore the results and try to understand what the coverage patterns mean:
 As explained in the lecture, sequencing coverage is a critical factor for determining the `completeness` of the genome assembly. In the terminal, let's view the consensus sequence for sample `ERR5508530`:
 
 ```
-<<<<<<< HEAD
-cd ~/workspace/module5/covid-19-signal
-=======
->>>>>>> main
 less cbw_demo_run_results_dir/ERR5508530/freebayes/ERR5508530.consensus.fasta
 ```
 
