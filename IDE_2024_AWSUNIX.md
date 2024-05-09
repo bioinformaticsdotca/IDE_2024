@@ -18,7 +18,7 @@ home: https://bioinformaticsdotca.github.io/IDE_2024
 
 ## Schedule:
 
-Today's schedule can be found [here](https://bioinformaticsdotca.github.io/AWS_IDE24_Schedule).
+Today's schedule can be found [here](https://bioinformaticsdotca.github.io/IDE_2024_AWSUNIX_schedule).
 
 ## Contents:
 
@@ -57,7 +57,7 @@ You can find the instructions [here](https://bioinformaticsdotca.github.io/AWS_s
 ### Description of the lab:
 This section will show students the basics of the command line, with a focus on navigation.
 
-- [Slides (pdf)](https://drive.google.com/file/d/1i4e4DuBNHn3NK2eiV1XSmTTppSuF967c/view?usp=share_link)
+- [Slides (pdf)](https://drive.google.com/file/d/1HVf_p1MqgIg5uWXOdZm2hdHLh1zFCFJe/view?usp=sharing)
 
 <a name="filesystem_exploration"></a>
 ### Exercise: Exploring the filesystem
@@ -70,16 +70,13 @@ This section will show students the basics of the command line, with a focus on 
 Solution
   </summary><p>
 
-
 ```bash
-$ ls
-CourseData  R  workspace
+$ pwd
+/home/ubuntu
 ```
+The `pwd` command shows the absolute *path to the working directorpwy*.
 
-
-The `ls` command lists the contents of a working directory.
-
-</p></details>
+</details>
 
 
 
@@ -90,25 +87,27 @@ The `ls` command lists the contents of a working directory.
 Solution
   </summary>
 
-
 ```bash
-$ pwd
-/home/ubuntu
+$ ls
+GCF_009858895.2_ASM985889v3_genomic.gff  data.zip
 ```
 
-The `pwd` command shows the absolute *path to the working directorpwy*.
 
-</details>
+The `ls` command lists the contents of a working directory.
+
+</p></details>
+
 
 
 -----------------------
+
 <a name="file_manip"></a>
 ## 3. File manipulation
 
 ### Description of the lab:
 This section will show students how to manipulate files, including reading, editing, and renaming text files.
 
-- [Slides (pdf)](https://drive.google.com/file/d/1ohY4xskAeyqwsGB-Z5BUBJemCz91j1Tq/view?usp=sharing)
+- [Slides (pdf)](https://drive.google.com/file/d/1uMxzZY_zfqatMtUPk6baR9CST6r1s5h3/view?usp=sharing)
 
 
 ### Additional material:
@@ -120,7 +119,7 @@ Here are two cheat-sheets that can be useful to have as a reference for common U
 <a name="read_files"></a>
 ### Exercise: Reading text files
 
-Using the commands you just learned, explore the file in the ~/CourseData/IDE_data/UnixFiles directory. 
+Using the commands you just learned, explore the .gff file in your home directory. 
 
 1. Is the file a text file?
 
@@ -235,7 +234,7 @@ $ cp helloworld.txt helloworld2.txt
 ### Description of the lab:
 This section will show students how to search for and in files.
 
-Workshop notes and quiz questions [here](/AWS_IDE23_module4).
+Workshop notes and quiz questions [here](/IDE_2024_AWSUNIX_module5).
 
 -----------------------
 <a name="conclusion"></a>
@@ -244,6 +243,6 @@ Workshop notes and quiz questions [here](/AWS_IDE23_module4).
 ### Description of the lab:
 This section will show students how the basic concepts fit together and how they apply in the context of bioinformatics.
 
-Workshop notes and quiz questions [here](/AWS_IDE23_module5).
+Workshop notes and quiz questions [here](/IDE_2024_AWSUNIX_module5).
 
 

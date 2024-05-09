@@ -16,20 +16,28 @@ The exercies here are modified versions of the [Software Carpentry Unix shell le
 
 ## Setup
 
-The first step will be to install the unzip program on our AWS instance. You only need to do this once. Hit the Return key to indicate OK when it prompts you.
 
-```bash
-sudo apt install unzip
-```
-
-Now you can download some example data. First move into your home directory, download the example data as a zip file and then unzip the file:
+We want to explore some data on our instances, but it is a compressed ZIP file, so we'll need to unzip it first. First move into your home directory, and then unzip the file named data.zip:
 
 ```bash
 cd ~
-wget http://bioinformaticsdotca.github.io/AWS_2021/data/data.zip
 unzip data.zip
 cd data
 ```
+
+Take a look at what's in your home directory after unzipping using ls:
+
+```
+ls 
+```
+
+```
+GCF_009858895.2_ASM985889v3_genomic.gff  __MACOSX  data  data.zip
+```
+{:.output}
+
+Note that the original zipped file (data.zip) is still present, but there is now a folder (data) that you can enter. There is also a file called __MACOSX. This is because the folder was zipped using a Mac; you can safely ignore it here.
+
 
 ## Data Exploration
 
