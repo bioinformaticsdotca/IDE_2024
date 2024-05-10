@@ -237,7 +237,7 @@ $ cp helloworld.txt helloworld2.txt
 ### Description of the lab:
 This section will show students how to search for and in files.
 
-Workshop notes and quiz questions [here](/IDE_2024_AWSUNIX_module5).
+Workshop notes and quiz questions [here](/IDE_2024_AWSUNIX_module4).
 
 -----------------------
 <a name="conclusion"></a>
