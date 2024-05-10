@@ -64,38 +64,41 @@ This section will show students the basics of the command line, with a focus on 
 
 1. Connect to your AWS instance
 
-2. Type the `pwd` command - what is the output?
+2. Type the `ls` command - what is the output?
 <details>
   <summary>
 Solution
   </summary><p>
 
-```bash
-$ pwd
-/home/ubuntu
-```
-The `pwd` command shows the absolute *path to the working directorpwy*.
-
-</details>
-
-
-
-3. Type the `ls` command - what is the output?
-
-<details>
-  <summary>
-Solution
-  </summary>
 
 ```bash
 $ ls
-GCF_009858895.2_ASM985889v3_genomic.gff  data.zip
+CourseData  R  workspace
 ```
 
 
 The `ls` command lists the contents of a working directory.
 
 </p></details>
+
+
+
+3. Type the `pwd` command - what is the output?
+
+<details>
+  <summary>
+Solution
+  </summary>
+
+
+```bash
+$ pwd
+/home/ubuntu
+```
+
+The `pwd` command shows the absolute *path to the working directorpwy*.
+
+</details>
 
 
 
