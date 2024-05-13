@@ -94,7 +94,8 @@ Using `augur align` and the `--reference-name Wuhan-Hu-1/2019` reference sequenc
 <details>
 <summary>Command and Parameters</summary>
 
-Command:
+Command:  
+
 ```bash
 # 1. Align with Augur using mafft - 2 min
 augur align \
