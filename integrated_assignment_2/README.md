@@ -98,22 +98,23 @@ Command:
 <pre>
 <code># 1. Align with Augur using mafft - 2 min
 augur align \
- --nthreads 4 \
- --sequences sequences.fasta \
- --reference-name 'Wuhan-Hu-1/2019' \
- --output aligned.fasta
+  --nthreads 4 \
+  --sequences sequences.fasta \
+  --reference-name 'Wuhan-Hu-1/2019' \
+  --output aligned.fasta
 </code>
 </pre>
 
 Parameters:
-- `--nthreads 4`: Use 4 threads for the alignment
-- `--sequences sequences.fasta`: Input set of sequences including the reference in fasta format
-- `--reference-name 'Wuhan-Hu-1/2019'`: The reference Wuhan-1 genome identifier found in our sequences file to remove insertions relative to
-- `--output aligned.fasta`: Output alignment file in fasta format  
-
+<pre>
+<code>--nthreads 4: Use 4 threads for the alignment
+--sequences sequences.fasta: Input set of sequences including the reference in fasta format
+--reference-name 'Wuhan-Hu-1/2019': The reference Wuhan-1 genome identifier found in our sequences file to remove insertions relative to
+--output aligned.fasta: Output alignment file in fasta format  
+</code>
+</pre>
 </details>
 
-  
 
 ### Step 2. Build a maximum likelihood phylogenetic tree
 
@@ -123,21 +124,26 @@ Next, using `augur tree` and your newly generated multiple sequence alignment wi
 <summary>Command and Parameters</summary>
 
 Command:
-```bash
-# 2. Build Maximum Likelihood Phylogenetic Tree with Augur using iqtree2 - 40 sec
+<pre>
+<code># 2. Build Maximum Likelihood Phylogenetic Tree with Augur using iqtree2 - 40 sec
 augur tree \
   --nthreads 4 \
   --alignment aligned.fasta \
   --tree-builder-args "-seed 100" \
   --output tree.nwk
-```
+</code>
+</pre>
 
 Parameters:
-- `--nthreads 4`: Use 4 threads for building the ML tree
-- `--alignment aligned.fasta`: Input multiple sequence alignment file from the previous step
-- `--tree-builder-args "-seed 100"`: Seed given to iqtree to keep all output tree topology the same
-- `--output tree.nwk`: Output phylogenetic tree in newick format
+<pre>
+<code>--nthreads 4: Use 4 threads for building the ML tree
+--alignment aligned.fasta`: Input multiple sequence alignment file from the previous step
+--tree-builder-args "-seed 100": Seed given to iqtree to keep all output tree topology the same
+--output tree.nwk: Output phylogenetic tree in newick format
+</code>
+</pre>
 </details>
+
 
 ### Step 3. Infer time tree
 
@@ -153,8 +159,8 @@ Tip: This is a long command; remember to add in the following parameters:
 <summary>Command and Parameters</summary>
 
 Command:
-```bash
-# 3. Build time tree with Augur using timetree - 4 min
+<pre>
+<code># 3. Build time tree with Augur using timetree - 4 min
 augur refine \
   --timetree \
   --tree tree.nwk \
@@ -165,19 +171,24 @@ augur refine \
   --output-tree timetree.nwk \
   --output-node-data branch_lengths.json \
   --seed 100
-```
+</code>
+</pre>
 
 Parameters:
-- `--timetree`: Specify that augur refine should build a time tree
-- `--tree tree.nwk`: Input newick tree build using iqtree
-- `--alignment aligned.fasta`: Input multiple sequence alignment from augur align
-- `--metadata metadata.tsv`: Input metadata file containing the sequence names (column: `strain`) and collection dates (column: `date`)
-- `--keep-root`: Keep the Wuhan-1 reference genome as the root of the tree
-- `--divergence-units mutations`: Convert the branch lengths to mutations for visualizing later on
-- `--output-tree timetree.nwk`: Output time tree newick file
-- `--output-node-data branch_lengths.json`: Output file to write branch lengths as node data
-- `--seed 100`: Seed given to be used instead to keep tree topologies the same
+<pre>
+<code>--timetree: Specify that augur refine should build a time tree
+--tree tree.nwk: Input newick tree build using iqtree
+--alignment aligned.fasta: Input multiple sequence alignment from augur align
+--metadata metadata.tsv: Input metadata file containing the sequence names (column: `strain`) and collection dates (column: `date`)
+--keep-root: Keep the Wuhan-1 reference genome as the root of the tree
+--divergence-units mutations: Convert the branch lengths to mutations for visualizing later on
+--output-tree timetree.nwk: Output time tree newick file
+--output-node-data branch_lengths.json: Output file to write branch lengths as node data
+--seed 100: Seed given to be used instead to keep tree topologies the same
+</code>
+</pre>
 </details>
+
 
 ### Step 4. Infer ancestral states for lineages/clades
 
@@ -192,21 +203,26 @@ The `--columns` to use are:
 <summary>Command and Parameters</summary>
 
 Command:
-```bash
-# 4. Infer ancestral node traits for given columns - 20 seconds
+<pre>
+<code># 4. Infer ancestral node traits for given columns - 20 seconds
 augur traits \
   --tree timetree.nwk \
   --metadata metadata.tsv \
   --columns clade_who pangolin_lineage clade_nextstrain \
   --output-node-data node_traits.json
-```
+</code>
+</pre>
 
 Parameters:
-- `--tree timetree.nwk`: Input time tree created with augur refine
-- `--metadata metadata.tsv`: Input metadata file with the information we have to infer ancestral states with
-- `--columns clade_who pangolin_lineage clade_nextstrain`: The columns in the metadata file to use for inference 
-- `--output-node-data node_traits.json`: Output file to write trait inferences to
+<pre>
+<code>--tree timetree.nwk: Input time tree created with augur refine
+--metadata metadata.tsv: Input metadata file with the information we have to infer ancestral states with
+--columns clade_who pangolin_lineage clade_nextstrain: The columns in the metadata file to use for inference 
+--output-node-data node_traits.json: Output file to write trait inferences to
+</code>
+</pre>
 </details>
+
 
 ### Step 5. Export for visualization 
 
@@ -216,22 +232,26 @@ Finally, export your visualization as an Auspice JSON file using `augur export v
 <summary>Command and Parameters</summary>
 
 Command:
-```bash
-# 5. Export tree to auspice json file - 20 sec
+<pre>
+<code># 5. Export tree to auspice json file - 20 sec
 augur export v2 \
   --tree timetree.nwk \
   --node-data branch_lengths.json node_traits.json \
   --maintainers "CBW-IDE-2024" \
   --title "Integrated Assignment 2" \
   --output auspice.json
-```
+</code>
+</pre>
 
 Parameters:
-- `--tree timetree.nwk`: Input time tree created with augur refine
-- `--node-data branch_lengths.json node_traits.json`: Input node data json files created in step 3 (branch length) and step 4 (traits)
-- `--maintainers "CBW-IDE-2024"`: Maintainer name to be displayed by auspice. Can be whatever you like
-- `--title "Integrated Assignment 2"`: Title to be displayed by auspice. Can be whatever you would like
-- `--output auspice.json`: Output JSON file to be used in auspice for visualization and tree exploration
+<pre>
+<code>--tree timetree.nwk: Input time tree created with augur refine
+--node-data branch_lengths.json node_traits.json: Input node data json files created in step 3 (branch length) and step 4 (traits)
+--maintainers "CBW-IDE-2024": Maintainer name to be displayed by auspice. Can be whatever you like
+--title "Integrated Assignment 2": Title to be displayed by auspice. Can be whatever you would like
+--output auspice.json: Output JSON file to be used in auspice for visualization and tree exploration
+</code>
+</pre>
 </details>
 
 <a name="phylodynamic-analysis"></a>
@@ -277,11 +297,11 @@ Now, set the branch length from `Time` to `Divergence`and view the tree in a `Ra
 You are looking to explore the different molecular profiles of the VOCs by analysing and visualizing them using [nextclade](https://clades.nextstrain.org/) and comparing them to Omicron. Nextclade is a tool that performs genetic sequence alignment, clade assignment, mutation calling, phylogenetic placement, and quality checks for different viral pathogens. It can be run either on the command line or locally in your browser (no data leaves your computer!)
 
 The VOCs are:
-* Alpha: First detected September 2020
-* Beta: First detected October 2020
-* Gamma: First detected January 2021
-* Delta: First detected May 2021
-* Omicron: First detected November 2021
+* Alpha: First detected approximately September 2020
+* Beta: First detected approximately October 2020
+* Gamma: First detected approximately January 2021
+* Delta: First detected approximately May 2021
+* Omicron: First detected approximately November 2021
 
 ### Step 1. 
 
@@ -302,9 +322,9 @@ Change the view from the default of spike to the ‘Nucleotide sequence’ optio
 <a name="recombination-analysis"></a>
 ## 4.4 Recombination analysis
 
-As both the Delta and Omicron VOCs were circulating in the population at the same time, there was ample opprotunity for co-infections to occur with the potential of recombination events happening. 
+With both of the Delta and Omicron VOCs circulating in the population at the same time in December 2021, there was ample opprotunity for co-infections to occur with a high probability of recombination events happening. This lead to the first "deltacron" recombinat being identified in France in January 2022. Recombinant SARS-CoV-2 sequences consist of genomic elements from two different lineages/variants with one or more breakpoints in which the recombination occured.
 
-To do this, we are going to use the tool `rebar` that follows the [PHA4GE Guidance for Detecting and Characterizing SARS-CoV-2 Recombinants](https://github.com/pha4ge/pipeline-resources/blob/main/docs/sc2-recombinants.md) for detecting and visualizing SARS-CoV-2 recombination.
+To identify potential recombinants and breakpoints, we are going to use the tool `rebar` that follows the [PHA4GE Guidance for Detecting and Characterizing SARS-CoV-2 Recombinants](https://github.com/pha4ge/pipeline-resources/blob/main/docs/sc2-recombinants.md) for detecting and visualizing SARS-CoV-2 recombination.
 
 ### Step 1. Download
 
@@ -318,18 +338,22 @@ To download the required dataset to be able to detect recombinants, you will hav
 <summary>Command and Parameters</summary>
 
 Command:
-```bash
-# 1. Download dataset to run rebar - 10 sec
+<pre>
+<code># 1. Download dataset to run rebar - 10 sec
 rebar dataset download \
   --name sars-cov-2 \
   --tag 2023-11-30 \
   --output-dir dataset/2023-11-30
-```
+</code>
+</pre>
 
 Parameters:
-- `--name sars-cov-2`: Input dataset name to grab
-- `--tag 2023-11-30`: Input date tag for the dataset
-- `--output-dir dataset/2023-11-30`: Output directory name to save the dataset to
+<pre>
+<code>--name sars-cov-2: Input dataset name to grab
+--tag 2023-11-30: Input date tag for the dataset
+--output-dir dataset/2023-11-30: Output directory name to save the dataset to
+</code>
+</pre>
 </details>
 
 ### Step 2. Run
@@ -340,18 +364,22 @@ Next, run the `rebar run` command using the newly created `--dataset-dir` and yo
 <summary>Command and Parameters</summary>
 
 Command:
-```bash
-# 2. Run rebar detection - 2 minutes
+<pre>
+<code># 2. Run rebar detection - 2 minutes
 rebar run \
   --dataset-dir dataset/2023-11-30 \
   --alignment aligned.fasta \
   --output-dir rebar_recombination
-```
+</code>
+</pre>
 
 Parameters:
-- `--dataset-dir dataset/2023-11-30`: Input SARS-CoV-2 dataset downloaded in the prior step
-- `--alignment aligned.fasta`: Input aligned fasta file all the way back from `augur align`
-- `--output-dir rebar_recombination`: Output directory for rebar to save its outputs to
+<pre>
+<code>--dataset-dir dataset/2023-11-30: Input SARS-CoV-2 dataset downloaded in the prior step
+--alignment aligned.fasta: Input aligned fasta file all the way back from augur align
+--output-dir rebar_recombination: Output directory for rebar to save to
+</code>
+</pre>
 </details>
 
 ### Step 3. Plot
@@ -362,16 +390,20 @@ Finally, run `rebar plot` to create visualizations of the potential recombinants
 <summary>Command and Parameters</summary>
 
 Command:
-```bash
-# 3. Plot rebar detections - 5 sec
+<pre>
+<code># 3. Plot rebar detections - 5 sec
 rebar plot \
   --run-dir rebar_recombination \
   --annotations dataset/2023-11-30/annotations.tsv
-```
+</code>
+</pre>
 
 Parameters:
-- `--run-dir rebar_recombination`: Input directory containing rebar run results to be used for plotting
-- `--annotations dataset/2023-11-30/annotations.tsv`: Input annotations file containing a table of genome annotations to add to the plot
+<pre>
+<code>--run-dir rebar_recombination: Input directory containing rebar run results to be used for plotting
+--annotations dataset/2023-11-30/annotations.tsv: Input annotations file containing a table of genome annotations to add to the plot
+</code>
+</pre>
 </details>
 
 ### Questions
