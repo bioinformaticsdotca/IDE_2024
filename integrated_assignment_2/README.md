@@ -17,10 +17,10 @@ modified: May 09, 2024
 2. [Software](#software)    
 3. [Setup](#setup)
 4. [Assignment](#assignment)
-  1. [Phylogenetic Construction](#phylogenetic-construction)
-  2. [Phylogenetic Visualization and Analysis Questions](#phylodynamic-analysis)
-  3. [Nextclade Analysis](#nextclade-analysis)
-  4. [Recombination Analysis](#recombination-analysis)
+   1. [Phylogenetic Construction](#phylogenetic-construction)
+   2. [Phylogenetic Visualization and Analysis Questions](#phylodynamic-analysis)
+   3. [Nextclade Analysis](#nextclade-analysis)
+   4. [Recombination Analysis](#recombination-analysis)
 
 <a name="intro"></a>
 # 1. Introduction 
@@ -32,7 +32,7 @@ Important terms on variant typing of the SARS-CoV-2 virus:
 * Nextstrain Clade / Clade: Variant typing called using the [Nextstrain](https://nextstrain.org/) naming guidelines/tools. These clades are a bit more relaxed than the Pangolin lineages with the aim to new clades created by significant differences in biological impact or circulation patterns.
 * WHO Variants of Concern: Variants designated by the WHO and given an easy to say greek alphabet label
 
-This integrated assignment will focus on the genomic epidemiological analysis of the emergence of the SARS-CoV-2 VOC Omicron using tools and methods covered in the other modules of the course. Once finished the assignment, check out the paper on the epidemiological investigation of early Omicron:
+This integrated assignment will focus on the genomic epidemiological analysis of the emergence of the SARS-CoV-2 VOC Omicron using tools and methods covered in the other modules of the course. Once finished the assignment, check out the published paper on the epidemiological investigation of early Omicron from South Africa:
 
 > Viana, R., Moyo, S., Amoako, D.G. et al. Rapid epidemic expansion of the SARS-CoV-2 Omicron variant in southern Africa. Nature 603, 679–686 (2022). https://doi.org/10.1038/s41586-022-04411-y
 
@@ -113,7 +113,7 @@ Parameters:
 
 ### Step 2. Build a maximum likelihood  phylogenetic tree
 
-Next, using `augur tree` and your newly generated multiple sequence alignment, construct a maximum likelihood tree. Include the `--tree-builder-args "-seed 100"` parameter in your command to keep all assignment trees matching, and remember that output trees should be formatted in the newick format with the `.nwk` extension. Use four threads.
+Next, using `augur tree` and your newly generated multiple sequence alignment with `--alignment`, construct a maximum likelihood tree. Include the `--tree-builder-args "-seed 100"` parameter in your command to keep all assignment trees matching, and remember that output trees should be formatted in the newick format with the `.nwk` extension. Use four threads.
 
 <details>
 <summary>Command and Parameters</summary>
@@ -137,7 +137,7 @@ Parameters:
 
 ### Step 3. Infer time tree
 
-The next step is to infer a time tree using the `augur refine --timetree` command along with your multiple sequence alignment, provided metadata, and newly generated maximum likelihood tree `newick` file. 
+The next step is to infer a time tree using the `augur refine --timetree` command along with your multiple sequence alignment (`--alignment`), provided metadata, and newly generated maximum likelihood `--tree` newick file. 
 
 Tip: This is a long command; remember to add in the following parameters:
 * Keep your rooted to the Wuhan 1 reference `--keep-root`
@@ -298,7 +298,20 @@ Change the view from the default of spike to the ‘Nucleotide sequence’ optio
 <a name="recombination-analysis"></a>
 ## 4.4 Recombination analysis
 
+As both the Delta and Omicron VOCs were circulating in the population at the same time, there was ample opprotunity for co-infections to occur with the potential of recombination events happening. 
+
+To do this, we are going to use the tool `rebar` that follows the [PHA4GE Guidance for Detecting and Characterizing SARS-CoV-2 Recombinants](https://github.com/pha4ge/pipeline-resources/blob/main/docs/sc2-recombinants.md) for detecting and visualizing SARS-CoV-2 recombination.
+
 ### Step 1. Download
+
+First, we have to download a version controlled SARS-CoV-2 dataset for rebar to be able to detect breakpoints and recombinants. This dataset directory consists minimally of:
+1. The Wuhan-1 reference genome
+2. Population fasta file with known clades/lineages aligned to the reference
+
+To download the required dataset to be able to detect recombinants, you will have to use the `rebar dataset download` command. This command requires an input dataset name (`--name sars-cov-2`), an input date tag, which we will use `--tag 2023-11-30` for, and an `--output-dir` to save the dataset to. Remember, you can almost always run `TOOL --help` to get more info on how to run a tool.
+
+<details>
+<summary>Command and Parameters</summary>
 
 Command:
 ```bash
@@ -310,11 +323,17 @@ rebar dataset download \
 ```
 
 Parameters:
-- ``: 
-- ``: 
-- ``: 
+- `--name sars-cov-2`: Input dataset name to grab
+- `--tag 2023-11-30`: Input date tag for the dataset
+- `--output-dir dataset/2023-11-30`: Output directory name to save the dataset to
+</details>
 
 ### Step 2. Run
+
+Next, run the `rebar run` command using the newly created `--dataset-dir` and your initial aligned fasta file (`--alignment`) to begin the process of detecting any potential recombinant genomes in our input sequences. Output data again should be saved to a specified `--output-dir`.
+
+<details>
+<summary>Command and Parameters</summary>
 
 Command:
 ```bash
@@ -326,12 +345,17 @@ rebar run \
 ```
 
 Parameters:
-- ``: 
-- ``: 
-- ``: 
-
+- `--dataset-dir dataset/2023-11-30`: Input SARS-CoV-2 dataset downloaded in the prior step
+- `--alignment aligned.fasta`: Input aligned fasta file all the way back from `augur align`
+- `--output-dir rebar_recombination`: Output directory for rebar to save its outputs to
+</details>
 
 ### Step 3. Plot
+
+Finally, run `rebar plot` to create visualizations of the potential recombinants detected using the previous output `--run-dir` and the `--annotations` file found in your downloaded rebar dataset from step 1 (hint: This file is called `annotations.tsv`).
+
+<details>
+<summary>Command and Parameters</summary>
 
 Command:
 ```bash
@@ -342,8 +366,9 @@ rebar plot \
 ```
 
 Parameters:
-- ``: 
-- ``: 
+- `--run-dir rebar_recombination`: Input directory containing rebar run results to be used for plotting
+- `--annotations dataset/2023-11-30/annotations.tsv`: Input annotations file containing a table of genome annotations to add to the plot
+</details>
 
 ### Questions
 
