@@ -48,8 +48,15 @@ Plotting phylogenetic tree in RStudio:
 ```
 #load packages
 library(dplyr)
-library(ggtree)
 library(ggplot2)
+
+# install and load ggtree
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("ggtree")
+library(ggtree)
+
+# make sure you are in the folder of the assignment
 
 #load files
 metadata<-read.csv("metadata.csv")
