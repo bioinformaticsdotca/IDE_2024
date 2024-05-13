@@ -1,6 +1,6 @@
 ---
 layout: tutorial_page
-permalink: /IDE_2024_Module4_lab
+permalink: /IDE_2024_Module5_lab
 title: CBW Infectious Disease Epidemiology 2024
 header1: Workshop Pages for Students
 header2: CBW Infectious Disease Epidemiology 2024 Module 5 Lab

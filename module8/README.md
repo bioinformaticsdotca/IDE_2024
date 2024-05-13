@@ -3,7 +3,7 @@ layout: tutorial_page
 permalink: /IDE_2024_Module8_lab
 title: IDE Module 8 Lab
 header1: Phylodynamics of SARS-CoV-2
-header2: Infectious Disease Genomic Epidemiology Module 7 Lab
+header2: Infectious Disease Genomic Epidemiology Module 8 Lab
 image: /site_images/CBW_Metagenome_icon.jpg
 home: https://bioinformaticsdotca.github.io/IDE_2024
 description: Phylodynamics of SARS-CoV-2

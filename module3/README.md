@@ -1,3 +1,15 @@
+---
+layout: tutorial_page
+permalink: /IDE_2024_Module3_lab
+title: CBW Infectious Disease Epidemiology 2024
+header1: Workshop Pages for Students
+header2: CBW Infectious Disease Epidemiology 2024 Module 3 Lab
+image: /site_images/CBW_epidemiology_icon.png
+home: https://bioinformaticsdotca.github.io/
+description: CBW IDE 2024 Module 3 - Data Curation and Sharing
+---
+
+
 ### Infectious Disease Genomic Epidemiology
 # Data Curation and Sharing Lab
 
