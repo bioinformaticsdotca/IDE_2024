@@ -94,16 +94,16 @@ Using `augur align` and the `--reference-name Wuhan-Hu-1/2019` reference sequenc
 <details>
 <summary>Command and Parameters</summary>
 
-### Command:  
+Command:  
 
-```bash
-# 1. Align with Augur using mafft - 2 min
-augur align \
-  --nthreads 4 \
-  --sequences sequences.fasta \
-  --reference-name 'Wuhan-Hu-1/2019' \
-  --output aligned.fasta
-```
+    ```bash
+     # 1. Align with Augur using mafft - 2 min
+     augur align \
+      --nthreads 4 \
+      --sequences sequences.fasta \
+      --reference-name 'Wuhan-Hu-1/2019' \
+      --output aligned.fasta
+    ```
 
 Parameters:
 - `--nthreads 4`: Use 4 threads for the alignment
