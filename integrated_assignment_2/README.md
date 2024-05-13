@@ -96,23 +96,26 @@ Using `augur align` and the `--reference-name Wuhan-Hu-1/2019` reference sequenc
 
 Command:  
 
-    ```bash
+   ```bash
      # 1. Align with Augur using mafft - 2 min
      augur align \
       --nthreads 4 \
       --sequences sequences.fasta \
       --reference-name 'Wuhan-Hu-1/2019' \
       --output aligned.fasta
-    ```
+   ```
 
 Parameters:
 - `--nthreads 4`: Use 4 threads for the alignment
 - `--sequences sequences.fasta`: Input set of sequences including the reference in fasta format
 - `--reference-name 'Wuhan-Hu-1/2019'`: The reference Wuhan-1 genome identifier found in our sequences file to remove insertions relative to
-- `--output aligned.fasta`: Output alignment file in fasta format
+- `--output aligned.fasta`: Output alignment file in fasta format  
+
 </details>
 
-### Step 2. Build a maximum likelihood  phylogenetic tree
+  
+
+### Step 2. Build a maximum likelihood phylogenetic tree
 
 Next, using `augur tree` and your newly generated multiple sequence alignment with `--alignment`, construct a maximum likelihood tree. Include the `--tree-builder-args "-seed 100"` parameter in your command to keep all assignment trees matching, and remember that output trees should be formatted in the newick format with the `.nwk` extension. Use four threads.
 
