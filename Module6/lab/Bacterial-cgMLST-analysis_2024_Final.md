@@ -1,6 +1,8 @@
 ---
 title: "Module 6 Lab: Bacterial cgMLST analysis"
 authors: "Guangzhi Zhang, Jimmy Liu, and Eduardo Taboada"
+layout: tutorial_page
+permalink: /IDE_2024_Module6_lab
 date: "2024-05-15"
 output:
   html_document:
