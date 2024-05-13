@@ -1,0 +1,15 @@
+name: module8-emerging-pathogen
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.9
+  - fastp
+  - multiqc
+  - kat
+  - kraken2
+  - megahit
+  - quast
+  - blast
+  - seqkit
