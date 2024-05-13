@@ -12,6 +12,7 @@ author: Venus Lau & Jimmy Liu
 ---
 
 # IDE 2024 Integrated Assignment
+
 ## Developed by: Venus Lau & Jimmy Liu
 
 ### Introduction
@@ -20,35 +21,35 @@ In this integrative assignment, you will be applying some of the genomic epidemi
 
 The primary goal here is to integrate evidence from the phylogeny and genome annotations to justify which isolates are most likely epidemiologically linked (belong to the same outbreak).
 
-
 First, copy the assignment directory to your workspace on AWS:
+
 ```
 cp -r ~/CourseData/IDE_data/integrated_assignment_1/ ~/workspace/
 cd ~/workspace/integrated_assignment_1
 ```
 
-You can find the following:
+You can find the following files if you run the command `ls ~/workspace/integrated_assignment_1`:
 
 * Assembled *Salmonella* genomes
 ```
-~/workspace/integrated_hw/assemblies
+~/workspace/integrated_assignment_1/assemblies
 ```
 
 * Reference sequence (Heidelberg str. SL476) for variant calling:
 ```
-~/workspace/integrated_hw/reference
+~/workspace/integraintegrated_assignment_1/reference
 ```
 
 * Metadata file
 ```
-~/workspace/integrated_hw/metadata.csv
+~/workspace/integrated_assignment_1/metadata.csv
 ```
 
 ### Required tools
 * [Snippy](https://github.com/tseemann/snippy)
 * [FastTree](http://www.microbesonline.org/fasttree/)
 * [ABRicate](https://github.com/tseemann/abricate)
-* R
+* [R](https://www.r-project.org/)
 
 ___
 
@@ -57,12 +58,12 @@ To minimize the analysis runtime required, the SNV calling step using Snippy has
 
 SNV and alignment summary is located at:
 ```
-~/workspace/integrated_hw/alignment/core_aln_stats.txt
+~/workspace/integrated_assignment_1/alignment/core_aln_stats.txt
 ```
 
 Core genome alignment of the entire dataset is located at:
 ```
-~/workspace/integrated_hw/alignment/heidelberg_core.aln
+~/workspace/integrated_assignment_1/alignment/heidelberg_core.aln
 ```
 
 Description of SNV alignment summary headers:
