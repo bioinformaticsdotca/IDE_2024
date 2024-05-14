@@ -85,7 +85,7 @@ As seen previously in Module 8, we are going to construct a phylogenetic tree us
 
 *Tip*: When running through the assignment, remember to keep track of what you name your output files as each step builds off of the previously generated output files. If you are figuring out your own commands and comparing them to the full given commands there will likely be differences in these parameter inputs!
 
-*Note*: There are some potential differences that can occur in the final tree topology due to the random seeding of the initial parsimony trees and the small number of iterations run. To enforce a common tree topology, we are going to use a fixed seed of `100` when building the trees.
+*Note*: There are some potential differences that can occur in the final tree topology due to the random seeding of the initial parsimony trees and the small number of iterations run (not running any bootstrapping). To enforce a common tree topology, we are going to use a fixed seed of `100` when building the trees.
 
 ### Step 1. Construct a multiple sequence alignment
 
@@ -273,23 +273,23 @@ Looking at the time phylogeny, find both Omicron and Delta on the tree (hint: Co
 > ***Q2: What is the lineage of the most recent common ancestor (MRCA) of both Delta and Omicron? (hint: Remember lineage is from Pangolin. Colour the tree by "pangolin_lineage")***
 
 Next, zoom in on the Omicron clade. 
-> ***Q3: Based on your tree, from which country did Omicron first emerge? When was the sampling date? (hint: Label tips by country, click on the nodes, explore around)***
+> ***Q3: Based on your tree, where and when was the first Omicron case identified? Is there enough evidence in our tree to say this is where Omicron emerged? (hint: Label tips by country, click on the nodes, explore around)***
 
-The emergence of Omicron was characterized by three distinct lineages that were all detected at roughly the same time: `BA.1`, `BA.2`, and `BA.3`.
+The emergence of Omicron was characterized by three distinct lineages that were all detected at roughly the same time in the order of: `BA.1`, `BA.2`, and then `BA.3`.
 
 > ***Q4: When was the MRCA of all 3 of the Omicron lineages (BA.1, BA.2, and BA.3) predicted to be? What about BA.2 and BA.3?***
 
 > ***Q5: What does this tell you about the diversification of the Omicron VOC prior to its detection in the population?***
 
-Zooming back out, the Omicron clade has an unusually long branch length back to its most recent common ancestor, suggesting a period of unsampled diversification of Omicron before its emergence.
+Zooming back out, the Omicron clade has an unusually long branch length back to its most recent common ancestor suggesting a period of unsampled diversification of before its emergence.
 > ***Q6: Which lineage does Omicron appear to have diverged from?***
 
-> ***Q7: How long a period of unsampled diversity do you estimate for the Omicron VOC based on the inferred dates? What is the confidence interval?***
+> ***Q7: How long a period of unsampled diversity do you estimate for the Omicron VOC based on the inferred dates?***
 
 > ***Q8: Based on all of the previous answers, what hypotheses for the emergence of Omicron are consistent with your observations? Is there anything about the country of origin that suggests one hypothesis over another?***
 
 Now, set the branch length from `Time` to `Divergence`and view the tree in a `Radial` layout. Colour by `who_clade`.
-> ***Q9: Do any of the other WHO VOCs (alpha, beta, gamma, delta) show a similar phylogenetic emergence structure to that of Omicron? What can you conclude about the emergence of VOCs?***
+> ***Q9: Do any of the other WHO VOCs (alpha, beta, gamma, delta) show a similar phylogenetic emergence structure to that of Omicron? What, if anything, can you conclude about the emergence of VOCs?***
 
 <a name="nextclade-analysis"></a>
 ## 4.3 Nextclade analysis
@@ -311,13 +311,13 @@ Download the `selected_sequences.fasta` file to your computer and then load it i
 
 Nextclade will show the distribution of mutations along either specific genes or over the whole genome with the default view being set to show mutations in the Spike protein.
 
-> ***Q10: The [TaqPath three-gene RT-PCR assay for SARS-CoV-2](https://www.thermofisher.com/ca/en/home/clinical/clinical-genomics/pathogen-detection-solutions/covid-19-sars-cov-2/multiplex.html) experienced diagnostic failures for Alpha due to the 69-70del mutation in one of the targets. This assay failed in the same target for the initial Omicron lineages. Which lineage(s) is it?***
+> ***Q10: The [TaqPath three-gene RT-PCR assay for SARS-CoV-2](https://www.thermofisher.com/ca/en/home/clinical/clinical-genomics/pathogen-detection-solutions/covid-19-sars-cov-2/multiplex.html) experienced diagnostic failures for Alpha due to the 69-70del mutation in one of the assay primers. This assay failed in the same target in some of the the initial Omicron lineages. Based on the nextclade visualization, which lineage(s) contain this mutation?***
 
 Change the view from the default of spike to the ‘Nucleotide sequence’ option to view the full distribution of mutations across the genome
 
 > ***Q:11 Can you find any other mutations in Omicron that are common to the other VOCs? Given the phylogenetic relationship of the VOCs, can you provide a hypothesis for your observation of common mutations between them?***
 
-> ***Q12: In which genes are the mutations concentrated? Why is this the case?***
+> ***Q12: In which gene(s) are the mutations of the VOCs concentrated? Why is this the case?***
 
 <a name="recombination-analysis"></a>
 ## 4.4 Recombination analysis
@@ -414,4 +414,4 @@ Now view the PNG images produced by Rebar (found in `rebar_recombination/plots`)
 > ***Q14: In which genes do recombination break points occur?***
 
 With the knowledge of which samples were detected as recombinants along with which lineages make up their recombination, look back at the time tree and find the detected recombinant samples (hint: Colour by `who_clade`).
-> ***Q:15 Where do the the XD and XF recombinant samples place on the phylogeny? Are they located where you'd expect based on their components?***
+> ***Q:15 Where do the the XD and XF recombinant samples place on the phylogeny? Are they located where you'd expect based on their components? Would you expect their placement to be accurate?***
