@@ -102,6 +102,14 @@ Hints:
 1. Example `FastTree` usage: `FastTree -nt sequence.aln > tree.nwk`. You'll need to replace `sequence.aln` with the path to the correct alignment file
 2. Use the `ggtree` R package to generate a visualization of the phylogenetic tree (using your provided RStudio instance: `xx.uhn-hpc.ca:8080`, where `xx` is your assigned student number)
 
+  **Note:** `ggtree` is unavailable in your Rstudio session when you load it. Run the following commands to install and load it:
+  ```r
+  if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+  BiocManager::install("ggtree")
+  library(ggtree)
+  ```
+   
 > ***Q4: What does the phylogenetic tree inform you about the relatedness of the isolates within the same outbreak and across different outbreaks?***
 
 > ***Q5: Do the isolates cluster by isolation source (e.g. Human, Food) or isolation date?***
