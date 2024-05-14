@@ -131,7 +131,7 @@ Open your web browser and navigate to `http://xx.uhn-hpc.ca/module5/covid-19-sig
 
 This file contains plots of the coverage depth for each of the 36 samples we analyzed as shown below. 
 
-<img src="./images/coverage_by_position.png" width="1080" height="820">
+<img src="https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module5/images/coverage_by_position.png" width="1080" height="820">
 
 Explore the results and try to understand what the coverage patterns mean: 
 - What might have caused the sharp drop in coverage for sample `ERR6035561`? 
@@ -157,14 +157,14 @@ This command uses `cut` to find the metrics that we are interested in from the f
 
 Now, using your browser open the file located at `ncov-tools-results/plots/cbw_demo_run_results_dir_tree_snps.pdf`.
 
-<img src="./images/tree_snps.png" width="1080" height="620">
+<img src="https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module5/images/tree_snps.png" width="1080" height="620">
 
 
  This plot arranges the samples using a phylogenetic tree (shown on the left) so that samples with a similar sequence are grouped together. The panel on the right shows SNPs within each sample with respect to the MN908947.3 reference genome, where each colour represents a different base. Also shown on the plot are the pangolin-assigned lineages; B.1.1.7 is the alpha variant, AY.4 is delta. Notice that there are many SNPs in common between the alpha samples and a different set of SNPs in common between the delta samples. These SNPs are what define the different lineages.
 
 Now, we're going to inspect the read-level evidence for some example SNPs. Open up IGV and using the first dropdown menu select the "SARS-CoV-2" genome. Now, click on the File menu and select "Load from URL" and paste in the path `http://xx.uhn-hpc.ca/module5/covid-19-signal/cbw_demo_run_results_dir/ERR5389257/core/ERR5389257_viral_reference.mapping.bam` again replacing `xx` with your instance ID. Once the file loads you will see the pattern of read coverage along the genome. 
 
-<img src="./images/igv_sarscov2.png" width="1080" height="620">
+<img src="https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module5/images/igv_sarscov2.png" width="1080" height="620">
 
 Paste the coordinates `NC_045512.2:2,917-3,156` into the navigation bar. This region shows a single C>T SNP where every read supports the alternative allele (the red bars in the middle of the screen). Now, navigate to `NC_045512.2:631-870`. In this case some reads have evidence for a C>T SNP but other reads have evidence for the reference allele at this position. Since this position is ambiguous the consensus genome will be marked with an ambiguity code. Going back to the mutations plot, look for the row corresponding to sample `ERR5389257`. Notice that it has a black bar in between two purple SNPs at the beginning of the genome - that is the ambiguous position that we are inspecting at IGV. Since this position is only ambiguous in `ERR5389257` we can't draw many conclusions from it - it could be due to low-level contamination, a PCR artificat, or heterogeneity within this sample.
 
