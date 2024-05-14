@@ -100,7 +100,7 @@ conda create -n integrated-assignment-1 -c conda-forge -c bioconda fasttree r-ti
 
 Hints:
 1. Example `FastTree` usage: `FastTree -nt sequence.aln > tree.nwk`. You'll need to replace `sequence.aln` with the path to the correct alignment file
-2. Use the `ggtree` R package to generate a visualization of the phylogenetic tree
+2. Use the `ggtree` R package to generate a visualization of the phylogenetic tree (using your provided RStudio instance: `xx.uhn-hpc.ca:8080`, where `xx` is your assigned student number)
 
 > ***Q4: What does the phylogenetic tree inform you about the relatedness of the isolates within the same outbreak and across different outbreaks?***
 
