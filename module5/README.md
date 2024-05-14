@@ -99,7 +99,7 @@ python signalexe.py --directory ../cbw_demo_run --config-only
 ```
 The output should be as follows
 
-<img src="https://github.com/bioinformatics-ca/IDE_2024/blob/main/module5/images/create_config.png" width="1080" height="820">
+<img src="https://github.com/bioinformaticsdotca/IDE_2024/blob/main/module5/images/create_config.png" width="1080" height="820">
 
 If you run `ls` you should see `cbw_demo_run_config.yaml` and `cbw_demo_run_sample_table.csv` files have been created. You can use `more` or `less` to examine the input files.
 
