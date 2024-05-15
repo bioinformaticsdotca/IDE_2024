@@ -150,7 +150,7 @@ Parameters:
 The next step is to infer a time tree using the `augur refine --timetree` command along with your multiple sequence alignment (`--alignment`), provided metadata, and newly generated maximum likelihood `--tree` newick file. 
 
 Tip: This is a long command; remember to add in the following parameters:
-* Keep your rooted to the Wuhan 1 reference `--keep-root`
+* Root your tree with the Wuhan 1 reference `--root 'Wuhan-Hu-1/2019'`
 * Set your divergence units for visualizing later on `--divergence-units mutations`
 * Set both of your output files `--output-tree timetree.nwk` and `--output-node-data branch_lengths.json`
 * Add in the `--seed 100` parameter
@@ -166,7 +166,7 @@ augur refine \
   --tree tree.nwk \
   --alignment aligned.fasta \
   --metadata metadata.tsv \
-  --keep-root \
+  --root 'Wuhan-Hu-1/2019' \
   --divergence-units mutations \
   --output-tree timetree.nwk \
   --output-node-data branch_lengths.json \
@@ -180,7 +180,7 @@ Parameters:
 --tree tree.nwk: Input newick tree build using iqtree
 --alignment aligned.fasta: Input multiple sequence alignment from augur align
 --metadata metadata.tsv: Input metadata file containing the sequence names (column: `strain`) and collection dates (column: `date`)
---keep-root: Keep the Wuhan-1 reference genome as the root of the tree
+--root 'Wuhan-Hu-1/2019': Keep the Wuhan-1 reference genome as the root of the tree
 --divergence-units mutations: Convert the branch lengths to mutations for visualizing later on
 --output-tree timetree.nwk: Output time tree newick file
 --output-node-data branch_lengths.json: Output file to write branch lengths as node data
@@ -263,7 +263,7 @@ Visualize the tree using auspice to help answer the following questions.
 
 Download the ouput Auspice JSON file and the `metadata.tsv` file by right-clicking `Save link as...`. 
 
-Go to https://auspice.us/ and drag and drop in the saved JSON file and the `metadata.tsv` file to visualize your created phylogenetic tree with metadata.
+Go to https://auspice.us/ and drag and drop in the saved JSON file and the `metadata.tsv` file to visualize your created phylogenetic tree with metadata. Spend a bit exploring the tree and seeing where all of the clades are along with how the branch lengths compare when visualized by both `Time` and `Divergence`
 
 ### Step 2: Answer the following questions using the visualization and prompts
 
@@ -294,14 +294,14 @@ Now, set the branch length from `Time` to `Divergence`and view the tree in a `Ra
 <a name="nextclade-analysis"></a>
 ## 4.3 Nextclade analysis
 
-You are looking to explore the different molecular profiles of the VOCs by analysing and visualizing them using [nextclade](https://clades.nextstrain.org/) and comparing them to Omicron. Nextclade is a tool that performs genetic sequence alignment, clade assignment, mutation calling, phylogenetic placement, and quality checks for different viral pathogens. It can be run either on the command line or locally in your browser (no data leaves your computer!)
+You are looking to explore the different molecular profiles of the VOCs by analysing and visualizing them using [nextclade](https://clades.nextstrain.org/) and comparing them to Omicron. Nextclade is a tool that performs genetic sequence alignment, clade assignment, mutation calling, phylogenetic placement, and quality checks for different viral pathogens. It can be run either on the command line or locally in your browser (no data leaves your computer!) Remember to keep your auspice tree open to assist in analyzing the VOCs.
 
-The VOCs are:
-* Alpha: First detected approximately September 2020
-* Beta: First detected approximately October 2020
-* Gamma: First detected approximately January 2021
-* Delta: First detected approximately May 2021
-* Omicron: First detected approximately November 2021
+The WHO VOCs are:
+* Alpha
+* Beta
+* Gamma
+* Delta
+* Omicron
 
 ### Step 1. 
 
@@ -328,7 +328,7 @@ To identify potential recombinants and breakpoints, we are going to use the tool
 
 ### Step 1. Download
 
-First, we have to download a version controlled SARS-CoV-2 dataset for rebar to be able to detect breakpoints and recombinants. This dataset directory consists minimally of:
+First, we have to download a version controlled SARS-CoV-2 dataset for rebar to be able to detect breakpoints and recombinants. For more information on what is contained in a dataset, checkout the [rebar dataset page](https://github.com/phac-nml/rebar/blob/main/docs/dataset.md). As a quick introduction though, the dataset directory consists minimally of:
 1. The Wuhan-1 reference genome
 2. Population fasta file with known clades/lineages aligned to the reference
 
