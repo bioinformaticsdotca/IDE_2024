@@ -113,6 +113,17 @@ Hints:
   library(ggtree)
   
   ```
+ Helpful starter code:
+ ```r
+ # make sure you are in the folder of the assignment
+ 
+ #load files
+ metadata<-read.csv("metadata.csv")
+ tree<-read.tree("tree.nwk")
+ ```
+And fantastic tree documentation:
+ 1. [Visualizing phylogenetic trees](https://yulab-smu.top/treedata-book/chapter4.html#chapter4)
+ 2. [Adding metadata to your trees](https://yulab-smu.top/treedata-book/chapter7.html#attach-operator)
    
 > ***Q4: What does the phylogenetic tree inform you about the relatedness of the isolates within the same outbreak and across different outbreaks?***
 
