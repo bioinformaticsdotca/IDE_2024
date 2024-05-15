@@ -1,6 +1,6 @@
 ---
 layout: tutorial_page
-permalink: /IDE_2024_integrated_assignment
+permalink: /IDE_2024_int_assignment_1_answers
 title: Integrated Assignment 1 Answer Key
 header1: Workshop Pages for Students
 header2: Integrated Assignment Number 1
