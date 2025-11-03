@@ -1,0 +1,38 @@
+# Module 3: Data Curation and Data Sharing
+
+## Lecture
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/NMKQTzLtx1c?si=K6TRuteBigI8e9wN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<br>
+
+<iframe src="https://drive.google.com/file/d/1bscrtbtkxzsGdQN07wuZG0ndHI4Woskl/preview" width="640" height="480" allow="autoplay"></iframe>
+
+## Lab
+
+### Data Curation and Sharing Lab
+
+The Infectious Disease Genomic Epidemiology “Data curation and sharing lab” is designed to give participants hands-on experience using curation tools to structure, standardize, and transform genomics contextual data.
+
+Users do not need to access or use the Amazon Web Services (AWS) for the purpose of this module. All exercises take place in documents, spreadsheets, or discussions, and webtools will be accessed using your local browser. Please refer to the lab instructions to get started.
+
+### Excercise 1 Scenario
+
+<iframe src="https://drive.google.com/file/d/15MgGUcDhsAsDsdVgzVgx3v3QkyZOhs9P/preview" width="640" height="480" allow="autoplay"></iframe>
+
+### Lab Instructions
+
+<iframe src="https://drive.google.com/file/d/16I9CMsOs4AVwcnYIlYDPacA2kpKG6Sye/preview" width="640" height="480" allow="autoplay"></iframe>
+
+### CanCOGeN Template Curation Reference Guide
+
+Link does not work
+
+### EBI OLS Exercise
+
+Link does not work
+
+### WHO Guiding Principles for Genomic Data Sharing
+
+<iframe src="https://drive.google.com/file/d/1jKPbhM6DRxU_UKdU4EqFwQgLN7lE4HYx/preview" width="640" height="480" allow="autoplay"></iframe>
+

@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 2: De Novo Genome Assembly and Annotation | Infectious Disease Genomic Epidemiology 2024</title>
+  <meta name="description" content="Workshop website for the 2024 Infectious Disease Genomic Epidemiology Canadian Bioinformatics Workshop" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 2: De Novo Genome Assembly and Annotation | Infectious Disease Genomic Epidemiology 2024" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="file:///Users/clin/Documents/CBWGitHub/IDE-2024/docs/index.html/img/bioinformatics_logo.png" />
+  <meta property="og:description" content="Workshop website for the 2024 Infectious Disease Genomic Epidemiology Canadian Bioinformatics Workshop" />
+  <meta name="github-repo" content="bioinformaticsdotca/IDE_2024#" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 2: De Novo Genome Assembly and Annotation | Infectious Disease Genomic Epidemiology 2024" />
+  
+  <meta name="twitter:description" content="Workshop website for the 2024 Infectious Disease Genomic Epidemiology Canadian Bioinformatics Workshop" />
+  <meta name="twitter:image" content="file:///Users/clin/Documents/CBWGitHub/IDE-2024/docs/index.html/img/bioinformatics_logo.png" />
+
+<meta name="author" content="Faculty: William Hsiao, Fiona Brinkman, Emma Griffiths, Jared Simpson, Ed Taboada, Andrew McArthur, Finlay Maguire, Gary Van Domselaar, Robert Beiko" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="module-1-introduction-to-genomic-epidemiology.html"/>
+<link rel="next" href="module-3-data-curation-and-data-sharing.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="https://bioinformaticsdotca.github.io/">
+ <img src="img/bioinformatics_logo.png" width="90%" alt="bioinformatics.ca logo" style="display:block; margin-left:auto; margin-right:auto; margin-top:15px;">
+ </a>
+<li><center><strong><a href="./"><br>Infectious Disease Genomic Epidemiology 2024<br><br></a></strong></center></li>
+<a href="./">
+ <img src="img/CBW_epidemiology_icon.png" width="70%" alt="Infectious Disease Genomic Epidemioligy 2024 logo" style="display:block; margin-left:auto; margin-right:auto; ">
+ </a>
+<br>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Workshop Info</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#class-photo"><i class="fa fa-check"></i>Class Photo</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pre-work"><i class="fa fa-check"></i>Pre-work</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html"><i class="fa fa-check"></i>Meet Your Faculty</a></li>
+<li class="chapter" data-level="" data-path="data-and-compute-setup.html"><a href="data-and-compute-setup.html"><i class="fa fa-check"></i>Data and Compute Setup</a></li>
+<li class="part"><span><b>II Modules</b></span></li>
+<li class="chapter" data-level="" data-path="module-1-introduction-to-genomic-epidemiology.html"><a href="module-1-introduction-to-genomic-epidemiology.html"><i class="fa fa-check"></i>Module 1: Introduction to Genomic Epidemiology</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-1-introduction-to-genomic-epidemiology.html"><a href="module-1-introduction-to-genomic-epidemiology.html#lecture"><i class="fa fa-check"></i>Lecture</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html"><i class="fa fa-check"></i>Module 2: De Novo Genome Assembly and Annotation</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#lecture-1"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#lab"><i class="fa fa-check"></i>Lab</a></li>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#integrative-assignment-1"><i class="fa fa-check"></i>Integrative Assignment 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#required-tools"><i class="fa fa-check"></i>Required Tools</a></li>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#core-genome-snv-analysis"><i class="fa fa-check"></i>Core Genome SNV Analysis</a></li>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#phylogenetic-analysis-visualization"><i class="fa fa-check"></i>Phylogenetic Analysis &amp; Visualization</a></li>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#genome-annotation"><i class="fa fa-check"></i>Genome Annotation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#integrative-assignment-2"><i class="fa fa-check"></i>Integrative Assignment 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#list-of-software-utilized"><i class="fa fa-check"></i>List of Software Utilized</a></li>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#assignment-setup"><i class="fa fa-check"></i>Assignment Setup</a></li>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#phylogenetic-construction"><i class="fa fa-check"></i>Phylogenetic Construction</a></li>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#nextclade-analysis"><i class="fa fa-check"></i>Nextclade Analysis</a></li>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#recombination-analysis"><i class="fa fa-check"></i>Recombination Analysis</a></li>
+<li class="chapter" data-level="" data-path="module-2-de-novo-genome-assembly-and-annotation.html"><a href="module-2-de-novo-genome-assembly-and-annotation.html#answer-key"><i class="fa fa-check"></i>Answer Key</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-3-data-curation-and-data-sharing.html"><a href="module-3-data-curation-and-data-sharing.html"><i class="fa fa-check"></i>Module 3: Data Curation and Data Sharing</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-3-data-curation-and-data-sharing.html"><a href="module-3-data-curation-and-data-sharing.html#lecture-2"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-3-data-curation-and-data-sharing.html"><a href="module-3-data-curation-and-data-sharing.html#lab-1"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-3-data-curation-and-data-sharing.html"><a href="module-3-data-curation-and-data-sharing.html#data-curation-and-sharing-lab"><i class="fa fa-check"></i>Data Curation and Sharing Lab</a></li>
+<li class="chapter" data-level="" data-path="module-3-data-curation-and-data-sharing.html"><a href="module-3-data-curation-and-data-sharing.html#excercise-1-scenario"><i class="fa fa-check"></i>Excercise 1 Scenario</a></li>
+<li class="chapter" data-level="" data-path="module-3-data-curation-and-data-sharing.html"><a href="module-3-data-curation-and-data-sharing.html#lab-instructions"><i class="fa fa-check"></i>Lab Instructions</a></li>
+<li class="chapter" data-level="" data-path="module-3-data-curation-and-data-sharing.html"><a href="module-3-data-curation-and-data-sharing.html#cancogen-template-curation-reference-guide"><i class="fa fa-check"></i>CanCOGeN Template Curation Reference Guide</a></li>
+<li class="chapter" data-level="" data-path="module-3-data-curation-and-data-sharing.html"><a href="module-3-data-curation-and-data-sharing.html#ebi-ols-exercise"><i class="fa fa-check"></i>EBI OLS Exercise</a></li>
+<li class="chapter" data-level="" data-path="module-3-data-curation-and-data-sharing.html"><a href="module-3-data-curation-and-data-sharing.html#who-guiding-principles-for-genomic-data-sharing"><i class="fa fa-check"></i>WHO Guiding Principles for Genomic Data Sharing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-4-phylogenetic-analysis.html"><a href="module-4-phylogenetic-analysis.html"><i class="fa fa-check"></i>Module 4: Phylogenetic Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-4-phylogenetic-analysis.html"><a href="module-4-phylogenetic-analysis.html#lecture-3"><i class="fa fa-check"></i>Lecture</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html"><a href="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html"><i class="fa fa-check"></i>Module 5: Viral Pathogen Genomic Analysis - Single Nucleotide Variants</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html"><a href="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html#lecture-4"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html"><a href="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html#lab-2"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html"><a href="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html#introduction-2"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html"><a href="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html#data-sets"><i class="fa fa-check"></i>Data Sets</a></li>
+<li class="chapter" data-level="" data-path="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html"><a href="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html#data-download-and-preparation"><i class="fa fa-check"></i>Data Download and Preparation</a></li>
+<li class="chapter" data-level="" data-path="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html"><a href="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html#running-signal"><i class="fa fa-check"></i>Running SIGNAL</a></li>
+<li class="chapter" data-level="" data-path="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html"><a href="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html#reference-based-assembly-using-signal"><i class="fa fa-check"></i>Reference-based Assembly using SIGNAL</a></li>
+<li class="chapter" data-level="" data-path="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html"><a href="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html#quality-control-and-assessment"><i class="fa fa-check"></i>Quality Control and Assessment</a></li>
+<li class="chapter" data-level="" data-path="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html"><a href="module-5-viral-pathogen-genomic-analysis---single-nucleotide-variants.html#coverage-analysis"><i class="fa fa-check"></i>Coverage Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html"><a href="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html"><i class="fa fa-check"></i>Module 6: Bacterial Pathogen Genomic Analysis - Genome-based Subtyping</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html"><a href="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html#lecture-5"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html"><a href="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html#lab-3"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html"><a href="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html#introduction-3"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html"><a href="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html"><a href="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html#timeline-for-training"><i class="fa fa-check"></i>Timeline for Training</a></li>
+<li class="chapter" data-level="" data-path="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html"><a href="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html#getting-started"><i class="fa fa-check"></i>Getting Started</a></li>
+<li class="chapter" data-level="" data-path="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html"><a href="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html#day-1-pre-processing-and-preliminary-analyses-1"><i class="fa fa-check"></i>Day 1: Pre-processing and Preliminary Analyses</a></li>
+<li class="chapter" data-level="" data-path="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html"><a href="module-6-bacterial-pathogen-genomic-analysis---genome-based-subtyping.html#day-2-visualizations-to-facilitate-analysis-1"><i class="fa fa-check"></i>Day 2: Visualizations to Facilitate Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-7-antimicrobila-resistant-gene-amr-analysis.html"><a href="module-7-antimicrobila-resistant-gene-amr-analysis.html"><i class="fa fa-check"></i>Module 7: Antimicrobila Resistant Gene (AMR) Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-7-antimicrobila-resistant-gene-amr-analysis.html"><a href="module-7-antimicrobila-resistant-gene-amr-analysis.html#lecture-6"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-7-antimicrobila-resistant-gene-amr-analysis.html"><a href="module-7-antimicrobila-resistant-gene-amr-analysis.html#lab-4"><i class="fa fa-check"></i>Lab</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-8-phylodynamics.html"><a href="module-8-phylodynamics.html"><i class="fa fa-check"></i>Module 8: Phylodynamics</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-8-phylodynamics.html"><a href="module-8-phylodynamics.html#lecture-7"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-8-phylodynamics.html"><a href="module-8-phylodynamics.html#lab-5"><i class="fa fa-check"></i>Lab</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-9-mobile-genetic-elements.html"><a href="module-9-mobile-genetic-elements.html"><i class="fa fa-check"></i>Module 9: Mobile Genetic Elements</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-9-mobile-genetic-elements.html"><a href="module-9-mobile-genetic-elements.html#lecture-8"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-9-mobile-genetic-elements.html"><a href="module-9-mobile-genetic-elements.html#lab-6"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-9-mobile-genetic-elements.html"><a href="module-9-mobile-genetic-elements.html#data-files"><i class="fa fa-check"></i>Data Files</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<h1 id="sponsors">Sponsors</h1>
+<center>
+<a href="https://oicr.on.ca/"><img src="img/sponsors/oicr.png" width=25% style="display:inline-block;" style="padding-bottom: 20px" alt="Ontario Institute for Cancer Research logo.">
+<a href="https://www.hpcforhealth.ca/"><img src="img/sponsors/hpc4health.png" width=60% style="display:inline-block;" style="padding-bottom: 20px "alt="HPC4Health logo.">
+<br><br>
+<a href="https://genomecanada.ca/"><img src="img/sponsors/genomecanada.png" height="70" style="display:inline-block;"  style="padding-bottom: 20px" alt="Genome Canada logo.">
+<a href="https://www.ontariogenomics.ca/"><img src="img/sponsors/ontariogenomics.png" height="70" style="display:inline-block;" style="padding-bottom: 20px;" alt="Ontario Genomics logo.">
+<br><br>
+<a href="https://www.cihr-irsc.gc.ca"><img src="img/sponsors/c3g.png" width=50% style="padding-bottom: 20px" alt="Canadian Centre for Computational Genomics logo."></a>
+<a href="https://computationalgenomics.ca/"><img src="img/sponsors/cihr.png" width=50% style="padding-bottom: 20px" alt="Canadian Institutes of Health Research logo."></a>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Infectious Disease Genomic Epidemiology 2024</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="module-2-de-novo-genome-assembly-and-annotation" class="section level1 hasAnchor">
+<h1>Module 2: De Novo Genome Assembly and Annotation<a href="module-2-de-novo-genome-assembly-and-annotation.html#module-2-de-novo-genome-assembly-and-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="lecture-1" class="section level2 hasAnchor">
+<h2>Lecture<a href="module-2-de-novo-genome-assembly-and-annotation.html#lecture-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/rM7O2iP6_B8?si=_0serPMrohFUuWSP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<p><br></p>
+<iframe src="https://drive.google.com/file/d/1seKqlAkoBZNdx7vD6dq4iGqNKOUZ2Oco/preview" width="640" height="480" allow="autoplay">
+</iframe>
+</div>
+<div id="lab" class="section level2 hasAnchor">
+<h2>Lab<a href="module-2-de-novo-genome-assembly-and-annotation.html#lab" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe src="https://drive.google.com/file/d/1ueHwJ72RZBwS_pnssPOePdVU8uyxSoeA/preview" width="640" height="480" allow="autoplay">
+</iframe>
+</div>
+<div id="integrative-assignment-1" class="section level2 hasAnchor">
+<h2>Integrative Assignment 1<a href="module-2-de-novo-genome-assembly-and-annotation.html#integrative-assignment-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>Created by: Venus Lau and Jimmy Liu</em></p>
+<div id="introduction" class="section level3 hasAnchor">
+<h3>Introduction<a href="module-2-de-novo-genome-assembly-and-annotation.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this integrative assignment, you will be applying some of the genomic epidemiology analysis methods covered in this workshop. The focus of the assignment will be on <em>Salmonella enterica</em>, an enteric pathogen that primarily spreads by human consumption of contaminated foods in Canada and the United States. Here, you will examine isolates of <em>Salmonella serovar</em> Heidelberg from three epidemiologically distinct foodborne outbreaks that occurred in Quebec, Canada between 2012-2014. For more detailed background on how the outbreaks happened, you are encouraged to read over the original publication by <a href="https://pubmed.ncbi.nlm.nih.gov/26582830/">Bekal et al. (2014)</a>. You will be analyzing the whole-genome sequencing (WGS) data generated from the study to investigate these foodborne outbreaks. Briefly, you will identify core genome single nucleotide variants (SNVs) from pre-assembled genomes, construct a core genome SNV phylogenetic tree and infer the evolutionary relationships of the isolates. In addition, you will annotate the bacterial genomes to detect the presence of various genetic features from this <em>Salmonella</em> outbreak dataset.</p>
+<p>The primary goal here is to integrate evidence from the phylogeny and genome annotations to justify which isolates are most likely epidemiologically linked (belong to the same outbreak).</p>
+<p>First, copy the assignment directory to your workspace on AWS:</p>
+<pre><code>cp -r ~/CourseData/IDE_data/integrated_assignment_1/ ~/workspace/
+cd ~/workspace/integrated_assignment_1</code></pre>
+<p>You can find the following files if you run the command <code>ls ~/workspace/integrated_assignment_1</code>:</p>
+<p>Assembled <em>Salmonella</em> genomes</p>
+<pre><code>~/workspace/integrated_assignment_1/assemblies</code></pre>
+<p>Reference sequence (Heidelberg str. SL476) for variant calling:</p>
+<pre><code>~/workspace/integraintegrated_assignment_1/reference</code></pre>
+<p>Metadata file</p>
+<pre><code>~/workspace/integrated_assignment_1/metadata.csv</code></pre>
+</div>
+<div id="required-tools" class="section level3 hasAnchor">
+<h3>Required Tools<a href="module-2-de-novo-genome-assembly-and-annotation.html#required-tools" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Snippy</li>
+<li>FastTree</li>
+<li>ABRicate</li>
+<li>R</li>
+</ul>
+</div>
+<div id="core-genome-snv-analysis" class="section level3 hasAnchor">
+<h3>Core Genome SNV Analysis<a href="module-2-de-novo-genome-assembly-and-annotation.html#core-genome-snv-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To minimize the analysis runtime required, the SNV calling step using Snippy has already been done and you are provided a core genome SNV alignment to construct a phylogenetic tree in the next section. Additionally, you are provided a summary file that describes the number of SNVs identified and alignment statistics for each sample.</p>
+<p>SNV and alignment summary is located at:</p>
+<pre><code>~/workspace/integrated_assignment_1/alignment/core_aln_stats.txt</code></pre>
+<p>Core genome alignment of the entire dataset is located at:</p>
+<pre><code>~/workspace/integrated_assignment_1/alignment/heidelberg_core.aln</code></pre>
+<p>Description of SNV alignment summary headers:</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Header</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ID</td>
+<td>Sample identifier</td>
+</tr>
+<tr class="even">
+<td>LENGTH</td>
+<td>Reference sequence length (bps)</td>
+</tr>
+<tr class="odd">
+<td>ALIGNED</td>
+<td>Reference sequence length aligned by query (bps)</td>
+</tr>
+<tr class="even">
+<td>UNALIGNED</td>
+<td>Reference sequence length not aligned by query (bps)</td>
+</tr>
+<tr class="odd">
+<td>VARIANT</td>
+<td>Number of variants identified</td>
+</tr>
+<tr class="even">
+<td>HET</td>
+<td>Number of heterozygous sites (mixed variants)</td>
+</tr>
+<tr class="odd">
+<td>MASKED</td>
+<td>Number of masked sites in reference sequence</td>
+</tr>
+<tr class="even">
+<td>LOWCOV</td>
+<td>Number of aligned sites with low depth of coverage</td>
+</tr>
+</tbody>
+</table>
+<p>Review the summary file and the core genome alignment, and answer the following questions:</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">1. What is the length of the alignment
+and how is this length determined?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>Isolates of the same outbreak are more phylogenetically related (higher sequence similarity) than isolates collected from different outbreaks</p>
+</div>
+</details>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">2. Which isolate has the most detected
+variants relative to the reference genome? Which has the
+least?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>Isolates of the same outbreak are more phylogenetically related (higher sequence similarity) than isolates collected from different outbreaks</p>
+</div>
+</details>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">3. Which statistics in the variant
+calling summary file might be useful for identifying outlier (poor
+quality) samples and why?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>Isolates of the same outbreak are more phylogenetically related (higher sequence similarity) than isolates collected from different outbreaks</p>
+</div>
+</details>
+</div>
+<div id="phylogenetic-analysis-visualization" class="section level3 hasAnchor">
+<h3>Phylogenetic Analysis &amp; Visualization<a href="module-2-de-novo-genome-assembly-and-annotation.html#phylogenetic-analysis-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here, you are tasked with using FastTree to construct a maximum likelihood tree from the core genome SNV alignment. When visualizing the phylogenetic tree, make note of any clustering patterns and which strains are closely/distantly related.</p>
+<p>To start, you will have to create your own environment with the needed tools (<code>FastTree</code>) and R packages (<code>r-tidyverse</code> and <code>r-ggpubr</code>). To do this you’ll use the following conda create command and then activate the environment:</p>
+<pre><code># Create command - 2 minutes
+conda create -n integrated-assignment-1 -c conda-forge -c bioconda fasttree r-tidyverse r-ggpubr --yes</code></pre>
+<div id="hints" class="section level4 hasAnchor">
+<h4>Hints<a href="module-2-de-novo-genome-assembly-and-annotation.html#hints" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Example <code>FastTree</code> usage: FastTree -nt sequence.aln &gt; tree.nwk. You’ll need to replace <code>sequence.aln</code> with the path to the correct alignment file</li>
+<li>Use the <code>ggtree</code> R package to generate a visualization of the phylogenetic tree (using your provided RStudio instance: <code>xx.uhn-hpc.ca:8080</code>, where <code>xx</code> is your assigned student number)</li>
+</ol>
+<div class="callout-blue">
+<span class="callout-icon"><i class="fas fa-circle-info" aria-hidden="true"></i></span>
+<div class="callout-content">
+<div class="callout-title-static" style="margin-bottom: 0.5em;">
+<p>Note</p>
+</div>
+<p><code>ggtree</code> is unavailable in your Rstudio session when you load it. Run the following commands to install and load it:</p>
+</div>
+</div>
+<pre><code>  if (!require(&quot;BiocManager&quot;, quietly = TRUE))
+    install.packages(&quot;BiocManager&quot;)
+  
+  # you can ignore if you get a warning message about the Bioconductor version
+  
+  BiocManager::install(&quot;ggtree&quot;)
+  library(ggtree)</code></pre>
+</div>
+<div id="helpful-starter-code" class="section level4 hasAnchor">
+<h4>Helpful Starter Code:<a href="module-2-de-novo-genome-assembly-and-annotation.html#helpful-starter-code" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<pre><code># make sure you are in the folder of the assignment
+
+#load files
+metadata&lt;-read.csv(&quot;metadata.csv&quot;)
+tree&lt;-read.tree(&quot;tree.nwk&quot;)</code></pre>
+</div>
+<div id="additional-tree-documentation" class="section level4 hasAnchor">
+<h4>Additional Tree Documentation:<a href="module-2-de-novo-genome-assembly-and-annotation.html#additional-tree-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Visualizing phylogenetic trees</li>
+<li>Adding metadata to your trees</li>
+</ol>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">4. What does the phylogenetic tree inform
+you about the relatedness of the isolates within the same outbreak and
+across different outbreaks?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>Isolates of the same outbreak are more phylogenetically related (higher sequence similarity) than isolates collected from different outbreaks</p>
+</div>
+</details>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">5. Do the isolates cluster by isolation
+source (e.g. Human, Food) or isolation date?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>Isolates tend to cluster by isolation date. ___</p>
+</div>
+</details>
+</div>
+</div>
+<div id="genome-annotation" class="section level3 hasAnchor">
+<h3>Genome Annotation<a href="module-2-de-novo-genome-assembly-and-annotation.html#genome-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Predicting genes and other functional elements (e.g. transcriptional elements, replication origins, mobile elements) can help explain the differences in biological, epidemiological, and ecological characteristics of microbial organisms. Genome annotations are also critical for risk assessments of infectious disease pathogens, as the detection of multiple antimicrobial resistance (AMR) or virulent genes are suggestive of high risks to public health or patient health that require immediate attention.</p>
+<p>Here, you will use a tool called <code>ABRicate</code> to search for the presence of plasmids, AMR genes and virulence factors (VF). You will need to search against three different nucleotide databases that contain reference sequences of curated elements. Once you have identified the genetic elements carried by the bacterial genomes, you will generate heatmaps to visualize the results and identify any correlations amongst within-outbreak strains and between-outbreak strains.</p>
+<p>But first, you must install the <code>ABRicate</code> tool into your conda environment to be able to use it:</p>
+<pre><code># Conda install - 1 minute
+conda install -c bioconda abricate --yes</code></pre>
+<div id="how-to-run-abricate" class="section level4 hasAnchor">
+<h4>How to Run <code>ABRicate</code>:<a href="module-2-de-novo-genome-assembly-and-annotation.html#how-to-run-abricate" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>Example ABRicate usage: <code>abricate --db db_name contigs.fa &gt; report.tab</code></li>
+<li>The main parameter, <code>--db</code> specifies which database you would like to search against. There are different databases for different genetic elements. You can find the list of pre-downloaded sequence databases by executing: <code>abricate --list</code></li>
+<li>To search for AMR genes, virulence factors, and plasmids, the database names are <code>card</code>, <code>vfdb</code>, and <code>plasmidfinder</code>, respectively</li>
+<li>Once you have generated the required ABRicate outputs for all <em>Salmonella</em> genomes, combine the results of all genomes by executing:</li>
+</ul>
+<pre><code>abricate --summary /path/to/amr_results_dir/*.tab &gt; amr_summary.tab</code></pre>
+</div>
+<div id="how-to-visualize-abricate-summary-results" class="section level4 hasAnchor">
+<h4>How to Visualize ABRicate Summary Results<a href="module-2-de-novo-genome-assembly-and-annotation.html#how-to-visualize-abricate-summary-results" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>If you feel like challenging yourself with data visualization using R, then feel free to skip the instructions in this section and proceed to write your own codes in RStudio to plot the heatmaps.</li>
+<li>To help with results visualization, we have prepared a R script to generate heatmap plots directly from ABRicate summary results:</li>
+</ul>
+<pre><code># Clone the IDE2021_integrated_hw GitHub repository to your current working directory
+git clone https://github.com/jimmyliu1326/IDE2021_integrated_hw
+# Inside the cloned repository, you will find a script called `abricate_heatmap.R`
+# Example usage of the script
+Rscript abricate_heatmap.R /path/to/amr_summary.tab /path/to/amr_heatmap.png</code></pre>
+</div>
+<div id="hints-1" class="section level4 hasAnchor">
+<h4>Hints:<a href="module-2-de-novo-genome-assembly-and-annotation.html#hints-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>You can only query one genome against one database at a time (How would you automate the search for multiple genomes?)</li>
+<li>For each database (card, vfdb, plasmidfinder), organize the annotation results in a different directory</li>
+</ol>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">6. Can you infer which isolates are
+epidemiologically linked and which isolates are sporadic cases based on
+the presence/absence of the plasmids?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>Yes, the pattern of presence/absence of plasmids is distinct in each outbreak.</p>
+</div>
+</details>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">7. Do you see the same trend with AMR
+genes or virulence factors?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>No, the majority of isolates, regardless of the outbreak of origin, exhibit the same trend in virulence factors and AMR genes.</p>
+</div>
+</details>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">8. Looking at the AMR heatmap, which
+samples likely contain AMR genes encoded on plasmids and how would you
+verify this looking at ABRicate results?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>SH14-009 and SH08-001, because the heatmaps show that they carry 1-2 unique AMR genes that are not present in any other genomes in the dataset. Furthermore, in the plasmids heatmap, we also observe that SH14-009 and SH08-001 carry unique plasmids; hence the unqiue AMR genes are most likely encoded by these unique plasmids.</p>
+<p>To verify this, we first identify the contig name associated with the unique plasmids from the invidiual abricate results. For example, based on the plasmids heatmap, we observe that SH14-009 carries the unique plasmid, IncI1_1_Alpha.</p>
+<p>Running: <code>grep IncI_1_Alpha abricate/plasmids/SH14-009.tab</code>, we find that the unique plasmid is associated with the contig name, CP016585.1</p>
+<p>Subsequently, we can search in the AMR results of SH14-009 to identify AMR genes that are present in the contig CP016585.1 by running <code>grep CP016585.1 abricate/amr/SH14-009.tab</code>. And indeed, we find that the contig contains two AMR genes: AAC(3)-VIa and ANT(3’’)-IIa, which in fact are the two AMR genes unique to SH14-009!</p>
+</div>
+</details>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">9. Aside from plasmids, AMR genes and VF,
+can you think of other genetic features in bacterial genomes that may
+help discriminate between these outbreaks?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>CRISPR arrays, insertional elements, genomic Islands, phage elements, integrative conjugative elements</p>
+</div>
+</details>
+</div>
+</div>
+</div>
+<div id="integrative-assignment-2" class="section level2 hasAnchor">
+<h2>Integrative Assignment 2<a href="module-2-de-novo-genome-assembly-and-annotation.html#integrative-assignment-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="introduction-1" class="section level3 hasAnchor">
+<h3>Introduction<a href="module-2-de-novo-genome-assembly-and-annotation.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In late 2021, South Africa experienced a resurgence in SARS-CoV-2 cases that was accompanied by an increase of Spike-gene diagnostic assay PCR failures. This specific diagnostic characteristic was associated with the earlier Alpha Variant of Concern (VOC) and not of the currently circulating Delta VOC. Due to this, a targeted sequencing effort was initiated to investigate this unusual variant. A new, genetically distinct lineage was quickly identified. Cases linked to this lineage rapidly increased in both South Africa and subsequently worldwide with it being designated as a new WHO VOC called Omicron in under 10 days from the initial sequencing result. You are interested in performing a genomic epidemiological investigation of the source, evolutionary relationship, and genetic characteristics of this newly emergent lineage. To do this, you have randomly sampled a small subset of the global diversity of SARS-CoV-2 lineages hosted on <a href="https://gisaid.org/">GISAID</a> from the onset of the pandemic until early 2022 supplemented with a subset of the first reported Omicron sequences from both South Africa and Canada.</p>
+<p>Important terms on variant typing of the SARS-CoV-2 virus:</p>
+<ul>
+<li>Pango Lineage / Lineage: Variant type called using the <a href="https://cov-lineages.org/index.html#about">Pangolin</a> tool which provides a finely-detailed nomenclature on the input genome based on all of the currently designated lineages.</li>
+<li>Nextstrain Clade / Clade: Variant typing called using the <a href="https://nextstrain.org/">Nextstrain</a> naming guidelines/tools. These clades are a bit more relaxed than the Pangolin lineages with the aim to new clades created by significant differences in biological impact or circulation patterns.</li>
+<li>WHO Variants of Concern: Variants designated by the WHO and given an easy to say greek alphabet label</li>
+</ul>
+<p>This integrated assignment will focus on the genomic epidemiological analysis of the emergence of the SARS-CoV-2 VOC Omicron using tools and methods covered in the other modules of the course. Once finished the assignment, check out the published paper on the epidemiological investigation of early Omicron from South Africa:</p>
+<div class="callout-yellow-subtle">
+<span class="callout-icon"><i class="fas fa-bell" aria-hidden="true"></i></span>
+<div class="callout-content">
+<div class="callout-title-static" style="margin-bottom: 0.5em;">
+<p>Published Paper</p>
+</div>
+<p>Viana, R., Moyo, S., Amoako, D.G. et al. Rapid epidemic expansion of the SARS-CoV-2 Omicron variant in southern Africa. Nature 603, 679–686 (2022). <a href="https://doi.org/10.1038/s41586-022-04411-y" class="uri">https://doi.org/10.1038/s41586-022-04411-y</a></p>
+</div>
+</div>
+</div>
+<div id="list-of-software-utilized" class="section level3 hasAnchor">
+<h3>List of Software Utilized<a href="module-2-de-novo-genome-assembly-and-annotation.html#list-of-software-utilized" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><a href="https://docs.nextstrain.org/projects/augur/en/stable/index.html">Augur</a>
+<ul>
+<li><a href="https://mafft.cbrc.jp/alignment/software/">mafft</a></li>
+<li><a href="https://iqtree.github.io/">iqtree</a></li>
+<li><a href="https://treetime.readthedocs.io/en/latest/">timetree</a></li>
+</ul></li>
+<li><a href="https://auspice.us/">Auspice</a></li>
+<li><a href="https://clades.nextstrain.org/">Nextclade</a></li>
+<li><a href="https://github.com/phac-nml/rebar">Rebar</a></li>
+</ul>
+<p>The workshop machines already have this software installed within a conda environment called <code>integrated-assignment-2</code>.</p>
+</div>
+<div id="assignment-setup" class="section level3 hasAnchor">
+<h3>Assignment Setup<a href="module-2-de-novo-genome-assembly-and-annotation.html#assignment-setup" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="copy-data-files" class="section level4 hasAnchor">
+<h4>Copy Data Files<a href="module-2-de-novo-genome-assembly-and-annotation.html#copy-data-files" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To begin, we will copy over the assignment files to <code>~/workspace</code>.</p>
+<div id="commands" class="section level5 hasAnchor">
+<h5>Commands<a href="module-2-de-novo-genome-assembly-and-annotation.html#commands" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<pre><code>cp -r ~/CourseData/IDE_data/integrated_assignment_2/data/ ~/workspace/integrated_assignment_2
+cd ~/workspace/integrated_assignment_2</code></pre>
+<p>This will copy over the 3 files that you need to do the assignment, which you can check with <code>ls</code> and should give:</p>
+<pre><code>metadata.tsv  selected_sequences.fasta  sequences.fasta</code></pre>
+</div>
+</div>
+<div id="activate-environment" class="section level4 hasAnchor">
+<h4>Activate Environment<a href="module-2-de-novo-genome-assembly-and-annotation.html#activate-environment" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Activate the conda environment <code>integrated-assignment-2</code> which has all of the tools used in this assignment.</p>
+</div>
+<div id="verify-your-workshop-machine-url" class="section level4 hasAnchor">
+<h4>Verify your Workshop Machine URL<a href="module-2-de-novo-genome-assembly-and-annotation.html#verify-your-workshop-machine-url" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>This exercise will produce output files intended to be viewed in a web browser. These should be accessible by going to <a href="http://xx.uhn-hpc.ca" class="uri">http://xx.uhn-hpc.ca</a> in your web browser where <strong>xx</strong> is your particular number (like 01, 02, etc.).</p>
+</div>
+</div>
+<div id="phylogenetic-construction" class="section level3 hasAnchor">
+<h3>Phylogenetic Construction<a href="module-2-de-novo-genome-assembly-and-annotation.html#phylogenetic-construction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As seen previously in Module 8, we are going to construct a phylogenetic tree using the <code>Augur</code> tool suite, this time with a set of global SARS-CoV-2 sequences and their associated metadata subsampled from GISAID. Revisit that module to refamiliarize yourself with the commands if needed! You can also run <code>COMMAND --help</code> to gain more information on the parameters associated with each of the tools used. The structure of this section has all of the full commands hidden by default so you can practice constructing your own commands. It will take around 10 minutes total for the commands to execute.</p>
+<div class="callout-orange">
+<span class="callout-icon"><i class="fas fa-fire" aria-hidden="true"></i></span>
+<div class="callout-content">
+<div class="callout-title-static" style="margin-bottom: 0.5em;">
+<p>Tip</p>
+</div>
+<p>When running through the assignment, remember to keep track of what you name your output files as each step builds off of the previously generated output files. If you are figuring out your own commands and comparing them to the full given commands there will likely be differences in these parameter inputs!</p>
+</div>
+</div>
+<div class="callout-blue">
+<span class="callout-icon"><i class="fas fa-circle-info" aria-hidden="true"></i></span>
+<div class="callout-content">
+<div class="callout-title-static" style="margin-bottom: 0.5em;">
+<p>Note</p>
+</div>
+<p>There are some potential differences that can occur in the final tree topology due to the random seeding of the initial parsimony trees and the small number of iterations run (not running any bootstrapping). To enforce a common tree topology, we are going to use a fixed seed of <code>100</code> when building the trees.</p>
+</div>
+</div>
+<div id="step-1-construct-a-multiple-sequence-alignment" class="section level4 hasAnchor">
+<h4>Step 1: Construct a Multiple Sequence Alignment<a href="module-2-de-novo-genome-assembly-and-annotation.html#step-1-construct-a-multiple-sequence-alignment" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Using <code>augur align</code> and the <code>--reference-name Wuhan-Hu-1/2019</code> reference sequence that is found in the given <code>sequences.fasta</code> file, construct a multiple sequence alignment using four threads.</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">Command and Parameters</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>Command:</p>
+<pre><code># 1. Align with Augur using mafft - 2 min
+augur align \
+  --nthreads 4 \
+  --sequences sequences.fasta \
+  --reference-name &#39;Wuhan-Hu-1/2019&#39; \
+  --output aligned.fasta</code></pre>
+<p>Parameters:</p>
+<pre><code>--nthreads 4: Use 4 threads for the alignment
+--sequences sequences.fasta: Input set of sequences including the reference in fasta format
+--reference-name &#39;Wuhan-Hu-1/2019&#39;: The reference Wuhan-1 genome identifier found in our sequences file to remove insertions relative to
+--output aligned.fasta: Output alignment file in fasta format  </code></pre>
+</div>
+</details>
+</div>
+<div id="step-2-build-a-maximum-likelihood-phylogenetic-tree" class="section level4 hasAnchor">
+<h4>Step 2: Build a Maximum Likelihood Phylogenetic Tree<a href="module-2-de-novo-genome-assembly-and-annotation.html#step-2-build-a-maximum-likelihood-phylogenetic-tree" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Next, using <code>augur tree</code> and your newly generated multiple sequence alignment with <code>--alignment</code>, construct a maximum likelihood tree. Include the <code>--tree-builder-args "-seed 100"</code> parameter in your command to keep all assignment trees matching, and remember that output trees should be formatted in the newick format with the <code>.nwk</code> extension. Use four threads.</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">Command and Parameters</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>Command:</p>
+<pre><code># 2. Build Maximum Likelihood Phylogenetic Tree with Augur using iqtree2 - 40 sec
+augur tree \
+  --nthreads 4 \
+  --alignment aligned.fasta \
+  --tree-builder-args &quot;-seed 100&quot; \
+  --output tree.nwk</code></pre>
+<p>Parameters:</p>
+<pre><code>--nthreads 4: Use 4 threads for building the ML tree
+--alignment aligned.fasta`: Input multiple sequence alignment file from the previous step
+--tree-builder-args &quot;-seed 100&quot;: Seed given to iqtree to keep all output tree topology the same
+--output tree.nwk: Output phylogenetic tree in newick format</code></pre>
+</div>
+</details>
+</div>
+<div id="step-3-infer-time-tree" class="section level4 hasAnchor">
+<h4>Step 3: Infer Time Tree<a href="module-2-de-novo-genome-assembly-and-annotation.html#step-3-infer-time-tree" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The next step is to infer a time tree using the <code>augur refine --timetree</code> command along with your multiple sequence alignment (<code>--alignment</code>), provided metadata, and newly generated maximum likelihood <code>--tree</code> newick file.</p>
+<div class="callout-orange">
+<span class="callout-icon"><i class="fas fa-fire" aria-hidden="true"></i></span>
+<div class="callout-content">
+<div class="callout-title-static" style="margin-bottom: 0.5em;">
+<p>Tip</p>
+</div>
+<p>This is a long command; remember to add in the following parameters:</p>
+<ul>
+<li>Root your tree with the Wuhan 1 reference <code>--root 'Wuhan-Hu-1/2019'</code></li>
+<li>Set your divergence units for visualizing later on <code>--divergence-units mutations</code></li>
+<li>Set both of your output files <code>--output-tree timetree.nwk</code> and <code>--output-node-data branch_lengths.json</code></li>
+<li>Add in the <code>--seed 100</code> parameter</li>
+</ul>
+</div>
+</div>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">Command and Parameters</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>Command:</p>
+<pre><code># 3. Build time tree with Augur using timetree - 4 min
+augur refine \
+  --timetree \
+  --tree tree.nwk \
+  --alignment aligned.fasta \
+  --metadata metadata.tsv \
+  --root &#39;Wuhan-Hu-1/2019&#39; \
+  --divergence-units mutations \
+  --output-tree timetree.nwk \
+  --output-node-data branch_lengths.json \
+  --seed 100</code></pre>
+<p>Parameters:</p>
+<pre><code>--timetree: Specify that augur refine should build a time tree
+--tree tree.nwk: Input newick tree build using iqtree
+--alignment aligned.fasta: Input multiple sequence alignment from augur align
+--metadata metadata.tsv: Input metadata file containing the sequence names (column: `strain`) and collection dates (column: `date`)
+--root &#39;Wuhan-Hu-1/2019&#39;: Keep the Wuhan-1 reference genome as the root of the tree
+--divergence-units mutations: Convert the branch lengths to mutations for visualizing later on
+--output-tree timetree.nwk: Output time tree newick file
+--output-node-data branch_lengths.json: Output file to write branch lengths as node data
+--seed 100: Seed given to be used instead to keep tree topologies the same</code></pre>
+</div>
+</details>
+</div>
+<div id="step-4-infer-ancestral-states-for-lineagesclades" class="section level4 hasAnchor">
+<h4>Step 4: Infer Ancestral States for Lineages/Clades<a href="module-2-de-novo-genome-assembly-and-annotation.html#step-4-infer-ancestral-states-for-lineagesclades" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Next, we are going to infer ancestral traits for the different typing schemes found in the <code>metadata.tsv</code> file. To do this, use the <code>augur traits</code> command along with the newly created <code>timetree</code> and the desired columns from the metadata file. The output should be set with <code>--output-node-data</code>.</p>
+<p>The <code>--columns</code> to use are:</p>
+<ul>
+<li><code>clade_who</code>: The WHO designated clade (or blank if the sample is not in a WHO clade)</li>
+<li><code>clade_nextstrain</code>: The clade designated by Nextstrain</li>
+<li><code>pangolin_lineage</code>: The lineage assigned by the Pangolin lineage assignment pipeline
+Command and Parameters
+Step 5. Export for visualization
+Finally, export your visualization as an Auspice JSON file using augur export v2. The export command below should work if you have been using the names in the commands provided for you; otherwise, you may have to adjust the input file names for the –tree and –node-data arguments.</li>
+</ul>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">Command and Parameters</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>Command:</p>
+<pre><code># 4. Infer ancestral node traits for given columns - 20 seconds
+augur traits \
+  --tree timetree.nwk \
+  --metadata metadata.tsv \
+  --columns clade_who pangolin_lineage clade_nextstrain \
+  --output-node-data node_traits.json</code></pre>
+<p>Parameters:</p>
+<pre><code>--tree timetree.nwk: Input time tree created with augur refine
+--metadata metadata.tsv: Input metadata file with the information we have to infer ancestral states with
+--columns clade_who pangolin_lineage clade_nextstrain: The columns in the metadata file to use for inference 
+--output-node-data node_traits.json: Output file to write trait inferences to</code></pre>
+</div>
+</details>
+</div>
+<div id="step-5-export-for-visualization" class="section level4 hasAnchor">
+<h4>Step 5: Export for Visualization<a href="module-2-de-novo-genome-assembly-and-annotation.html#step-5-export-for-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Finally, export your visualization as an Auspice JSON file using <code>augur export v2</code>. The export command below should work if you have been using the names in the commands provided for you; otherwise, you may have to adjust the input file names for the <code>--tree</code> and <code>--node-data</code> arguments.</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">Command and Parameters</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>Command:</p>
+<pre><code># 5. Export tree to auspice json file - 20 sec
+augur export v2 \
+  --tree timetree.nwk \
+  --node-data branch_lengths.json node_traits.json \
+  --maintainers &quot;CBW-IDE-2024&quot; \
+  --title &quot;Integrated Assignment 2&quot; \
+  --output auspice.json</code></pre>
+<p>Parameters:</p>
+<pre><code>--tree timetree.nwk: Input time tree created with augur refine
+--node-data branch_lengths.json node_traits.json: Input node data json files created in step 3 (branch length) and step 4 (traits)
+--maintainers &quot;CBW-IDE-2024&quot;: Maintainer name to be displayed by auspice. Can be whatever you like
+--title &quot;Integrated Assignment 2&quot;: Title to be displayed by auspice. Can be whatever you would like
+--output auspice.json: Output JSON file to be used in auspice for visualization and tree exploration</code></pre>
+</div>
+</details>
+</div>
+<div id="phylogenetic-visualization-and-analysis-questions" class="section level4 hasAnchor">
+<h4>Phylogenetic Visualization and Analysis Questions<a href="module-2-de-novo-genome-assembly-and-annotation.html#phylogenetic-visualization-and-analysis-questions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Visualize the tree using auspice to help answer the following questions.</p>
+</div>
+<div id="step-1-load-data-into-auspice" class="section level4 hasAnchor">
+<h4>Step 1: Load Data into Auspice<a href="module-2-de-novo-genome-assembly-and-annotation.html#step-1-load-data-into-auspice" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Download the ouput Auspice JSON file and the <code>metadata.tsv</code> file by right-clicking <code>Save link as...</code>.</p>
+<p>Go to <a href="https://auspice.us/" class="uri">https://auspice.us/</a> and drag and drop in the saved JSON file and the <code>metadata.tsv</code> file to visualize your created phylogenetic tree with metadata. Spend a bit exploring the tree and seeing where all of the clades are along with how the branch lengths compare when visualized by both <code>Time</code> and <code>Divergence</code>.</p>
+</div>
+<div id="step-2-answer-the-following-questions-using-the-visualization-and-prompts" class="section level4 hasAnchor">
+<h4>Step 2: Answer the Following Questions Using the Visualization and Prompts<a href="module-2-de-novo-genome-assembly-and-annotation.html#step-2-answer-the-following-questions-using-the-visualization-and-prompts" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Looking at the time phylogeny, find both Omicron and Delta on the tree (hint: Colour by “clade_who”). Noting that Omicron emerged when the Delta lineages were prevalent globally, from the phylogeny:</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">1. What can you infer about the
+relationship between the Delta and Omicron variants?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">2. What is the lineage of the most recent
+common ancestor (MRCA) of both Delta and Omicron? (hint: Remember
+lineage is from Pangolin. Colour the tree by
+“pangolin_lineage”)</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+<p>Next, zoom in on the Omicron clade.</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">3. Based on your tree, where and when was
+the first Omicron case identified? Is there enough evidence in our tree
+to say this is where Omicron emerged? (Hint: Label tips by country,
+click on the nodes, explore around)</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+<p>The emergence of Omicron was characterized by three distinct lineages that were all detected at roughly the same time in the order of: <code>BA.1</code>, <code>BA.2</code>, and then <code>BA.3</code>.</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">4. When was the MRCA of all 3 of the
+Omicron lineages (BA.1, BA.2, and BA.3) predicted to be? What about BA.2
+and BA.3?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">5. What does this tell you about the
+diversification of the Omicron VOC prior to its detection in the
+population?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+<p>Zooming back out, the Omicron clade has an unusually long branch length back to its most recent common ancestor suggesting a period of unsampled diversification of before its emergence.</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">6. Which lineage does Omicron appear to
+have diverged from?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">7. How long a period of unsampled
+diversity do you estimate for the Omicron VOC based on the inferred
+dates?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">8. Based on all of the previous answers,
+what hypotheses for the emergence of Omicron are consistent with your
+observations? Is there anything about the country of origin that
+suggests one hypothesis over another?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+<p>Now, set the branch length from <code>Time</code> to <code>Divergence</code> and view the tree in a <code>Radial</code> layout. Colour by <code>who_clade</code>.</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">9. Do any of the other WHO VOCs (alpha,
+beta, gamma, delta) show a similar phylogenetic emergence structure to
+that of Omicron? What, if anything, can you conclude about the emergence
+of VOCs?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+</div>
+</div>
+<div id="nextclade-analysis" class="section level3 hasAnchor">
+<h3>Nextclade Analysis<a href="module-2-de-novo-genome-assembly-and-annotation.html#nextclade-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You are looking to explore the different molecular profiles of the VOCs by analysing and visualizing them using <a href="https://clades.nextstrain.org/">nextclade</a> and comparing them to Omicron. Nextclade is a tool that performs genetic sequence alignment, clade assignment, mutation calling, phylogenetic placement, and quality checks for different viral pathogens. It can be run either on the command line or locally in your browser (no data leaves your computer!) Remember to keep your auspice tree open to assist in analyzing the VOCs.</p>
+<p>The WHO VOCs are:</p>
+<ul>
+<li>Alpha</li>
+<li>Beta</li>
+<li>Gamma</li>
+<li>Delta</li>
+<li>Omicron</li>
+</ul>
+<div id="step-1" class="section level4 hasAnchor">
+<h4>Step 1:<a href="module-2-de-novo-genome-assembly-and-annotation.html#step-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Download the <code>selected_sequences.fasta</code> file to your computer and then load it into nextclade by dragging it into your browser. Then set the dataset to the official <code>SARS-CoV-2</code> dataset and click run.</p>
+</div>
+<div id="step-2-using-nextclade-answer-the-following-questions" class="section level4 hasAnchor">
+<h4>Step 2: Using Nextclade, Answer the Following Questions<a href="module-2-de-novo-genome-assembly-and-annotation.html#step-2-using-nextclade-answer-the-following-questions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Nextclade will show the distribution of mutations along either specific genes or over the whole genome with the default view being set to show mutations in the Spike protein.</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">10. The TaqPath three-gene RT-PCR assay
+for SARS-CoV-2 experienced diagnostic failures for Alpha due to the
+69-70del mutation in one of the assay primers. This assay failed in the
+same target in some of the the initial Omicron lineages. Based on the
+nextclade visualization, which lineage(s) contain this
+mutation?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+<p>Change the view from the default of spike to the ‘Nucleotide sequence’ option to view the full distribution of mutations across the genome</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">11. Can you find any other mutations in
+Omicron that are common to the other VOCs? Given the phylogenetic
+relationship of the VOCs, can you provide a hypothesis for your
+observation of common mutations between them?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">12. In which gene(s) are the mutations of
+the VOCs concentrated? Why is this the case?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+</div>
+</div>
+<div id="recombination-analysis" class="section level3 hasAnchor">
+<h3>Recombination Analysis<a href="module-2-de-novo-genome-assembly-and-annotation.html#recombination-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>With both of the Delta and Omicron VOCs circulating in the population at the same time in December 2021, there was ample opprotunity for co-infections to occur with a high probability of recombination events happening. This lead to the first “deltacron” recombinat being identified in France in January 2022. Recombinant SARS-CoV-2 sequences consist of genomic elements from two different lineages/variants with one or more breakpoints in which the recombination occured.</p>
+<p>To identify potential recombinants and breakpoints, we are going to use the tool <code>rebar</code> that follows the <a href="https://github.com/pha4ge/pipeline-resources/blob/main/docs/sc2-recombinants.md">PHA4GE Guidance for Detecting and Characterizing SARS-CoV-2 Recombinants</a> for detecting and visualizing SARS-CoV-2 recombination.</p>
+<div id="step-1-download" class="section level4 hasAnchor">
+<h4>Step 1: Download<a href="module-2-de-novo-genome-assembly-and-annotation.html#step-1-download" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>First, we have to download a version controlled SARS-CoV-2 dataset for rebar to be able to detect breakpoints and recombinants. For more information on what is contained in a dataset, checkout the <a href="https://github.com/phac-nml/rebar/blob/main/docs/dataset.md">rebar dataset page</a>. As a quick introduction though, the dataset directory consists minimally of:</p>
+<ol style="list-style-type: decimal">
+<li>The Wuhan-1 reference genome</li>
+<li>Population fasta file with known clades/lineages aligned to the reference</li>
+</ol>
+<p>To download the required dataset to be able to detect recombinants, you will have to use the <code>rebar dataset download</code> command. This command requires an input dataset name (<code>--name sars-cov-2</code>), an input date tag, which we will use <code>--tag 2023-11-30</code> for, and an <code>--output-dir</code> to save the dataset to. Remember, you can almost always run <code>TOOL --help</code> to get more info on how to run a tool.</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">Command and Parameters</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>Command:</p>
+<pre><code>Command:
+# 1. Download dataset to run rebar - 10 sec
+rebar dataset download \
+  --name sars-cov-2 \
+  --tag 2023-11-30 \
+  --output-dir dataset/2023-11-30</code></pre>
+<p>Parameters:</p>
+<pre><code>--name sars-cov-2: Input dataset name to grab
+--tag 2023-11-30: Input date tag for the dataset
+--output-dir dataset/2023-11-30: Output directory name to save the dataset to</code></pre>
+</div>
+</details>
+</div>
+<div id="step-2-run" class="section level4 hasAnchor">
+<h4>Step 2: Run<a href="module-2-de-novo-genome-assembly-and-annotation.html#step-2-run" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Next, run the <code>rebar run</code> command using the newly created <code>--dataset-dir</code> and your initial aligned fasta file (<code>--alignment</code>) to begin the process of detecting any potential recombinant genomes in our input sequences. Output data again should be saved to a specified <code>--output-dir</code>.</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">Command and Parameters</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>Command:</p>
+<pre><code># 2. Run rebar detection - 2 minutes
+rebar run \
+  --dataset-dir dataset/2023-11-30 \
+  --alignment aligned.fasta \
+  --output-dir rebar_recombination</code></pre>
+<p>Parameters:</p>
+<pre><code>--dataset-dir dataset/2023-11-30: Input SARS-CoV-2 dataset downloaded in the prior step
+--alignment aligned.fasta: Input aligned fasta file all the way back from augur align
+--output-dir rebar_recombination: Output directory for rebar to save to</code></pre>
+</div>
+</details>
+</div>
+<div id="step-3-plot" class="section level4 hasAnchor">
+<h4>Step 3: Plot<a href="module-2-de-novo-genome-assembly-and-annotation.html#step-3-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Finally, run <code>rebar plot</code> to create visualizations of the potential recombinants detected using the previous output <code>--run-dir</code> and the <code>--annotations</code> file found in your downloaded rebar dataset from step 1 (hint: This file is called <code>annotations.tsv</code>).</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">Command and Parameters</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+<p>Command:</p>
+<pre><code>Command:
+# 3. Plot rebar detections - 5 sec
+rebar plot \
+  --run-dir rebar_recombination \
+  --annotations dataset/2023-11-30/annotations.tsv</code></pre>
+<p>Parameters:</p>
+<pre><code>--run-dir rebar_recombination: Input directory containing rebar run results to be used for plotting
+--annotations dataset/2023-11-30/annotations.tsv: Input annotations file containing a table of genome annotations to add to the plot</code></pre>
+</div>
+</details>
+</div>
+<div id="questions" class="section level4 hasAnchor">
+<h4>Questions<a href="module-2-de-novo-genome-assembly-and-annotation.html#questions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Now view the PNG images produced by Rebar (found in <code>rebar_recombination/plots</code>) and answer the following questions for the <code>XB</code>, <code>XD</code>, and <code>XF</code> recombinants detected:</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">13. What lineages comprise the
+recombinant?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">14. In which genes do recombination break
+points occur?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+<p>With the knowledge of which samples were detected as recombinants along with which lineages make up their recombination, look back at the time tree and find the detected recombinant samples (hint: Colour by who_clade).</p>
+<details class="callout-dropdown callout-subtle callout-gray-subtle">
+<summary class="callout-dropdown-summary"><span
+class="callout-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span
+class="callout-dropdown-title">15. Where do the the XD and XF
+recombinant samples place on the phylogeny? Are they located where you’d
+expect based on their components? Would you expect their placement to be
+accurate?</span><span
+class="callout-dropdown-caret"><i class="fas fa-chevron-right" aria-hidden="true"></i></span></summary>
+<div class="callout-dropdown-content">
+
+</div>
+</details>
+</div>
+</div>
+<div id="answer-key" class="section level3 hasAnchor">
+<h3>Answer Key<a href="module-2-de-novo-genome-assembly-and-annotation.html#answer-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe src="https://drive.google.com/file/d/1XfBZ20cuT4kp7I97-YLNd3DbWGAf_2x4/preview" width="640" height="480" allow="autoplay">
+</iframe>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="module-1-introduction-to-genomic-epidemiology.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="module-3-data-curation-and-data-sharing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/cbw-dev/IDE-2024/blob/main/020-module-2.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

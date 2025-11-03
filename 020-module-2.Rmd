@@ -1,0 +1,689 @@
+# Module 2: De Novo Genome Assembly and Annotation
+
+## Lecture
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/rM7O2iP6_B8?si=_0serPMrohFUuWSP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<br>
+
+<iframe src="https://drive.google.com/file/d/1seKqlAkoBZNdx7vD6dq4iGqNKOUZ2Oco/preview" width="640" height="480" allow="autoplay"></iframe>
+
+## Lab
+
+<iframe src="https://drive.google.com/file/d/1ueHwJ72RZBwS_pnssPOePdVU8uyxSoeA/preview" width="640" height="480" allow="autoplay"></iframe>
+
+## Integrative Assignment 1
+
+*Created by: Venus Lau and Jimmy Liu*
+
+### Introduction
+
+In this integrative assignment, you will be applying some of the genomic epidemiology analysis methods covered in this workshop. The focus of the assignment will be on *Salmonella enterica*, an enteric pathogen that primarily spreads by human consumption of contaminated foods in Canada and the United States. Here, you will examine isolates of *Salmonella serovar* Heidelberg from three epidemiologically distinct foodborne outbreaks that occurred in Quebec, Canada between 2012-2014. For more detailed background on how the outbreaks happened, you are encouraged to read over the original publication by [Bekal et al. (2014)](https://pubmed.ncbi.nlm.nih.gov/26582830/). You will be analyzing the whole-genome sequencing (WGS) data generated from the study to investigate these foodborne outbreaks. Briefly, you will identify core genome single nucleotide variants (SNVs) from pre-assembled genomes, construct a core genome SNV phylogenetic tree and infer the evolutionary relationships of the isolates. In addition, you will annotate the bacterial genomes to detect the presence of various genetic features from this *Salmonella* outbreak dataset.
+
+The primary goal here is to integrate evidence from the phylogeny and genome annotations to justify which isolates are most likely epidemiologically linked (belong to the same outbreak).
+
+First, copy the assignment directory to your workspace on AWS:
+
+```{}
+cp -r ~/CourseData/IDE_data/integrated_assignment_1/ ~/workspace/
+cd ~/workspace/integrated_assignment_1
+```
+
+You can find the following files if you run the command `ls ~/workspace/integrated_assignment_1`:
+
+Assembled *Salmonella* genomes
+
+```{}
+~/workspace/integrated_assignment_1/assemblies
+```
+
+Reference sequence (Heidelberg str. SL476) for variant calling:
+
+```{}
+~/workspace/integraintegrated_assignment_1/reference
+```
+
+Metadata file
+
+```{}
+~/workspace/integrated_assignment_1/metadata.csv
+```
+
+### Required Tools
+
+- Snippy
+- FastTree
+- ABRicate
+- R
+
+### Core Genome SNV Analysis
+
+To minimize the analysis runtime required, the SNV calling step using Snippy has already been done and you are provided a core genome SNV alignment to construct a phylogenetic tree in the next section. Additionally, you are provided a summary file that describes the number of SNVs identified and alignment statistics for each sample.
+
+SNV and alignment summary is located at:
+
+```{}
+~/workspace/integrated_assignment_1/alignment/core_aln_stats.txt
+```
+
+Core genome alignment of the entire dataset is located at:
+
+```{}
+~/workspace/integrated_assignment_1/alignment/heidelberg_core.aln
+```
+
+Description of SNV alignment summary headers:
+
+| **Header** | **Description**                                      |
+|------------|------------------------------------------------------|
+| ID         | Sample identifier                                    |
+| LENGTH     | Reference sequence length (bps)                      |
+| ALIGNED    | Reference sequence length aligned by query (bps)     |
+| UNALIGNED  | Reference sequence length not aligned by query (bps) |
+| VARIANT    | Number of variants identified                        |
+| HET        | Number of heterozygous sites (mixed variants)        |
+| MASKED     | Number of masked sites in reference sequence         |
+| LOWCOV     | Number of aligned sites with low depth of coverage   |
+
+Review the summary file and the core genome alignment, and answer the following questions:
+
+:::: {.callout type="gray" title="1. What is the length of the alignment and how is this length determined?" style="subtle" icon="true" collapsible="true"}
+
+Isolates of the same outbreak are more phylogenetically related (higher sequence similarity) than isolates collected from different outbreaks
+
+::::
+
+:::: {.callout type="gray" title="2. Which isolate has the most detected variants relative to the reference genome? Which has the least?" style="subtle" icon="true" collapsible="true"}
+
+Isolates of the same outbreak are more phylogenetically related (higher sequence similarity) than isolates collected from different outbreaks
+
+::::
+
+:::: {.callout type="gray" title="3. Which statistics in the variant calling summary file might be useful for identifying outlier (poor quality) samples and why?" style="subtle" icon="true" collapsible="true"}
+
+Isolates of the same outbreak are more phylogenetically related (higher sequence similarity) than isolates collected from different outbreaks
+
+::::
+
+### Phylogenetic Analysis & Visualization
+
+Here, you are tasked with using FastTree to construct a maximum likelihood tree from the core genome SNV alignment. When visualizing the phylogenetic tree, make note of any clustering patterns and which strains are closely/distantly related.
+
+To start, you will have to create your own environment with the needed tools (`FastTree`) and R packages (`r-tidyverse` and `r-ggpubr`). To do this you’ll use the following conda create command and then activate the environment:
+
+```{}
+# Create command - 2 minutes
+conda create -n integrated-assignment-1 -c conda-forge -c bioconda fasttree r-tidyverse r-ggpubr --yes
+```
+
+#### Hints
+1. Example `FastTree` usage: FastTree -nt sequence.aln > tree.nwk. You’ll need to replace `sequence.aln` with the path to the correct alignment file
+2. Use the `ggtree` R package to generate a visualization of the phylogenetic tree (using your provided RStudio instance: `xx.uhn-hpc.ca:8080`, where `xx` is your assigned student number)
+
+:::: {.callout type="blue" title="Note"}
+
+`ggtree` is unavailable in your Rstudio session when you load it. Run the following commands to install and load it:
+
+::::
+
+```{}
+  if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+  
+  # you can ignore if you get a warning message about the Bioconductor version
+  
+  BiocManager::install("ggtree")
+  library(ggtree)
+```
+
+#### Helpful Starter Code:
+
+```{}
+# make sure you are in the folder of the assignment
+
+#load files
+metadata<-read.csv("metadata.csv")
+tree<-read.tree("tree.nwk")
+```
+
+#### Additional Tree Documentation:
+
+1. Visualizing phylogenetic trees
+2. Adding metadata to your trees
+
+:::: {.callout type="gray" title="4. What does the phylogenetic tree inform you about the relatedness of the isolates within the same outbreak and across different outbreaks?" style="subtle" icon="true" collapsible="true"}
+
+Isolates of the same outbreak are more phylogenetically related (higher sequence similarity) than isolates collected from different outbreaks
+
+::::
+
+:::: {.callout type="gray" title="5. Do the isolates cluster by isolation source (e.g. Human, Food) or isolation date?" style="subtle" icon="true" collapsible="true"}
+
+Isolates tend to cluster by isolation date. ___
+
+::::
+
+### Genome Annotation
+
+Predicting genes and other functional elements (e.g. transcriptional elements, replication origins, mobile elements) can help explain the differences in biological, epidemiological, and ecological characteristics of microbial organisms. Genome annotations are also critical for risk assessments of infectious disease pathogens, as the detection of multiple antimicrobial resistance (AMR) or virulent genes are suggestive of high risks to public health or patient health that require immediate attention.
+
+Here, you will use a tool called `ABRicate` to search for the presence of plasmids, AMR genes and virulence factors (VF). You will need to search against three different nucleotide databases that contain reference sequences of curated elements. Once you have identified the genetic elements carried by the bacterial genomes, you will generate heatmaps to visualize the results and identify any correlations amongst within-outbreak strains and between-outbreak strains.
+
+But first, you must install the `ABRicate` tool into your conda environment to be able to use it:
+
+```{}
+# Conda install - 1 minute
+conda install -c bioconda abricate --yes
+```
+
+#### How to Run `ABRicate`:
+
+- Example ABRicate usage: `abricate --db db_name contigs.fa > report.tab`
+- The main parameter, `--db` specifies which database you would like to search against. There are different databases for different genetic elements. You can find the list of pre-downloaded sequence databases by executing: `abricate --list`
+- To search for AMR genes, virulence factors, and plasmids, the database names are `card`, `vfdb`, and `plasmidfinder`, respectively
+- Once you have generated the required ABRicate outputs for all *Salmonella* genomes, combine the results of all genomes by executing:
+
+```{}
+abricate --summary /path/to/amr_results_dir/*.tab > amr_summary.tab
+```
+
+#### How to Visualize ABRicate Summary Results
+
+- If you feel like challenging yourself with data visualization using R, then feel free to skip the instructions in this section and proceed to write your own codes in RStudio to plot the heatmaps.
+- To help with results visualization, we have prepared a R script to generate heatmap plots directly from ABRicate summary results:
+
+```{}
+# Clone the IDE2021_integrated_hw GitHub repository to your current working directory
+git clone https://github.com/jimmyliu1326/IDE2021_integrated_hw
+# Inside the cloned repository, you will find a script called `abricate_heatmap.R`
+# Example usage of the script
+Rscript abricate_heatmap.R /path/to/amr_summary.tab /path/to/amr_heatmap.png
+```
+
+#### Hints:
+
+1. You can only query one genome against one database at a time (How would you automate the search for multiple genomes?)
+2. For each database (card, vfdb, plasmidfinder), organize the annotation results in a different directory
+
+:::: {.callout type="gray" title="6. Can you infer which isolates are epidemiologically linked and which isolates are sporadic cases based on the presence/absence of the plasmids?" style="subtle" icon="true" collapsible="true"}
+
+Yes, the pattern of presence/absence of plasmids is distinct in each outbreak.
+
+::::
+
+:::: {.callout type="gray" title="7. Do you see the same trend with AMR genes or virulence factors?" style="subtle" icon="true" collapsible="true"}
+
+No, the majority of isolates, regardless of the outbreak of origin, exhibit the same trend in virulence factors and AMR genes.
+
+::::
+
+:::: {.callout type="gray" title="8. Looking at the AMR heatmap, which samples likely contain AMR genes encoded on plasmids and how would you verify this looking at ABRicate results?" style="subtle" icon="true" collapsible="true"}
+
+SH14-009 and SH08-001, because the heatmaps show that they carry 1-2 unique AMR genes that are not present in any other genomes in the dataset. Furthermore, in the plasmids heatmap, we also observe that SH14-009 and SH08-001 carry unique plasmids; hence the unqiue AMR genes are most likely encoded by these unique plasmids.
+
+To verify this, we first identify the contig name associated with the unique plasmids from the invidiual abricate results. For example, based on the plasmids heatmap, we observe that SH14-009 carries the unique plasmid, IncI1_1_Alpha.
+
+Running: `grep IncI_1_Alpha abricate/plasmids/SH14-009.tab`, we find that the unique plasmid is associated with the contig name, CP016585.1
+
+Subsequently, we can search in the AMR results of SH14-009 to identify AMR genes that are present in the contig CP016585.1 by running `grep CP016585.1 abricate/amr/SH14-009.tab`. And indeed, we find that the contig contains two AMR genes: AAC(3)-VIa and ANT(3’’)-IIa, which in fact are the two AMR genes unique to SH14-009!
+
+::::
+
+:::: {.callout type="gray" title="9. Aside from plasmids, AMR genes and VF, can you think of other genetic features in bacterial genomes that may help discriminate between these outbreaks?" style="subtle" icon="true" collapsible="true"}
+
+CRISPR arrays, insertional elements, genomic Islands, phage elements, integrative conjugative elements
+
+::::
+
+## Integrative Assignment 2
+
+### Introduction
+
+In late 2021, South Africa experienced a resurgence in SARS-CoV-2 cases that was accompanied by an increase of Spike-gene diagnostic assay PCR failures. This specific diagnostic characteristic was associated with the earlier Alpha Variant of Concern (VOC) and not of the currently circulating Delta VOC. Due to this, a targeted sequencing effort was initiated to investigate this unusual variant. A new, genetically distinct lineage was quickly identified. Cases linked to this lineage rapidly increased in both South Africa and subsequently worldwide with it being designated as a new WHO VOC called Omicron in under 10 days from the initial sequencing result. You are interested in performing a genomic epidemiological investigation of the source, evolutionary relationship, and genetic characteristics of this newly emergent lineage. To do this, you have randomly sampled a small subset of the global diversity of SARS-CoV-2 lineages hosted on [GISAID](https://gisaid.org/) from the onset of the pandemic until early 2022 supplemented with a subset of the first reported Omicron sequences from both South Africa and Canada.
+
+Important terms on variant typing of the SARS-CoV-2 virus:
+
+- Pango Lineage / Lineage: Variant type called using the [Pangolin](https://cov-lineages.org/index.html#about) tool which provides a finely-detailed nomenclature on the input genome based on all of the currently designated lineages.
+- Nextstrain Clade / Clade: Variant typing called using the [Nextstrain](https://nextstrain.org/) naming guidelines/tools. These clades are a bit more relaxed than the Pangolin lineages with the aim to new clades created by significant differences in biological impact or circulation patterns.
+- WHO Variants of Concern: Variants designated by the WHO and given an easy to say greek alphabet label
+
+This integrated assignment will focus on the genomic epidemiological analysis of the emergence of the SARS-CoV-2 VOC Omicron using tools and methods covered in the other modules of the course. Once finished the assignment, check out the published paper on the epidemiological investigation of early Omicron from South Africa:
+
+:::: {.callout type="yellow" style="subtle" title="Published Paper" icon="true"}
+
+Viana, R., Moyo, S., Amoako, D.G. et al. Rapid epidemic expansion of the SARS-CoV-2 Omicron variant in southern Africa. Nature 603, 679–686 (2022). https://doi.org/10.1038/s41586-022-04411-y
+
+::::
+
+### List of Software Utilized
+
+- [Augur](https://docs.nextstrain.org/projects/augur/en/stable/index.html)
+  - [mafft](https://mafft.cbrc.jp/alignment/software/)
+  - [iqtree](https://iqtree.github.io/)
+  - [timetree](https://treetime.readthedocs.io/en/latest/)
+- [Auspice](https://auspice.us/)
+- [Nextclade](https://clades.nextstrain.org/)
+- [Rebar](https://github.com/phac-nml/rebar)
+
+The workshop machines already have this software installed within a conda environment called `integrated-assignment-2`.
+
+
+### Assignment Setup
+
+#### Copy Data Files
+
+To begin, we will copy over the assignment files to `~/workspace`.
+
+##### Commands
+
+```{}
+cp -r ~/CourseData/IDE_data/integrated_assignment_2/data/ ~/workspace/integrated_assignment_2
+cd ~/workspace/integrated_assignment_2
+```
+
+This will copy over the 3 files that you need to do the assignment, which you can check with `ls` and should give:
+
+```{}
+metadata.tsv  selected_sequences.fasta  sequences.fasta
+```
+
+#### Activate Environment
+
+Activate the conda environment `integrated-assignment-2` which has all of the tools used in this assignment.
+
+#### Verify your Workshop Machine URL
+
+This exercise will produce output files intended to be viewed in a web browser. These should be accessible by going to http://xx.uhn-hpc.ca in your web browser where **xx** is your particular number (like 01, 02, etc.).
+
+### Phylogenetic Construction
+
+As seen previously in Module 8, we are going to construct a phylogenetic tree using the `Augur` tool suite, this time with a set of global SARS-CoV-2 sequences and their associated metadata subsampled from GISAID. Revisit that module to refamiliarize yourself with the commands if needed! You can also run `COMMAND --help` to gain more information on the parameters associated with each of the tools used. The structure of this section has all of the full commands hidden by default so you can practice constructing your own commands. It will take around 10 minutes total for the commands to execute.
+
+:::: {.callout type="orange" title="Tip"}
+
+When running through the assignment, remember to keep track of what you name your output files as each step builds off of the previously generated output files. If you are figuring out your own commands and comparing them to the full given commands there will likely be differences in these parameter inputs!
+
+::::
+
+:::: {.callout type="blue" title="Note"}
+
+There are some potential differences that can occur in the final tree topology due to the random seeding of the initial parsimony trees and the small number of iterations run (not running any bootstrapping). To enforce a common tree topology, we are going to use a fixed seed of `100` when building the trees.
+
+::::
+
+#### Step 1: Construct a Multiple Sequence Alignment
+
+Using `augur align` and the `--reference-name Wuhan-Hu-1/2019` reference sequence that is found in the given `sequences.fasta` file, construct a multiple sequence alignment using four threads.
+
+:::: {.callout type="gray" title="Command and Parameters" style="subtle" icon="true" collapsible="true"}
+
+Command: 
+
+```{}
+# 1. Align with Augur using mafft - 2 min
+augur align \
+  --nthreads 4 \
+  --sequences sequences.fasta \
+  --reference-name 'Wuhan-Hu-1/2019' \
+  --output aligned.fasta
+```
+
+Parameters:
+
+```{}
+--nthreads 4: Use 4 threads for the alignment
+--sequences sequences.fasta: Input set of sequences including the reference in fasta format
+--reference-name 'Wuhan-Hu-1/2019': The reference Wuhan-1 genome identifier found in our sequences file to remove insertions relative to
+--output aligned.fasta: Output alignment file in fasta format  
+```
+
+::::
+
+#### Step 2: Build a Maximum Likelihood Phylogenetic Tree
+
+Next, using `augur tree` and your newly generated multiple sequence alignment with `--alignment`, construct a maximum likelihood tree. Include the `--tree-builder-args "-seed 100"` parameter in your command to keep all assignment trees matching, and remember that output trees should be formatted in the newick format with the `.nwk` extension. Use four threads.
+
+:::: {.callout type="gray" title="Command and Parameters" style="subtle" icon="true" collapsible="true"}
+
+Command: 
+
+```{}
+# 2. Build Maximum Likelihood Phylogenetic Tree with Augur using iqtree2 - 40 sec
+augur tree \
+  --nthreads 4 \
+  --alignment aligned.fasta \
+  --tree-builder-args "-seed 100" \
+  --output tree.nwk
+```
+
+Parameters:
+
+```{}
+--nthreads 4: Use 4 threads for building the ML tree
+--alignment aligned.fasta`: Input multiple sequence alignment file from the previous step
+--tree-builder-args "-seed 100": Seed given to iqtree to keep all output tree topology the same
+--output tree.nwk: Output phylogenetic tree in newick format
+```
+
+::::
+
+#### Step 3: Infer Time Tree
+
+The next step is to infer a time tree using the `augur refine --timetree` command along with your multiple sequence alignment (`--alignment`), provided metadata, and newly generated maximum likelihood `--tree` newick file.
+
+:::: {.callout type="orange" title="Tip"}
+
+This is a long command; remember to add in the following parameters:
+
+- Root your tree with the Wuhan 1 reference `--root 'Wuhan-Hu-1/2019'`
+- Set your divergence units for visualizing later on `--divergence-units mutations`
+- Set both of your output files `--output-tree timetree.nwk` and `--output-node-data branch_lengths.json`
+- Add in the `--seed 100` parameter
+
+::::
+
+:::: {.callout type="gray" title="Command and Parameters" style="subtle" icon="true" collapsible="true"}
+
+Command: 
+
+```{}
+# 3. Build time tree with Augur using timetree - 4 min
+augur refine \
+  --timetree \
+  --tree tree.nwk \
+  --alignment aligned.fasta \
+  --metadata metadata.tsv \
+  --root 'Wuhan-Hu-1/2019' \
+  --divergence-units mutations \
+  --output-tree timetree.nwk \
+  --output-node-data branch_lengths.json \
+  --seed 100
+```
+
+Parameters:
+
+```{}
+--timetree: Specify that augur refine should build a time tree
+--tree tree.nwk: Input newick tree build using iqtree
+--alignment aligned.fasta: Input multiple sequence alignment from augur align
+--metadata metadata.tsv: Input metadata file containing the sequence names (column: `strain`) and collection dates (column: `date`)
+--root 'Wuhan-Hu-1/2019': Keep the Wuhan-1 reference genome as the root of the tree
+--divergence-units mutations: Convert the branch lengths to mutations for visualizing later on
+--output-tree timetree.nwk: Output time tree newick file
+--output-node-data branch_lengths.json: Output file to write branch lengths as node data
+--seed 100: Seed given to be used instead to keep tree topologies the same
+```
+
+::::
+
+#### Step 4: Infer Ancestral States for Lineages/Clades
+
+Next, we are going to infer ancestral traits for the different typing schemes found in the `metadata.tsv` file. To do this, use the `augur traits` command along with the newly created `timetree` and the desired columns from the metadata file. The output should be set with `--output-node-data`.
+
+The `--columns` to use are:
+
+- `clade_who`: The WHO designated clade (or blank if the sample is not in a WHO clade)
+- `clade_nextstrain`: The clade designated by Nextstrain
+- `pangolin_lineage`: The lineage assigned by the Pangolin lineage assignment pipeline
+Command and Parameters
+Step 5. Export for visualization
+Finally, export your visualization as an Auspice JSON file using augur export v2. The export command below should work if you have been using the names in the commands provided for you; otherwise, you may have to adjust the input file names for the --tree and --node-data arguments.
+
+:::: {.callout type="gray" title="Command and Parameters" style="subtle" icon="true" collapsible="true"}
+
+Command: 
+
+```{}
+# 4. Infer ancestral node traits for given columns - 20 seconds
+augur traits \
+  --tree timetree.nwk \
+  --metadata metadata.tsv \
+  --columns clade_who pangolin_lineage clade_nextstrain \
+  --output-node-data node_traits.json
+```
+
+Parameters:
+
+```{}
+--tree timetree.nwk: Input time tree created with augur refine
+--metadata metadata.tsv: Input metadata file with the information we have to infer ancestral states with
+--columns clade_who pangolin_lineage clade_nextstrain: The columns in the metadata file to use for inference 
+--output-node-data node_traits.json: Output file to write trait inferences to
+```
+
+::::
+
+#### Step 5: Export for Visualization
+
+Finally, export your visualization as an Auspice JSON file using `augur export v2`. The export command below should work if you have been using the names in the commands provided for you; otherwise, you may have to adjust the input file names for the `--tree` and `--node-data` arguments.
+
+:::: {.callout type="gray" title="Command and Parameters" style="subtle" icon="true" collapsible="true"}
+
+Command: 
+
+```{}
+# 5. Export tree to auspice json file - 20 sec
+augur export v2 \
+  --tree timetree.nwk \
+  --node-data branch_lengths.json node_traits.json \
+  --maintainers "CBW-IDE-2024" \
+  --title "Integrated Assignment 2" \
+  --output auspice.json
+```
+
+Parameters:
+
+```{}
+--tree timetree.nwk: Input time tree created with augur refine
+--node-data branch_lengths.json node_traits.json: Input node data json files created in step 3 (branch length) and step 4 (traits)
+--maintainers "CBW-IDE-2024": Maintainer name to be displayed by auspice. Can be whatever you like
+--title "Integrated Assignment 2": Title to be displayed by auspice. Can be whatever you would like
+--output auspice.json: Output JSON file to be used in auspice for visualization and tree exploration
+```
+
+::::
+
+#### Phylogenetic Visualization and Analysis Questions
+
+Visualize the tree using auspice to help answer the following questions.
+
+#### Step 1: Load Data into Auspice
+
+Download the ouput Auspice JSON file and the `metadata.tsv` file by right-clicking `Save link as...`.
+
+Go to https://auspice.us/ and drag and drop in the saved JSON file and the `metadata.tsv` file to visualize your created phylogenetic tree with metadata. Spend a bit exploring the tree and seeing where all of the clades are along with how the branch lengths compare when visualized by both `Time` and `Divergence`.
+
+#### Step 2: Answer the Following Questions Using the Visualization and Prompts
+
+Looking at the time phylogeny, find both Omicron and Delta on the tree (hint: Colour by “clade_who”). Noting that Omicron emerged when the Delta lineages were prevalent globally, from the phylogeny:
+
+:::: {.callout type="gray" title="1. What can you infer about the relationship between the Delta and Omicron variants?" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+:::: {.callout type="gray" title="2. What is the lineage of the most recent common ancestor (MRCA) of both Delta and Omicron? (hint: Remember lineage is from Pangolin. Colour the tree by “pangolin_lineage”)" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+Next, zoom in on the Omicron clade.
+
+:::: {.callout type="gray" title="3. Based on your tree, where and when was the first Omicron case identified? Is there enough evidence in our tree to say this is where Omicron emerged? (Hint: Label tips by country, click on the nodes, explore around)" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+The emergence of Omicron was characterized by three distinct lineages that were all detected at roughly the same time in the order of: `BA.1`, `BA.2`, and then `BA.3`.
+
+:::: {.callout type="gray" title="4. When was the MRCA of all 3 of the Omicron lineages (BA.1, BA.2, and BA.3) predicted to be? What about BA.2 and BA.3?" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+:::: {.callout type="gray" title="5. What does this tell you about the diversification of the Omicron VOC prior to its detection in the population?" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+Zooming back out, the Omicron clade has an unusually long branch length back to its most recent common ancestor suggesting a period of unsampled diversification of before its emergence.
+
+:::: {.callout type="gray" title="6. Which lineage does Omicron appear to have diverged from?" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+:::: {.callout type="gray" title="7. How long a period of unsampled diversity do you estimate for the Omicron VOC based on the inferred dates?" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+:::: {.callout type="gray" title="8. Based on all of the previous answers, what hypotheses for the emergence of Omicron are consistent with your observations? Is there anything about the country of origin that suggests one hypothesis over another?" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+Now, set the branch length from `Time` to `Divergence` and view the tree in a `Radial` layout. Colour by `who_clade`.
+
+:::: {.callout type="gray" title="9. Do any of the other WHO VOCs (alpha, beta, gamma, delta) show a similar phylogenetic emergence structure to that of Omicron? What, if anything, can you conclude about the emergence of VOCs?" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+
+### Nextclade Analysis
+
+You are looking to explore the different molecular profiles of the VOCs by analysing and visualizing them using [nextclade](https://clades.nextstrain.org/) and comparing them to Omicron. Nextclade is a tool that performs genetic sequence alignment, clade assignment, mutation calling, phylogenetic placement, and quality checks for different viral pathogens. It can be run either on the command line or locally in your browser (no data leaves your computer!) Remember to keep your auspice tree open to assist in analyzing the VOCs.
+
+The WHO VOCs are:
+
+- Alpha
+- Beta
+- Gamma
+- Delta
+- Omicron
+
+#### Step 1:
+
+Download the `selected_sequences.fasta` file to your computer and then load it into nextclade by dragging it into your browser. Then set the dataset to the official `SARS-CoV-2` dataset and click run.
+
+#### Step 2: Using Nextclade, Answer the Following Questions
+
+Nextclade will show the distribution of mutations along either specific genes or over the whole genome with the default view being set to show mutations in the Spike protein.
+
+
+:::: {.callout type="gray" title="10. The TaqPath three-gene RT-PCR assay for SARS-CoV-2 experienced diagnostic failures for Alpha due to the 69-70del mutation in one of the assay primers. This assay failed in the same target in some of the the initial Omicron lineages. Based on the nextclade visualization, which lineage(s) contain this mutation?" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+Change the view from the default of spike to the ‘Nucleotide sequence’ option to view the full distribution of mutations across the genome
+
+:::: {.callout type="gray" title="11. Can you find any other mutations in Omicron that are common to the other VOCs? Given the phylogenetic relationship of the VOCs, can you provide a hypothesis for your observation of common mutations between them?" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+:::: {.callout type="gray" title="12. In which gene(s) are the mutations of the VOCs concentrated? Why is this the case?" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+### Recombination Analysis
+
+With both of the Delta and Omicron VOCs circulating in the population at the same time in December 2021, there was ample opprotunity for co-infections to occur with a high probability of recombination events happening. This lead to the first “deltacron” recombinat being identified in France in January 2022. Recombinant SARS-CoV-2 sequences consist of genomic elements from two different lineages/variants with one or more breakpoints in which the recombination occured.
+
+To identify potential recombinants and breakpoints, we are going to use the tool `rebar` that follows the [PHA4GE Guidance for Detecting and Characterizing SARS-CoV-2 Recombinants](https://github.com/pha4ge/pipeline-resources/blob/main/docs/sc2-recombinants.md) for detecting and visualizing SARS-CoV-2 recombination.
+
+#### Step 1: Download
+
+First, we have to download a version controlled SARS-CoV-2 dataset for rebar to be able to detect breakpoints and recombinants. For more information on what is contained in a dataset, checkout the [rebar dataset page](https://github.com/phac-nml/rebar/blob/main/docs/dataset.md). As a quick introduction though, the dataset directory consists minimally of:
+
+1. The Wuhan-1 reference genome
+2. Population fasta file with known clades/lineages aligned to the reference
+
+To download the required dataset to be able to detect recombinants, you will have to use the `rebar dataset download` command. This command requires an input dataset name (`--name sars-cov-2`), an input date tag, which we will use `--tag 2023-11-30` for, and an `--output-dir` to save the dataset to. Remember, you can almost always run `TOOL --help` to get more info on how to run a tool.
+
+:::: {.callout type="gray" title="Command and Parameters" style="subtle" icon="true" collapsible="true"}
+
+Command: 
+
+```{}
+Command:
+# 1. Download dataset to run rebar - 10 sec
+rebar dataset download \
+  --name sars-cov-2 \
+  --tag 2023-11-30 \
+  --output-dir dataset/2023-11-30
+```
+
+Parameters:
+
+```{}
+--name sars-cov-2: Input dataset name to grab
+--tag 2023-11-30: Input date tag for the dataset
+--output-dir dataset/2023-11-30: Output directory name to save the dataset to
+```
+
+::::
+
+#### Step 2: Run
+
+Next, run the `rebar run` command using the newly created `--dataset-dir` and your initial aligned fasta file (`--alignment`) to begin the process of detecting any potential recombinant genomes in our input sequences. Output data again should be saved to a specified `--output-dir`.
+
+:::: {.callout type="gray" title="Command and Parameters" style="subtle" icon="true" collapsible="true"}
+
+Command: 
+
+```{}
+# 2. Run rebar detection - 2 minutes
+rebar run \
+  --dataset-dir dataset/2023-11-30 \
+  --alignment aligned.fasta \
+  --output-dir rebar_recombination
+```
+
+Parameters:
+
+```{}
+--dataset-dir dataset/2023-11-30: Input SARS-CoV-2 dataset downloaded in the prior step
+--alignment aligned.fasta: Input aligned fasta file all the way back from augur align
+--output-dir rebar_recombination: Output directory for rebar to save to
+```
+
+::::
+
+#### Step 3: Plot
+
+Finally, run `rebar plot` to create visualizations of the potential recombinants detected using the previous output `--run-dir` and the `--annotations` file found in your downloaded rebar dataset from step 1 (hint: This file is called `annotations.tsv`).
+
+:::: {.callout type="gray" title="Command and Parameters" style="subtle" icon="true" collapsible="true"}
+
+Command: 
+
+```{}
+Command:
+# 3. Plot rebar detections - 5 sec
+rebar plot \
+  --run-dir rebar_recombination \
+  --annotations dataset/2023-11-30/annotations.tsv
+```
+
+Parameters:
+
+```{}
+--run-dir rebar_recombination: Input directory containing rebar run results to be used for plotting
+--annotations dataset/2023-11-30/annotations.tsv: Input annotations file containing a table of genome annotations to add to the plot
+```
+
+::::
+
+#### Questions
+
+Now view the PNG images produced by Rebar (found in `rebar_recombination/plots`) and answer the following questions for the `XB`, `XD`, and `XF` recombinants detected:
+
+:::: {.callout type="gray" title="13. What lineages comprise the recombinant?" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+:::: {.callout type="gray" title="14. In which genes do recombination break points occur?" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+With the knowledge of which samples were detected as recombinants along with which lineages make up their recombination, look back at the time tree and find the detected recombinant samples (hint: Colour by who_clade).
+
+:::: {.callout type="gray" title="15. Where do the the XD and XF recombinant samples place on the phylogeny? Are they located where you’d expect based on their components? Would you expect their placement to be accurate?" style="subtle" icon="true" collapsible="true"}
+
+::::
+
+### Answer Key
+
+<iframe src="https://drive.google.com/file/d/1XfBZ20cuT4kp7I97-YLNd3DbWGAf_2x4/preview" width="640" height="480" allow="autoplay"></iframe>

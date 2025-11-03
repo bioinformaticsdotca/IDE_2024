@@ -1,0 +1,312 @@
+# Meet Your Faculty
+
+#### William Hsiao
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>Associate Professor <br>
+Faculty of Health Sciences, Simon Fraser University <br>
+Vancouver, BC, CA
+>
+wwhsiao@sfu.ca <br>
+Website: https://cidgoh.ca/
+
+William Hsiao is a public health infectious disease researcher with a background in microbial
+genomics and bioinformatics. He is an associate professor in the Faculty of Health Sciences
+at Simon Fraser University and an affiliated researcher at BCCDC Public Health Laboratory
+and at Canada’s Michael Smith Genome Sciences Centre. Will leads an interdisciplinary
+group of researchers interested in solving practical public health and animal health problems
+through a One Health lens at the Centre for Infectious Disease Genomics and One Health.
+
+#### Jared Simpson
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>Principal Investigator, Ontario Institute for Cancer Research <br>
+Assistant Prof. Department of Computer Science, University of Toronto <br>
+>
+> Website: https://simpsonlab.github.io/
+
+Dr. Simpson develops algorithms and software for the analysis of high-throughput sequencing
+data. He is interested in de novo assembly and the detection of sequence variation in
+individuals, cancers and populations, with a focus on long read sequencing technologies. Dr.
+Simpson developed the ABYSS, SGA and nanopolish software packages.
+
+#### Fiona Brinkman
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>Distinguished Professor, FRSC, Department of Molecular Biology and Biochemistry <br>
+Associate Member, School of Computing Science and Faculty of Health Sciences,
+Simon Fraser Univeristy <br>
+Burnaby, BC, Canada
+>
+brinkman@sfu.ca <br>
+Website: https://www.brinkmanlab.ca/
+
+Dr. Brinkman is developing bioinformatic resources to better track infectious diseases using
+genomic data, and improve prediction of new vaccine/drug targets. Her primary aim is to
+develop more sustainable, integrated approaches for infectious disease control, however she
+is also applying her methods to aid allergy, child health, and environmental research.
+
+#### Rob Beiko
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>Professor <br>
+Faculty of Computer Science, Dalhousie University <br>
+Halifax, NS, Canada
+>
+rbeiko@dal.ca
+
+Rob Beiko is a professor in bioinformatics whose research encompasses microbial evolution
+and gene transfer, comparative genomics, and microbial community analysis. He is the lead
+of the ARETE project, which is developing a software pipeline for annotation of AMR and
+mobile genetic elements, phylogenomic analysis, and inference of recombination and transfer
+in large sets of pathogen genomes. He has also developed and contributed to software tools
+including STAMP for statistical analysis of metagenome profiles, rSPR for efficient inference
+of gene transmission, and PICRUSt for the prediction of metagenome composition based on
+marker-gene surveys.
+
+#### Finlay Maguire
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>Assistant Professor <br>
+Faculty of Computer Science and Department of Community Health & Epidemiology, Dalhousie Univerisity <br>
+Halifax, NS, Canada
+>
+finlay.maguire@dal.ca <br>
+Website: finlaymagui.re
+
+Finlay Maguire is a genomic epidemiologist whose work centers on leveraging data in
+innovative ways to answer questions related to applied health and social issues. This includes
+developing bioinformatics methods to more effectively use genomic data to mitigate infectious
+diseases and broad interdisciplinary collaborations in areas such as refugee healthcare
+provision and online radicalisation. They are an active contributor to the national and
+international public health responses to emerging viral zoonoses and antimicrobial resistance,
+co-chair of the PHA4GE data structures working group, and act as a Pathogenomics
+Bioinformatics Lead for Sunnybrook’s Shared Hospital Laboratory.
+
+#### Gary Van Domselaar
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>Chief, Bioinformatics <br>
+National Microbiology Laboratory <br>
+Public Health Agency of Canada <br>
+Winnipeg, MB, Canada
+>
+gary.vandomselaar@phac-aspc.gc.ca
+
+Dr. Gary Van Domselaar, PhD (University of Alberta, 2003) is the Chief of the Bioinformatics
+Section at the National Microbiology Laboratory in Winnipeg Canada and Associate Professor in
+the Department of Medical Microbiology and Infectious Diseases at the University of Manitoba. Dr.
+Van Domselaar’s lab develops bioinformatics methods and pipelines to understand, track, and
+control circulating infectious diseases in Canada and globally. His research and development
+activities span metagenomics, infectious disease genomic epidemiology, genome annotation,
+population structure analysis, and microbial genome wide association studies.
+
+#### Ed Taboada
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>Research Scientist <br>
+Genomic Epidemiology Research Unit <br>
+Division of Enteric Diseases <br>
+National Microbiology Laboratory <br>
+Public Health Agency of Canada <br>
+Winnipeg, MB, Canada
+>
+eduardo.taboada@phac-aspc.gc.ca
+
+Eduardo Taboada is a research scientist in the Division of Enteric Diseases at the NML. Since
+obtaining his PhD in molecular genetics at the Department of Biology, University of Ottawa in
+1999, he has applied his expertise in molecular biology and population genetics towards the
+development of comparative genomics and bioinformatics-based tools for studying various
+aspects of the biology, ecology, and epidemiology of bacterial food- and waterborne
+pathogens, with a focus on Campylobacter, Salmonella, and E. coli. Over these past two
+decades, Ed has led or participated in several projects funded by Genome Canada and the
+federal government’s Genomics Research and Development Initiative. His current research
+focus is on developing quantitative tools for integrated genomic and epidemiologic analysis
+and the application of analytical epidemiology approaches to genomic datasets.
+
+#### Emma Griffiths
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>Research Associate <br>
+Faculty of Health Sciences, Simon Fraser University <br>
+Vancouver, BC, Canada
+>
+emma_griffiths@sfu.ca
+
+Emma Griffiths is a research associate at the Centre for Infectious Disease Genomics and
+One Health (CIDGOH) in the Faculty of Health Sciences at Simon Fraser University in
+Vancouver, Canada. Her work focuses on developing and implementing ontologies and data
+standards for public health and food safety genomics to help improve data harmonization and
+integration. She is a member of the Standards Council of Canada and leads the Public Health
+Alliance for Genomic Epidemiology (PHA4GE) Data Structures Working Group.
+
+#### Andrew McArthur
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>Professor <br>
+Michael G. DeGroote Institute for Infectious Disease Research <br>
+Department of Biochemistry and Biomedical Sciences <br>
+McMaster University <br>
+Hamilton, Ontario, Canada
+
+Dr. McArthur is a Professor and David Braley Chair in Computational Biology at McMaster
+University. Dr. McArthur has had a career in the United States and Canada, including
+NIH-funded positions at the Marine Biological Laboratory and Brown University, where he led
+the genome assembly of the diarrheal pathogen Giardia intestinalis, plus 10 years of
+experience in the private sector. Dr. McArthur’s research team focuses on building tools,
+databases, and algorithms for the genomic surveillance of infectious pathogens. He and his
+team developed the Comprehensive Antibiotic Resistance Database (card.mcmaster.ca) and
+the SARS-CoV-2 Illumina GeNome Assembly Line software platform.
+
+#### Darian Hole
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>Bioinformatician <br>
+Computational and Operational Genomics Unit <br>
+National Microbiology Laboratory <br>
+Public Health Agency of Canada <br>
+Winnipeg, MB, Canada
+>
+darian.hole@phac-aspc.gc.ca
+
+Darian Hole is a bioinformatician at the Public Health Agency of Canada working under Dr.
+Andrea Tyler and Dr. Ana Duggan. He focuses on genomic analysis process development,
+validation, and automation along with assisting partner labs in bringing in genomics to their
+workflows. Darian has mostly focused on viral diseases the past 5 years working at
+implementing standards, automation, and guidelines for SARS-CoV-2, Mpox, Polio, and
+Influenza.
+
+#### Karyn Mukiri
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>PhD Graduate Student Researcher <br>
+Faculty of Health Sciences, McMaster University <br>
+Department of Biochemistry and Biomedical Sciences <br>
+Hamilton, ON, Canada
+>
+mukirikm@mcmaster.ca
+
+Karyn is a PhD student under the supervision of Dr. Andrew McArthur where her main
+research focus is on the development of predictive genomic annotation algorithms to increase
+antibiotic resistance surveillance by the Resistance Gene Identifier. She is also a McMaster
+alum, having completed her undergraduate degree in Biotechnology under the Faculty of
+Engineering. Although the bulk of her work focuses on more algorithmic problems, her current
+research efforts are in helping pinpoint instances of miscuration within the Comprehensive
+Antibiotic Resistance Database.
+
+#### Miguel Prieto
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>PhD Graduate Student Researcher <br>
+Faculty of Health Sciences, Simon Fraser University <br>
+Vancouver, BC, Canada
+>
+mprietog@sfu.ca
+
+Miguel is a first year PhD student studying the impact of human infectious diseases and the
+role of the microbiome in humans. Particularly, he aims to use machine learning and
+metagenomic analysis to predict poor outcomes in chronic respiratory diseases. Miguel is a
+Medical Doctor from the Universidad del Valle in Colombia and has worked as a researcher
+and project coordinator on translational studies of neglected tropical diseases like
+leishmaniasis. Before coming to SFU, he completed a Master of Experimental Medicine at
+UBC exploring blood-based gene expression biomarkers of nontuberculous mycobacterial
+infections in patients with cystic fibrosis.
+
+#### Madeline McCarthy
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>PhD Graduate Student Researcher <br>
+Department of Biochemistry and Biomedical Sciences <br>
+McMaster University <br>
+Hamilton, ON, Canada
+>
+mccarm15@mcmaster.ca
+
+Madeline is a PhD Candidate in the McArthur Lab at McMaster University. Her work focuses
+on the development of targeted, cost-effective methods for culture-free outbreak detection and
+surveillance of bacterial pathogens. In addition to whole genome capture, she is testing the
+feasibility of targeted, culture-free plasmid recovery using bait capture and long-read
+sequencing. Prior to her PhD, she completed a MSc in microbiology at the University of
+Saskatchewan where she studied E. coli outbreaks in broiler chickens before hanging up her
+pipettes and switching to bioinformatics.
+
+#### Charlie Barclay
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>MSc Graduate Student Researcher <br>
+Department of Physics and Astronomy <br>
+University of British Columbia <br>
+Hamilton, ON, Canada
+>
+cbarcl01@mail.ubc.ca
+
+Charlie is an ontology curator at the Centre for Infectious Disease Genomics and One Health
+(CIDGOH), focusing on data standards for contextual data of genomic epidemiology, including
+wastewater surveillance. With five years of experience in data management, specializing in
+biodiversity and genomics data, she also actively contributes to the Public Health Alliance for
+Genomic Epidemiology (PHA4GE) and the Global Alliance for Genomics and Health
+(GA4GH).
+
+#### Michelle Brazas
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>Scientific Director <br>
+Canadian Bioinformatics Workshops (CBW) <br>
+Toronto, ON, CA
+>
+support@bioinformatics.ca
+
+Dr. Michelle Brazas is the Associate Director for Adaptive Oncology at the Ontario Institute for
+Cancer Research (OICR), and acting Scientific Director at Bioinformatics.ca. Previously, Dr.
+Brazas was the Program Manager for Bioinformatics.ca and a faculty member in
+Biotechnology at BCIT. Michelle co-founded and runs the Toronto Bioinformatics User Group
+(TorBUG) now in its 11th season, and plays an active role in the International Society of
+Computational Biology where she sits on the Board of Directors and Executive Board.
+
+#### Nia Hughes
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>Program Manager, Bioinformatics.ca <br>
+Ontario Institute for Cancer Research <br>
+Toronto, ON, Canada <br>
+>
+nia.hughes@oicr.on.ca
+
+Nia is the Program Manager for Bioinformatics.ca, where she coordinates the Canadian
+Bioinformatics Workshop Series. Prior to starting at OICR, she completed her M.Sc. in
+Bioinformatics from the University of Guelph in 2020 before working there as a
+bioinformatician studying epigenetic and transcriptomic patterns across maize varieties.
+
+#### Zhibin Lu
+
+<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+
+>Senior Manager, Digital Research <br>
+University Health Network <br>
+Toronto, ON, Canada <br>
+>
+zhibin@gmail.com
+
+Zhibin Lu is a senior manager at University Health Network Digital. He is responsible for UHN
+HPC operations and scientific software. He manages two HPC clusters at UHN, including
+system administration, user management, and maintenance of bioinformatics tools for
+HPC4health. He is also skilled in Next-Gen sequence data analysis and has developed and
+maintained bioinformatics pipelines at the Bioinformatics and HPC Core. He is a member of
+the Digital Research Alliance of Canada Bioinformatics National Team and Scheduling
+National Team.
